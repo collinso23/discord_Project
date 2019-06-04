@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 import config
 import requests 
-
+import greetings
 
 bot = commands.Bot(command_prefix="$")
 @bot.event
@@ -32,7 +32,8 @@ async def bitcoin(ctx):
     resp = requests.get(url,headers=HEADERS)
     value = resp.json()['bpi']['USD']['rate']
     await ctx.send("Bitcoin price is: $"+value)
-    
+
+bot.add_cog(Greetings(bot))    
 bot.run(config.BOT_TOKEN)
 
 """
