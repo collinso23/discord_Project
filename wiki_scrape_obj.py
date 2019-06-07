@@ -13,16 +13,16 @@ class Wiki_Scraper(object):
         mainDiv = soup.find('div',{'class': 'mw-parser-output'})
         allLinks = mainDiv.findAll('a')
         #table = soup.find('table', {'class': 'column'})
+        #print(allLinks)
         for link in allLinks:
             title = link.get('title')
-            if title == className:
-                print(title)
-        '''for tr in table.findAll('tr'):
-            for a in tr.findAll('a'):
-                print(a['href'])
-        '''
+            #print(title)
+            #print("\n")
+            if title is not None:
+                if className in title:
+                    print(title)
 
 wc = Wiki_Scraper()
-wc.getClassInformation("humanoid")
+wc.getClassInformation("Warlock")
     
 
