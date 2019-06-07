@@ -2,13 +2,15 @@ import discord
 from discord.ext import commands
 import config
 import requests 
-import greetings
 from bs4 import BeautifulSoup
+import logs
 
 bot = commands.Bot(command_prefix="$")
 @bot.event
 async def on_ready():
-    print("Logged in as", bot.user)
+	print("Logged in as", bot.user)
+	logs.logger()
+
 """     
 @bot.event
 async def on_message(msg):
@@ -24,12 +26,10 @@ async def ping(ctx):
         description='search Roll20 compendium for arg',
         aliases=['-s','--search'])
 async def search(ctx,arg):
-   """ url = 'https://roll20.net/compendium/dnd5e/BookIndex'"""
-
     wiki = "https://en.wikipedia.org/wiki/List_of_state_and_union_territory_capitals_in_India"
     page = request.urlopen(url, headers=HEADERS)
     soup = BeautifulSoup(page)
-    print soup
+    #print(soup)
 
     await ctx.send(soup.prettify())
     
@@ -43,7 +43,7 @@ async def bitcoin(ctx):
     value = resp.json()['bpi']['USD']['rate']
     await ctx.send("Bitcoin price is: $"+value)
 
-bot.add_cog(Greetings(bot))    
+#bot.add_cog(Greetings(bot))    
 bot.run(config.BOT_TOKEN)
 
 """
