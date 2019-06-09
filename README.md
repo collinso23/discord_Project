@@ -5,13 +5,12 @@ The goal for this bot is to utilze discord.py, requests, lxml, and BeautifulSoup
 
 
 Some commands to be implemented:
-	search (-s | --search): Will scrape various webpages for dnd content (ie: Spells, Classes, Races, ect.)
-
-	help(-h | --help)
+  search: -s | --search; Will scrape various webpages for dnd content (ie: Spells, Classes, Races, ect.)
+  help: -h | --help
 
 Some tasks to be implemented:
-	server count
-	player count
-	join channel message --> all channels
-	Message of the Day --> announcements
-`
+  server count
+  player count
+  join channel message --> all channels
+  Message of the Day --> announcements
+
