@@ -1,6 +1,8 @@
+import discord
+from discord.ext.commands import Bot,Cog
 """example cog to understand cog implementation so that search may be later implemented as a cog"""
 class Greetings(commands.Cog):
-    def __init__(self,bot):
+    def __init__(self,bot:Bot):
             self.bot = bot
             self._last_member = None
 
@@ -19,3 +21,5 @@ class Greetings(commands.Cog):
         else:
             await ctx.send("Hello {0.name}...This feels familiar".format(member))
         self._last_memeber = member
+def setup(bot):
+    bot.add_cog(Greetings(bot))

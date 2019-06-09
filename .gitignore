@@ -1,3 +1,4 @@
 config.py
 __pycache__/*
 discord.py/*
+inqBot/config.json
