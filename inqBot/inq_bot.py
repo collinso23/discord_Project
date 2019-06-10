@@ -2,6 +2,8 @@ import os
 import discord
 import logging
 
+from discord import Game
+
 from log import DiscordHandler
 
 from discord.ext.commands import Bot, when_mentioned_or
@@ -15,7 +17,7 @@ logger = logging.getLogger(__name__)
 bot = Bot(
     command_prefix=when_mentioned_or(config.prefix),
 
-    activity=config.playing
+    activity=Game(name=":help")
 )
 
 logger.addHandler(DiscordHandler(bot))
