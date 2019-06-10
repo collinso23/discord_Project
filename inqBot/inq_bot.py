@@ -1,13 +1,32 @@
-from utils import permissions
-from discord.ext.commands import AutoShardedBot
+import os
+import discord
+import logging
 
-class Bot(AutoShardedBot):
-    def __init__(self, *args, prefix=None, **kwargs):
-        super().__init__(*args, **kwargs)
+from log import DiscordHandler
 
-    async def on_message(self, msg):
-        if not self.is_ready() or msg.author.bot or not permissions.can_send(msg):
-            return
+from discord.ext.commands import Bot, when_mentioned_or
 
+from utils import permissions, default
 
-        await self.process_commands(msg)
+config = default.get("config.json")
+
+logger = logging.getLogger(__name__)
+
+bot = Bot(
+    command_prefix=when_mentioned_or(config.prefix),
+
+    activity=config.playing
+)
+
+logger.addHandler(DiscordHandler(bot))
+logger.setLevel(logging.INFO)
+
+bot.log = logger
+
+# Load cogs
+for file in os.listdir("cogs"):
+    if file.endswith(".py"):
+        name = file[:-3]
+        bot.load_extensions(f"cogs.{name}")
+
+bot.run(config.token)
