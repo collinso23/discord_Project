@@ -1,3 +1,8 @@
 dsRSS_connect.sh
 holderOfTomes/
 inquisitor/
+__pycache__/
+discord.py/*
+inqBot/utils/__pycache__/
+inqBot/__pycache__/
+inqBot/config.json
