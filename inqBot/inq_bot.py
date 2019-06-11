@@ -29,6 +29,5 @@ bot.log = logger
 for file in os.listdir("cogs"):
     if file.endswith(".py"):
         name = file[:-3]
-        bot.load_extensions(f"cogs.{name}")
-
+        bot.load_extension(f"cogs.{name}")
 bot.run(config.token)
