@@ -22,6 +22,10 @@ class Wiki_Scraper(object):
     Cannot Handle: Incorrectly spelled name
     """
     def getClassInformation(self,className,specificClassTrait):
+        className = self.titlize(className)
+        specificClassTrait = self.titlize(specificClassTrait)
+        print(className)
+        print(specificClassTrait)
         soup = self.getEntireHTMLPage("https://www.dandwiki.com/wiki/5e_SRD:Classes")
         mainTable = soup.find('table',{'class':'5e mw-collapsible'})
         mainDiv = soup.find('div',{'class','mw-parser-output'})
@@ -62,6 +66,8 @@ class Wiki_Scraper(object):
     and then calls the extractFromRacePage method to extract information about the race
     """
     def getRaceInformation(self,raceName):
+        raceName = self.titlize(raceName)
+        print(raceName)
         soup = self.getEntireHTMLPage("https://www.dandwiki.com/wiki/5e_SRD:Races")
         mainTable = soup.find('table',{'class':'5e mw-collapsible'})
         mainDiv = soup.find('div',{'class','mw-parser-output'})
@@ -102,8 +108,13 @@ class Wiki_Scraper(object):
             if totalCharsInTextFields[x] > 60:
                 self.printListOfText(allText[x])
         
+    """
+    Given a spell name, this function will find all the useful information of that spell
+    """
     def getSpellInformation(self,spellName):
-        soup = self.getEntireHTMLPage("https://wwww.dandwiki.com/wiki/5e_SRD:Spells")
+        spellName = self.titlize(spellName)
+        print(spellName)
+        soup = self.getEntireHTMLPage("https://www.dandwiki.com/wiki/5e_SRD:Spells")
         mainDiv = soup.find('div',{'class','mw-parser-output'})
         links = mainDiv.findAll('a')
         for link in links:
@@ -111,14 +122,25 @@ class Wiki_Scraper(object):
             if title is not None:
                 if spellName in title:
                     self.extractFromSpellPage(link['href'])
-
+                    break
+    
     """
-    NOT FINISHED
+    Extracts all useful imformation from the specified spell name page
     """
     def extractFromSpellPage(self,href):
         soup = self.getEntireHTMLPage("https://www.dandwiki.com" + href)
-        print(soup)
-
+        for a in soup.findAll('a'):
+            a.replaceWithChildren()
+        table_of_basic_information = soup.find('table',{'class','d20 dragon monstats'})
+        print(table_of_basic_information.text)
+        paragraphs = table_of_basic_information.find_all_next()
+        for p in paragraphs:
+            tag_type = p.name
+            if tag_type == 'hr':
+                break
+            elif tag_type == 'p':
+                print(p.text)
+            
 
     
     """
@@ -156,11 +178,30 @@ class Wiki_Scraper(object):
         textByLength = textwrap.wrap(text, length)
         return '\n'.join(textByLength)
 
+    def titlize(self, text):
+        splitText = text.split()
+        #print("before \n" + ('[%s]' % ' '.join(map(str, splitText))))
+        specialCaseWords = ["s","is","of","in","a","an","the","but","for"]
+        #returnString = ' '.join([w.capitalize() for w in splitText if w not in specialCaseWords])
+        returnString = []
+        for w in splitText:
+            if w not in specialCaseWords:
+                returnString.append(w.capitalize())
+            else:
+                returnString.append(w)
+        print(' '.join(map(str, returnString)))
+
+        #print(returnString)
+        #print("before \n" + ('[%s]' % ' '.join(map(str, splitText))))
+        #return " ".join(splitText)
+
+  
 #for row, tr in enumerate
 wc = Wiki_Scraper()
 #race = input("What Race should I search for? ")
 #wc.getRaceInformation(race)
-className = input("What Class should I search for? ")
-classFeature = input("What feature of that class should I search for? ")
-wc.getClassInformation(className,classFeature)
-
+#className = input("What Class should I search for? ")
+#classFeature = input("What feature of that class should I search for? ")
+#wc.getClassInformation(className,classFeature)
+#spellName = input("What is the name of the Spell I should search for?")
+#wc.getSpellInformation(spellName)
