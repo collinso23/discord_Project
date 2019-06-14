@@ -181,7 +181,7 @@ class Wiki_Scraper(object):
     def titlize(self, text):
         splitText = text.split()
         #print("before \n" + ('[%s]' % ' '.join(map(str, splitText))))
-        specialCaseWords = ["s","is","of","in","a","an","the","but","for"]
+        specialCaseWords = ["from","s","is","of","in","a","an","the","but","for"]
         #returnString = ' '.join([w.capitalize() for w in splitText if w not in specialCaseWords])
         returnString = []
         for w in splitText:
@@ -189,7 +189,7 @@ class Wiki_Scraper(object):
                 returnString.append(w.capitalize())
             else:
                 returnString.append(w)
-        print(' '.join(map(str, returnString)))
+        return ' '.join(map(str, returnString))
 
         #print(returnString)
         #print("before \n" + ('[%s]' % ' '.join(map(str, splitText))))
@@ -203,5 +203,5 @@ wc = Wiki_Scraper()
 #className = input("What Class should I search for? ")
 #classFeature = input("What feature of that class should I search for? ")
 #wc.getClassInformation(className,classFeature)
-#spellName = input("What is the name of the Spell I should search for?")
-#wc.getSpellInformation(spellName)
+spellName = input("What is the name of the Spell I should search for?")
+wc.getSpellInformation(spellName)
