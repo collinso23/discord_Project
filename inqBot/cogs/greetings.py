@@ -1,5 +1,6 @@
 import discord
-from discord.ext.commands
+from discord.ext import commands
+
 """example cog to understand cog implementation so that search may be later implemented as a cog"""
 class Greetings(commands.Cog):
     def __init__(self,bot):
@@ -9,7 +10,7 @@ class Greetings(commands.Cog):
     @commands.Cog.listener()
     async def on_member_join(self,member):
         """Greet Members when they join the server"""
-        await self.bot.say('{0.name}' joined '{0.joined_at}'.format(member))
+        await self.bot.say('{0.name}'.format(member))
 
     @commands.command()
     async def hello(self,ctx,*,member: discord.Memeber=None):

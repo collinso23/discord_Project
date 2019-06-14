@@ -8,7 +8,7 @@ from utils import default
 class Wiki_Scraper(commands.Cog):
     def __init__(self,bot):
         self.bot = bot
-        self.HEADERS = defaults.get("config.json").HEADERS
+        self.HEADERS = default.get("config.json").HEADERS
 
     @commands.command()
     async def searchClass(self,ctx,className):
