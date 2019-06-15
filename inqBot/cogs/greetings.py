@@ -10,14 +10,14 @@ class Greetings(commands.Cog):
     @commands.Cog.listener()
     async def on_member_join(self,member):
         """Greet Members when they join the server"""
-        await self.bot.say('{0.name}'.format(member))
+        await self.bot.send("Shh, {0.name} I'm reading tomes!".format(member))
 
     @commands.command()
-    async def hello(self,ctx,*,member: discord.Memeber=None):
+    async def hello(self,ctx,*,member: discord.Member=None):
         """ Says Hello"""
         member = member or ctx.author
-        if self._last_memer is None or self._last_member.id != member.id:
-            await ctx.send("Hello {0.name}~".format(member))
+        if self._last_member is None or self._last_member.id != member.id:
+            await ctx.send("Hello {0.name}, careful in the dungeons".format(member))
         else:
             await ctx.send("Hello {0.name}...This feels familiar".format(member))
         self._last_memeber = member

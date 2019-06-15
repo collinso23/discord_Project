@@ -25,7 +25,7 @@ bot = Bot(
     
     description=desc,
 
-    activity=Game(name=":help")
+    activity=Game(name="Reading Tomes")
 )
 
 logger.addHandler(DiscordHandler(bot))
@@ -35,24 +35,8 @@ bot.log = logger
 
 @bot.event
 async def on_ready():
-    print('Logged in as {} {}'.format(bot.user.name,bot.user.id))
-    print('------')
-
-@bot.command()
-async def load(extension_name:str):
-    """Loads Extensions """
-    try:
-        bot.load_extension(extension_name)
-    except(AttributeError, ImportError) as err:
-        await bot.say("```py\n{}: {}\n```".format(type(err).__name__, str(err)))
-        return
-    await bot.say("{} loaded.".format(extension_name))
-
-@bot.command()
-async def unload(extension_name:str):
-    """Unload Extensions"""
-    bot.unload_extension(extension_name)
-    await bot.say("{} unloaded".format(extension_name))
+    print('Logged in as {}'.format(bot.user.name))
+    print('-----')
 
 if __name__ == "__main__":
   try:
