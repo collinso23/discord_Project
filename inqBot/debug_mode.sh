@@ -1,2 +1,2 @@
- python -m pdb inq_bot.py
+ python3 -m pdb inq_bot.py
 

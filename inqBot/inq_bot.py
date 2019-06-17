@@ -11,8 +11,11 @@ from discord.ext.commands import Cog, Bot, when_mentioned_or
 from log import DiscordHandler
 
 from utils import permissions, default
-desc="""A bot to help with the running of DND campaigns
-    Along with general administrative functions"""
+
+desc="""
+A bot to help with the running of DND campaigns
+Along with general administrative functions
+"""
 
 config = default.get("config.json")
 
@@ -22,7 +25,7 @@ logger = logging.getLogger(__name__)
 
 bot = Bot(
     command_prefix=when_mentioned_or(config.prefix),
-    
+
     description=desc,
 
     activity=Game(name="Reading Tomes")
@@ -48,11 +51,3 @@ if __name__ == "__main__":
     exc= '{}: {}'.format(type(err).__name__,err)
     print('Failed to load extension {}\n{}'.format(extension,exc))
 bot.run(config.token)
-
-"""
-# Load cogs
-for file in os.listdir("cogs"):
-    if file.endswith(".py"):
-        name = file[:-3]
-        bot.load_extension(f"cogs.{name}")
-"""        
