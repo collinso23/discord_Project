@@ -7,8 +7,8 @@ from nltk import tokenize
 from utils import default
 
 class Scraper(object):
-
-    def __init__:
+    # define return_string = "" and fill it in with information
+    def __init__(self):
         self.HEADERS=default.get("config.json").HEADERS
 
     def getEntireHTMLPage(self,url):
