@@ -8,7 +8,7 @@ from utils import default
 
 class Scraper(object):
 
-    def __init__(self):
+    def __init__:
         self.HEADERS=default.get("config.json").HEADERS
 
     def getEntireHTMLPage(self,url):

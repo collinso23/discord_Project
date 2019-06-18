@@ -1,4 +1,4 @@
-import discord
+import discords
 from discord.ext import commands
 from utils import default, wiki_scrape
 from wiki_scrape import Scraper
