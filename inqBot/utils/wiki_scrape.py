@@ -9,14 +9,14 @@ from utils import default
 class Scraper(object):
     # define return_string = "" and fill it in with information
     def __init__(self):
-        self.HEADERS=default.get("config.json").HEADERS
+        self.HEADERS={'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36'}
 
     def getEntireHTMLPage(self,url):
             page = requests.get(url,headers=self.HEADERS).text
             soup = BeautifulSoup(page,features ="lxml")
             return soup
 
-    def listOfText(self,listText):
+    def list_Text(self,listText):
         lines = ""
         for l in listText:
             lines += l
@@ -45,13 +45,13 @@ class Scraper(object):
     def titlize(self, text):
         splitText = text.split()
         specialCaseWords = ["from","s","is","of","in","a","an","the","but","for"]
-        returnString = []
+        return_String = []
         for w in splitText:
             if w not in specialCaseWords:
-                return String.append(w.capitalize())
+                return_String.append(w.capitalize())
             else:
-                return String.append(w)
-        return ' '.join(map(str, returnString))
+                return_String.append(w)
+        return ' '.join(map(str, return_String))
 
 
     """
@@ -130,7 +130,7 @@ class Scraper(object):
             totalCharsInTextFields.append(totalCharacters)
         for x in range(len(allText)):
             if totalCharsInTextFields[x] > 60:
-                self.ListOfText(allText[x])
+                self.list_Text(allText[x])
 
     """
     Given a spell name, this function will find all the useful information of that spell
