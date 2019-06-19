@@ -7,7 +7,6 @@ class Search_Wiki(commands.Cog):
         def __init__(self,bot):
             self.bot = bot
 
-
         @commands.group(pass_context=True)
         async def tomes(self,ctx):
             """
@@ -30,7 +29,7 @@ class Search_Wiki(commands.Cog):
             scraper = wiki_scrape.Scraper()
             try:
                 race_info = scraper.getRaceInformation(race_Name)
-                await ctx.send("{}".format(race_info))
+                await ctx.send("Secrets will be unturned {}".format(race_info))
             except Exception as err:
                 error_message= '{}: {}'.format(type(err).__name__,err)
                 print(error_message)
@@ -43,7 +42,7 @@ class Search_Wiki(commands.Cog):
             scraper = wiki_scrape.Scraper()
             try:
                 class_info = scraper.getClassInformation(class_Name,class_Feature)
-                await ctx.send("{}".format(class_info))
+                await ctx.send("The tomes revealed: {}".format(class_info))
             except Exception as err:
                 error_message= '{}: {}'.format(type(err).__name__,err)
                 print(error_message)
@@ -55,8 +54,8 @@ class Search_Wiki(commands.Cog):
         async def _searchSpell(self,ctx,spell_Name):
             scraper = wiki_scrape.Scraper()
             try:
-                spell_information = scraper.getSpelInformation(spell_Name)
-                await ctx.send("{}".format(information))
+                spell_information = scraper.getSpellInformation(spell_Name)
+                await ctx.send("Gaze upon the knowledge: {}".format(information))
             except Exception as err:
                 error_message= '{}: {}'.format(type(err).__name__,err)
                 print(error_message)
