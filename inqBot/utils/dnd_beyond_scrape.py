@@ -24,10 +24,6 @@ class DnD_Scraper(object):
         soup = BeautifulSoup(page,features ="lxml")
         return soup
 
-    def requestIdentifier(self, command, section, nameOfSearch, specifier):
-        if command == "$search":
-            self.searchDNDWebsite(command, section, specifier)
-
     """
     param: section, nameOfSearch
         section: specifies if user is looking for information about items, race, class, etc.
@@ -40,16 +36,16 @@ class DnD_Scraper(object):
         url = "https://www.dndbeyond.com/search?q=" + nameOfSearch
         print(url)
         soup = self.getEntireHTMLPage(url)
-        if section == "items":
+        if section == "--items":
             soup = self.getEntireHTMLPage(url+"&f=equipment,magic-items&c=items")
             self.searchItems(soup)
-        elif section == "class":
+        elif section == "--class":
             soup = self.getEntireHTMLPage(url+"&f=backgrounds,classes,feats,races&c=characters")
             self.searchClass(soup,specifier)
-        elif section == "race":
+        elif section == "--race":
             soup = self.getEntireHTMLPage(url+"&f=backgrounds,classes,feats,races&c=characters")
             self.searchRace(soup,specifier)
-        elif section == "spell":
+        elif section == "--spell":
             soup = self.getEntireHTMLPage(url+"&f=spells&c=spells")
             self.searchSpell(soup,specifier)
 
@@ -70,9 +66,11 @@ class DnD_Scraper(object):
                     break
 
     def extractInformationFromItemPage(self,soup):
+        return_String= ""
         mainInformation = soup.find('div',{'class','more-info-content'})
         print(self.breakTextByLength(mainInformation.text))
-
+        #return_String = "{}".format(self.breakTextByLength(mainInformation.text))
+        #return return_String
     """
     param: soup, specifier
     soup of search page
@@ -162,14 +160,27 @@ class DnD_Scraper(object):
                             elif nextNode.name == "h3":
                                 break
                     allInfo = allInfo + info + "\n"
-        print(allInfo)
+        return allInfo
 
     """
     param: spellName
         Name of Spell to be searched
     """
-    def searchSpell(self, soup):
-        print(soup)
+    def searchSpell(self, soup,nameOfSearch):
+        searchListing = soup.find('div',{'class':'ddb-search-results-listing'})
+        searches = soup.find_all('div',{'class':'ddb-search-results-listing-item'})
+        for search in searches:
+            if search is not None:
+                if search.find('span', {'class':'spells'}) is not None:
+                    link = search.find('a')['href']
+                    url = "https://www.dndbeyond.com" + link
+                    soup = self.getEntireHTMLPage(url)
+                    self.extractInformationFromSpellPage(soup,nameOfSearch)
+                    break
+
+    def extractInformationFromSpellPage(self,soup,nameOfSearch):
+        mainInformation = soup.find('section',{'class','detail-content'})
+        print(self.fixSpacingOnText(self.breakTextByLength(mainInformation.text)))
 
     """
     If given a list of strings, this method concatenates the lists into
@@ -181,16 +192,6 @@ class DnD_Scraper(object):
             lines += l
         textDividedByLength = self.breakTextByLength(lines)
         print(textDividedByLength)
-
-
-    """
-    breakTextIntoSentences method
-    breaks a text by sentences.
-    Beta version, does not take into account all instances
-    """
-    def breakTextIntoSentences(self,text):
-        textBySentence = re.split(r'(?<=[^A-Z].[.?]) +(?=[A-Z])', text)
-        return textBySentence
 
     """
     breakTextByLength method
@@ -225,7 +226,16 @@ class DnD_Scraper(object):
             else:
                 return_String.append(w)
         return ' '.join(map(str, return_String))
+
+    def send_Information(self, text):
+        return_String = ""
+
+        return return_String
+
+
+"""
 scrap = DnD_Scraper()
 scrap.searchDNDWebsite("items", "potion of healing")
 scrap.searchDNDWebsite("class", "Barbarian","Rage")
 scrap.searchDNDWebsite("race","Human","Human Traits")
+"""
