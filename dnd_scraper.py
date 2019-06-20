@@ -50,9 +50,12 @@ class DnD_Scraper(object):
         url = "https://www.dndbeyond.com/search?q=" + nameOfSearch
         print(url)
         soup = self.getEntireHTMLPage(url)
-        if section == "items":
+        if section == "item":
             soup = self.getEntireHTMLPage(url+"&f=equipment,magic-items&c=items")
-            self.searchItems(soup)
+            self.searchItem(soup,1)
+        elif section == "equipment":
+            soup = self.getEntireHTMLPage(url+"&f=equipment,magic-items&c=items")
+            self.searchItem(soup,2)
         elif section == "class":
             soup = self.getEntireHTMLPage(url+"&f=backgrounds,classes,feats,races&c=characters")
             self.searchClass(soup,specifier)
@@ -61,24 +64,38 @@ class DnD_Scraper(object):
             self.searchRace(soup,specifier)
         elif section == "spell":
             soup = self.getEntireHTMLPage(url+"&f=spells&c=spells")
-            self.searchSpell(soup,specifier)
+            self.searchSpell(soup,nameOfSearch)
 
     """
     param: itemName
         name of the Item to be searched
 
     """
-    def searchItems(self, soup):
+    def searchItem(self, soup, kind):
         searchListing = soup.find('div',{'class':'ddb-search-results-listing'})
         searches = soup.find_all('div',{'class':'ddb-search-results-listing-item'})
         for search in searches:
             if search is not None:
-                if search.find('span', {'class':'magic-items'}) is not None:
-                    link = search.find('a')['href']
-                    url = "https://www.dndbeyond.com" + link
-                    soup = self.getEntireHTMLPage(url)
-                    self.extractInformationFromItemPage(soup)
-                    break
+                if kind == 1:
+                    if search.find('span', {'class':'magic-items'}) is not None:
+                        link = search.find('a')['href']
+                        url = "https://www.dndbeyond.com" + link
+                        soup = self.getEntireHTMLPage(url)
+                        self.extractInformationFromItemPage(soup)
+                        break
+                elif kind == 2:
+                    if search.find('span', {'class':'equipment'}) is not None:
+                        link = search.find('a')['href']
+                        url = "https://www.dndbeyond.com" + link
+                        soup = self.getEntireHTMLPage(url)
+                        self.extractInformationFromEquipmentPage(soup)
+                        break
+    """
+    Extracts information about armor from the offical page
+    """
+    def extractInformationFromEquipmentPage(self,soup):
+        mainInformation = soup.find('div',{'class','details-container-content-description'})
+        print(self.breakTextByLength(mainInformation.text))
 
     def extractInformationFromItemPage(self,soup):
         mainInformation = soup.find('div',{'class','more-info-content'})
@@ -179,9 +196,21 @@ class DnD_Scraper(object):
     param: spellName
         Name of Spell to be searched
     """
-    def searchSpell(self, soup):
-        print(soup)
+    def searchSpell(self, soup,nameOfSearch):
+        searchListing = soup.find('div',{'class':'ddb-search-results-listing'})
+        searches = soup.find_all('div',{'class':'ddb-search-results-listing-item'})
+        for search in searches:
+            if search is not None:
+                if search.find('span', {'class':'spells'}) is not None:
+                    link = search.find('a')['href']
+                    url = "https://www.dndbeyond.com" + link
+                    soup = self.getEntireHTMLPage(url)
+                    self.extractInformationFromSpellPage(soup,nameOfSearch)
+                    break
 
+    def extractInformationFromSpellPage(self,soup,nameOfSearch):
+        mainInformation = soup.find('section',{'class','detail-content'})
+        print(self.fixSpacingOnText(self.breakTextByLength(mainInformation.text)))
     """
     If given a list of strings, this method concatenates the lists into
     a single string and makes it look pretty.
@@ -221,6 +250,19 @@ class DnD_Scraper(object):
                     else:
                         rstring = rstring + t + '\n'
             return rstring
+
+
+    def fixSpacingOnText(self,text):
+        text_by_line = text.split('\n')
+        finaltext = ""
+        for line in text_by_line:
+            if len(line) > 2:
+                line = re.sub(r'^\s+','',line)
+                finaltext = finaltext + line+ "\n"
+        return finaltext
+
+
+
     """
     titlize method
     Gives a text title format
@@ -240,6 +282,9 @@ class DnD_Scraper(object):
 
 
 scrap = DnD_Scraper()
-scrap.searchDNDWebsite("items", "potion of healing")
+"""scrap.searchDNDWebsite("item", "potion of healing")
 scrap.searchDNDWebsite("class", "Barbarian","Rage")
 scrap.searchDNDWebsite("race","Human","Human Traits")
+"""
+#scrap.searchDNDWebsite("equipment","spiked armor")
+scrap.searchDNDWebsite("spell","fireball")
