@@ -3,14 +3,11 @@ import discord
 import logging
 
 from discord import Game
-
 from discord.ext import commands
-
 from discord.ext.commands import Cog, Bot, when_mentioned_or
 
+from utils import permissions, default, log
 from log import DiscordHandler
-
-from utils import permissions, default
 
 desc="""
 A bot to help with the running of DND campaigns
@@ -20,8 +17,6 @@ Along with general administrative functions
 config = default.get("config.json")
 
 logger = logging.getLogger(__name__)
-
-"""startup_extensions=['greetings']"""
 
 bot = Bot(
     command_prefix=when_mentioned_or(config.prefix),
