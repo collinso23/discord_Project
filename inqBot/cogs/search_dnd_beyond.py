@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from utils import default, dnd_scraper, repo
+from utils import dnd_scraper
 import textwrap
 
 class Search_DnD(commands.Cog):

@@ -5,6 +5,7 @@ import re
 import urllib
 import textwrap
 from nltk import tokenize
+import constants
 
 """
 Scrapes from the offical Dnd Page
@@ -14,7 +15,7 @@ class DnD_Scraper(object):
     """Constructor
     """
     def __init__(self):
-        self.HEADERS = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36'}
+        self.HEADERS = constants.HEADERS #{'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36'}
 
 
     """

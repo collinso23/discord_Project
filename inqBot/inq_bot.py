@@ -5,28 +5,25 @@ import logging
 from discord import Game
 from discord.ext import commands
 from discord.ext.commands import Cog, Bot, when_mentioned_or
-
-from utils import permissions, default, log
-from log import DiscordHandler
+import constants
+from utils import permissions, log
 
 desc="""
 A bot to help with the running of DND campaigns
 Along with general administrative functions
 """
 
-config = default.get("config.json")
-
 logger = logging.getLogger(__name__)
 
 bot = Bot(
-    command_prefix=when_mentioned_or(config.prefix),
+    command_prefix=when_mentioned_or(constants.PREFIX),
 
     description=desc,
 
     activity=Game(name="Reading Tomes")
 )
 
-logger.addHandler(DiscordHandler(bot))
+logger.addHandler(log.DiscordHandler(bot))
 logger.setLevel(logging.INFO)
 bot.log = logger
 
@@ -45,4 +42,4 @@ if __name__ == "__main__":
   except Exception as err:
     exc= '{}: {}'.format(type(err).__name__,err)
     print('Failed to load extension {}\n{}'.format(extension,exc))
-bot.run(config.token)
+bot.run(constants.BOT_TOKEN)
