@@ -25,7 +25,7 @@ class Search_DnD(commands.Cog):
             for a in args:
                 arguments.append(a)
 
-            arguments_as_string = " ".join(arguments)
+            #arguments_as_string = " ".join(arguments)
             rstring = scraper.searchDNDWebsite(arguments[0],arguments[1],arguments[2])
             rstring_as_list = textwrap.wrap(rstring, 1500, break_long_words=False)
 
