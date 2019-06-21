@@ -16,7 +16,7 @@ class Search_DnD(commands.Cog):
 
             Commands: [$tomes]
 
-            Subcommands: [--race,--class,--spell]
+            Subcommands: [race,class,spell,item]
 
             Command syntax: $tomes --subcommand 'name_of_search' 'specifier'
             """

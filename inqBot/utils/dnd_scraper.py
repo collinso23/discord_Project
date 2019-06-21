@@ -27,17 +27,6 @@ class DnD_Scraper(object):
         return soup
 
     """
-    """
-    def requestIdentifier(self, command, section, nameOfSearch, specifier):
-        if command == "$search":
-            self.searchDNDWebsite(command, section, specifier)
-        """
-        elif command == "$SOMETHINGELSE":
-            #self.search()
-        else:
-            #return "Not an actual command"
-        """
-    """
     param: section, nameOfSearch
         section: specifies if user is looking for imformation about items, race, class, etc.
         nameOfSearch: what to be searched for on the search bar
@@ -217,26 +206,6 @@ class DnD_Scraper(object):
     def extractInformationFromSpellPage(self,soup,nameOfSearch):
         mainInformation = soup.find('section',{'class','detail-content'})
         return self.fixSpacingOnText(self.breakTextByLength(mainInformation.text))
-    """
-    If given a list of strings, this method concatenates the lists into
-    a single string and makes it look pretty.
-    """
-    def printListOfText(self,listText):
-        lines = ""
-        for l in listText:
-            lines += l
-        textDividedByLength = self.breakTextByLength(lines)
-        return textDividedByLength
-
-
-    """
-    breakTextIntoSentences method
-    breaks a text by sentences.
-    Beta version, does not take into account all instances
-    """
-    def breakTextIntoSentences(self,text):
-        textBySentence = re.split(r'(?<=[^A-Z].[.?]) +(?=[A-Z])', text)
-        return textBySentence
 
     """
     breakTextByLength method
