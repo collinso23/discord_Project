@@ -20,6 +20,6 @@ class SuperDice(object):
             r = random.randint(1,max_roll) + int(modifer)
             result.append(r)
         total = sum(result)
-        
+
         return_str="dice: {} results {}={} Mod: +{} per roll".format(dice,result,total,modifer)
         return return_str
