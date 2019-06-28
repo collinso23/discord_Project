@@ -10,7 +10,7 @@ import constants
 """
 Scrapes from the offical Dnd Page
 """
-class DnD_Scraper(object):
+class DnDScraper(object):
 
     """Constructor
     """

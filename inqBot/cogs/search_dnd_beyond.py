@@ -3,7 +3,7 @@ from discord.ext import commands
 from utils import dnd_scraper
 import textwrap
 
-class Search_DnD(commands.Cog):
+class SearchDnD(commands.Cog):
 
         def __init__(self,bot):
             self.bot = bot
@@ -14,30 +14,33 @@ class Search_DnD(commands.Cog):
             Scrapes DND beyond: https://www.dndbeyond.com/search?q= for various dnd related
             features and returns them to the chat so that users may quickly resume
 
+            # Make sure to encapluslate multi-word queries with "quotes"
+
             Commands: [$tomes]
 
-            Subcommands: [race,class,spell,item]
+            Subcommands/search_type: [race,class,spell,item]
 
-            Command syntax: $tomes --subcommand 'name_of_search' 'specifier'
+            Command syntax: $tomes 'search_type' 'name_of_search' 'specifier'
+                ie: $tomes spells fireball,
+                    $tomes items "potion of healing"
+                    $tomes class barbarian "class features"
             """
-            scraper = dnd_scraper.DnD_Scraper()
-            arguments = []
-            for a in args:
-                arguments.append(a)
+            try:
+                scraper = dnd_scraper.DnDScraper()
+                arguments = []
+                for a in args:
+                    arguments.append(a)
 
-            #arguments_as_string = " ".join(arguments)
-            rstring = scraper.searchDNDWebsite(arguments[0],arguments[1],arguments[2])
-            rstring_as_list = textwrap.wrap(rstring, 1500, break_long_words=False)
+                rstring = scraper.searchDNDWebsite(*arguments)
+                rstring_as_list = textwrap.wrap(rstring, 1500, break_long_words=False)
 
-            for message in rstring_as_list:
-                await ctx.send(message)
-            #if ctx.invoked_subcommand is None:
-            #    await ctx.send_help(str(ctx.command))
+                for message in rstring_as_list:
+                    await ctx.send(message)
+            except Exception as err:
+                exc= '{}: {}'.format(type(err).__name__,err)
+                print('Failed: {}\n'.format(exc))
+                await ctx.send_help(ctx.command)
 
-        @tomes.command(name="--race",aliases=["-r"])
-        async def _tomesRace(self,ctx,name_of_search,specifier=""):
-
-            await ctx.send("Here!!: {}, {}".format(name_of_search,specifier))
 
 def setup(bot):
-    bot.add_cog(Search_DnD(bot))
+    bot.add_cog(SearchDnD(bot))
