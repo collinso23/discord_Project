@@ -1,5 +1,25 @@
-class SuperPlayer(object):
+class Character(object):
 
+
+    def __init__(self):
+        self.name = ""
+        self.player_name = ""
+        self.player_class = ""
+        self.player_race = ""
+        self.
+
+
+
+
+
+
+
+
+
+
+
+
+"""
     ability_info = {
         "strength": "",
         "dexterity": "",
@@ -36,14 +56,4 @@ class SuperPlayer(object):
         "spell_slots":{"spell_level":""},
 
     }
-
-    def __init__(self,player_info,ability_info,inventory_info):
-        self.stats=ability_info
-        self.player=player_info
-        self.inventory=inventory_info
-
-    def get_modifier(self):
-        return
-
-    def _get_passive_wisdom(self):
-        passive_Wisdom = 8 + profenciey_bonus + widsom
+"""

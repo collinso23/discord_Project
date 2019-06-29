@@ -6,5 +6,7 @@
 
     }
 """
-class Spells(subclass):
+
+class Spells():
+
     pass
