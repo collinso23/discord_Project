@@ -15,7 +15,7 @@ class DnD_Scraper(object):
     """Constructor
     """
     def __init__(self):
-        self.HEADERS = constants.HEADERS #{'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36'}
+        self.HEADERS = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36'}
 
 
     """
@@ -73,14 +73,14 @@ class DnD_Scraper(object):
                         url = "https://www.dndbeyond.com" + link
                         soup = self.getEntireHTMLPage(url)
                         return self.extractInformationFromItemPage(soup)
-                        break
+                    break
                 elif kind == 2:
                     if search.find('span', {'class':'equipment'}) is not None:
                         link = search.find('a')['href']
                         url = "https://www.dndbeyond.com" + link
                         soup = self.getEntireHTMLPage(url)
                         return self.extractInformationFromEquipmentPage(soup)
-                        break
+                    break
 
         return "Nothing was caught"
 
@@ -111,7 +111,7 @@ class DnD_Scraper(object):
                     url = "https://www.dndbeyond.com" + link
                     soup = self.getEntireHTMLPage(url)
                     return self.extractInformationFromClassPage(soup,specifier)
-                    break
+                break
         return "Nothing was caught"
 
     """Extracts from class page and a subsection being the specifier"""
@@ -156,36 +156,115 @@ class DnD_Scraper(object):
                     url = "https://www.dndbeyond.com" + link
                     soup = self.getEntireHTMLPage(url)
                     return self.extractInformationFromRacePage(soup,specifier)
-                    break
         return "Nothing was caught"
 
-    "extacts information from Race Page"
+
+    """The new and improved extractInformatinoFromRacePage
+    utilizes three new functions added to the class:
+        getInformationUntilNextSpan()
+        getInformationUntilNextH1()
+        getInformationUntilNextH2()
+        getInformationUntilNextH3()
+        getInformationUntilNexth4()"""
     def extractInformationFromRacePage(self,soup,specifier):
         mainInformation = soup.find('div',{'id','content'})
-        headers = soup.find_all("h2")
+        headers = soup.find_all(re.compile('^h[1-6]$'))
         info = ""
-        allInfo = ""
+        original_header_tag = ""
         for header in headers:
             if header is not None:
                 if specifier in header.text:
                     nextNode = header
-                    info = ""
-                    """/42820342/get-text-in-between-two-h2-headers-using-beautifulsoup"""
-                    while True:
-                        nextNode = nextNode.nextSibling
-                        if nextNode is None:
-                            break
-                        if isinstance(nextNode, Tag):
-                            if nextNode.name == "span":
-                                info = info + self.breakTextByLength(nextNode.text) + "\n"
-                            if nextNode.name == "h4":
-                                info = info + nextNode.text + "\n"
-                            elif nextNode.name == "h2":
-                                break
-                            elif nextNode.name == "h3":
-                                break
-                    allInfo = allInfo + info + "\n"
-        return allInfo
+                    original_header_tag = nextNode.name
+                    if original_header_tag == "span":
+                        info = self.getInformationUntilNextSpan(nextNode)
+                    elif original_header_tag == "h1":
+                        info = self.getInformationUntilNextH1(nextNode)
+                    elif original_header_tag == "h2":
+                        info = self.getInformationUntilNextHeader2or3(nextNode)
+                    elif original_header_tag == "h3":
+                        info = self.getInformationUntilNextH3(nextNode)
+                    elif original_header_tag == "h4":
+                        info = self.getInformationUntilNextH4(nextNode)
+        return info
+
+
+
+    """
+    These next couple of functions are very general. Basically, given a starting node, they
+    will pull out all information found in p tags until reached a specified tag
+    """
+
+    def getInformationUntilNextspan(self, nextNode):
+        info = ""
+        stopAt = ["div","h1","h2","h3","h4","span"]
+        while True:
+            nextNode = nextNode.nextSibling
+            if nextNode is None:
+                break
+            if isinstance(nextNode, Tag):
+                if nextNode.name in stopAt:
+                    break
+                else:
+                    info = info + self.breakTextByLength(nextNode.text) + "\n"
+        return info
+
+    def getInformationUntilNextH1(self, nextNode):
+        info = ""
+        stopAt = ["div","h1"]
+        while True:
+            nextNode = nextNode.nextSibling
+            if nextNode is None:
+                break
+            if isinstance(nextNode, Tag):
+                if nextNode.name in stopAt:
+                    break
+                else:
+                    info = info + self.breakTextByLength(nextNode.text) + "\n"
+        return info
+
+    def getInformationUntilNextHeader2or3(self, nextNode):
+        info = ""
+        stopAt = ["div","h2","h3","h1"]
+        while True:
+            nextNode = nextNode.nextSibling
+            if nextNode is None:
+                break
+            if isinstance(nextNode, Tag):
+                if nextNode.name in stopAt:
+                    break
+                else:
+                    info = info + self.breakTextByLength(nextNode.text) + "\n"
+        return info
+
+
+    def getInformationUntilNextH3(self,nextNode):
+        info = ""
+        stopAt = ["div","h2","h3","h1"]
+        while True:
+            nextNode = nextNode.nextSibling
+            if nextNode is None:
+                break
+            if isinstance(nextNode, Tag):
+                if nextNode.name in stopAt:
+                    break
+                else:
+                    info = info + self.breakTextByLength(nextNode.text) + "\n"
+        return info
+
+    def getInformationUntilNextH4(self,nextNode):
+        info = ""
+        stopAt = ["div","h2","h3","h1","h4"]
+        while True:
+            nextNode = nextNode.nextSibling
+            if nextNode is None:
+                break
+            if isinstance(nextNode, Tag):
+                if nextNode.name in stopAt:
+                    break
+                else:
+                    info = info + self.breakTextByLength(nextNode.text) + "\n"
+        return info
 
     """
     param: spellName
@@ -201,7 +280,7 @@ class DnD_Scraper(object):
                     url = "https://www.dndbeyond.com" + link
                     soup = self.getEntireHTMLPage(url)
                     return self.extractInformationFromSpellPage(soup,nameOfSearch)
-                    break
+                break
         return "Nothing was caught"
 
     def extractInformationFromSpellPage(self,soup,nameOfSearch):
@@ -256,6 +335,7 @@ class DnD_Scraper(object):
         return ' '.join(map(str, returnString))
 
 
+
 """
 scrap = DnD_Scraper()
 scrap.searchDNDWebsite("item", "potion of healing")
@@ -264,3 +344,15 @@ scrap.searchDNDWebsite("race","Human","Human Traits")
 #scrap.searchDNDWebsite("equipment","spiked armor")
 scrap.searchDNDWebsite("spell","fireball
 """
+
+scrap = DnD_Scraper()
+print(scrap.searchDNDWebsite("race","Human","Human Traits"))
+print("---------------------------------------------------------------------------------------------------------------------\n")
+print(scrap.searchDNDWebsite("race","Human","The Bigger They Are"))
+print("---------------------------------------------------------------------------------------------------------------------\n")
+print(scrap.searchDNDWebsite("race","Human","Mark Of Making Human"))
+print("---------------------------------------------------------------------------------------------------------------------\n")
+print(scrap.searchDNDWebsite("race","Human","Lasting Institutions"))
+print("---------------------------------------------------------------------------------------------------------------------\n")
+print(scrap.searchDNDWebsite("race","Human","Human"))
+print("---------------------------------------------------------------------------------------------------------------------\n")
