@@ -205,6 +205,14 @@ class Character(object):
             wp |= set(getattr(self.background, 'weapon_proficiencies', ()))
             return tuple(wp)
 
+    @weapon_proficiencies.setter
+    def weapon_proficiencies(self, new_weapons):
+        self.other_weapon_proficiencies = tuple(new_weapons)
+
+    @property
+    def other_weapon_proficiencies_text(self):
+        return tuple(w.name for w in self.other_weapon_proficiencies)
+
     @property
     def saving_throw_proficiencies(self):
         if self.primary_class is None:
@@ -213,8 +221,21 @@ class Character(object):
             return (self._saving_throw_proficiencies or
                     self.primary_class.saving_throw_proficiencies)
 
+    @saving_throw_proficiencies.setter
+    def saving_throw_proficiencies(self, vals):
+        self._saving_throw_proficiencies = vals
 
+    @property
+    def spellcasting_classes(self):
+        return [c for c in self.class_list if c.is_spellcaster]
 
+    @property
+    def is_spellcaster(self):
+        return (len(self.spellcasting_classes) > 0)
+    def spell_slots(self,spell_level):
+        if len(self.spellcasting_classes) == 1:
+            return self.spellcasting_classes[0].spell_slots(spell_level)
+        elif spell_level == 0:
 
 
 
