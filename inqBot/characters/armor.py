@@ -2,6 +2,18 @@ class Shield():
     name = "Shield"
     base_armor_class = 2
 
+    def __str__(self):
+        return self.name
+
+class NoShield(Shield):
+    """If a character is carrying no shield."""
+    name = "No shield"
+    cost = "0"
+    base_armor_class = 0
+
+    def __str__(self):
+        return self.name
+
 class Armor():
     name = "Unknown Armor"
     cost = "0 gp"

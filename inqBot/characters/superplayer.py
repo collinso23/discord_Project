@@ -27,6 +27,7 @@ multiclass_spellslots_by_level = {
 }
 
 class Character(object):
+
     name = ""
     player_name = ""
     alignment = "Neutral"
@@ -40,16 +41,17 @@ class Character(object):
     hp_max = 10
 
     # Base stats (ability scores)
-    strength = Ability()
-    dexterity = Ability()
-    constitution = Ability()
-    intelligence = Ability()
-    wisdom = Ability()
-    charisma = Ability()
+    strength = Abilities()
+    dexterity = Abilities()
+    constitution = Abilities()
+    intelligence = Abilities()
+    wisdom = Abilities()
+    charisma = Abilities()
     armor_class = ArmorClass()
     initiative = Initiative()
     speed = Speed()
     inspiration = 0
+    _proficiencies_text = list()
     _saving_throw_proficiencies = tuple()  # use to overwrite class proficiencies
     other_weapon_proficiencies = tuple()  # add to class/race proficiencies
     skill_proficiencies = list()
@@ -95,11 +97,12 @@ class Character(object):
     magic_items = list()
     armor = None
     shield = None
-    _proficiencies_text = list()
+
     # Magic
     spellcasting_ability = None
     _spells = list()
     _spells_prepared = list()
+
     # Features IN MAJOR DEVELOPMENT
     custom_features = list()
     feature_choices = list()
@@ -143,6 +146,15 @@ class Character(object):
     @property
     def race(self):
         return self._race
+
+    @race.setter
+    def race(self, newrace):
+        if isistance(newrace, race.Race):
+            self._race=newrace
+            self._race.owner = self
+        elif isinstance(newrace, type) and issubclass(newrace, race.Race):
+
+
 
     @property
     def background(self):
@@ -191,6 +203,7 @@ class Character(object):
             return self.class_list[0]
         else:
             return None
+
     @property
     def weapon_proficiencies(self):
         wp = set(self.other_weapon_proficiencies)

@@ -62,7 +62,7 @@ class Abilities():
     def __init__(self,default_stat=10):
         self.default_stat = default_stat
 
-    def __set_name__(self,,name):
+    def __set_name__(self,superplayer,name):
         self.ability_name = name
 
     def _check_dict(self, obj):
