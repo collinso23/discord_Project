@@ -2,6 +2,7 @@ from .stats import Ability, Skill, findattr, ArmorClass, Speed, Initiative
 from . import race,armor,monsters
 from .armor import Armor,NoArmor,Shield,NoShield
 
+
 multiclass_spellslots_by_level = {
     # char_lvl: (cantrips, 1st, 2nd, 3rd, ...)
     1:  (0, 2, 0, 0, 0, 0, 0, 0, 0, 0),
@@ -149,16 +150,41 @@ class Character(object):
 
     @race.setter
     def race(self, newrace):
-        if isistance(newrace, race.Race):
-            self._race=newrace
+        if isinstance(newrace, race.Race):
+            self._race = newrace
             self._race.owner = self
         elif isinstance(newrace, type) and issubclass(newrace, race.Race):
-
-
+            self._race = newrace(owner=self)
+        elif isinstance(newrace, str):
+            try:
+                self._race = findattr(race, newrace)(owner=self)
+            except AttributeError:
+                msg = (f'Race "{newrace}" not defined. '
+                       f'Please add it to ``race.py``')
+                self._race = race.Race(owner=self)
+                warnings.warn(msg)
+        elif newrace is None:
+            self._race = race.Race(owner=self)
 
     @property
     def background(self):
         return self._background
+
+    @background.setter
+    def background(self, bg):
+        if isinstance(bg, background.Background):
+            self._background = bg
+            self._background.owner = self
+        elif isinstance(bg, type) and issubclass(bg, background.Background):
+            self._background = bg(owner=self)
+        elif isinstance(bg, str):
+            try:
+                self._background = findattr(background, bg)(owner=self)
+            except AttributeError:
+                msg = (f'Background "{bg}" not defined. '
+                       f'Please add it to ``background.py``')
+                self._background = background.Background(owner=self)
+                #warnings.warn(msg)
 
     @property
     def class_name(self):
