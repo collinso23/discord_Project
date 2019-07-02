@@ -1,5 +1,4 @@
-from . import features as feats
-
+from testingFiles import testingFeatures as feats
 
 class Background():
     name = "Generic background"
@@ -26,3 +25,8 @@ class Acolyte(Background):
     skill_proficiencies = ('insight', 'religion')
     languages = ("[choose one]", "[choose one]")
     features = (feats.ShelterOfTheFaithful,)
+
+"""Below inforamtion is for testing character generation will need to be replaced with scraped information"""
+available_backgrounds = [Acolyte]
+
+__all__ = tuple([b.name for b in available_backgrounds] + ('available_backgrounds'))

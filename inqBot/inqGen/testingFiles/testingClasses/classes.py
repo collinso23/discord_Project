@@ -1,5 +1,5 @@
 from collections import defaultdict
-from ..features import Feature, FeatureSelector
+from ..testingFeatures import Feature, FeatureSelector
 
 
 class CharClass():

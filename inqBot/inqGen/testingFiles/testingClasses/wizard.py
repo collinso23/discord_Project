@@ -1,4 +1,4 @@
-from .. import (weapons, features)
+from inqGen import weapons
 from .classes import CharClass, SubClass
 from collections import defaultdict
 

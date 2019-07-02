@@ -424,7 +424,7 @@ class UndeadThralls(Feature):
     """
     name = "Undead Thralls"
     source = "Wizard (School of Necromancy)"
-    spells_known = (spells.AnimateDead) #made string for simplicity of program thus making it easier to debug
+    spells_known = ('spells.AnimateDead') #made string for simplicity of program thus making it easier to debug
 
 
 
@@ -508,7 +508,7 @@ class Shapechanger(Feature):
     """
     name = "Shapechanger"
     source = "Wizard (School of Transmutation)"
-    spells_known = spells_prepared = (spells.Polymorph) #made string for simplicity of program thus making it easier to debug
+    spells_known = spells_prepared = ('spells.Polymorph') #made string for simplicity of program thus making it easier to debug
 
 
 class MasterTransmuter(Feature):

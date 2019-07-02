@@ -17,7 +17,6 @@ class MagicItem():
     def __repr__(self):
         return '\"{:s}\"'.format(str(self))
 
-
 class RingOfProtection(MagicItem):
     """
     You gain a +1 bonus to AC and Saving Throws while wearing this ring.

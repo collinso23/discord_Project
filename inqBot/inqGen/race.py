@@ -42,3 +42,21 @@ class Race():
 
     def __repr__(self):
         return "\"{:s}\"".format(self.name)
+
+"""Below inforamtion is for testing character generation will need to be replaced with scraped information"""
+# Humans for testing purpose
+class Human(Race):
+    name = "Human"
+    size = "medium"
+    speed = 30
+    strength_bonus = 1
+    dexterity_bonus = 1
+    constitution_bonus = 1
+    intelligence_bonus = 1
+    wisdom_bonus = 1
+    charisma_bonus = 1
+    languages = ("Common", '[choose one]')
+
+available_races = [Human]
+
+__all__=tuple([r.name for r in available_races]+('available_races'))
