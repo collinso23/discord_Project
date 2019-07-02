@@ -11,7 +11,7 @@ def read(fname):
 setup(name='inqBot',
       version=read('VERSION'),
       description='Dungeons and Dragons 5e Character and monster generator',
-      long_description=read('README.md'),
+      long_description=read('README.rst'),
       long_description_content_type='text/x-rst',
       keywords='D&D character sheets',
       author='Orion Collins',

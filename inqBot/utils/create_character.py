@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
-"""util for creating a character will be called by cog when
+"""
+    util for creating a character will be called by cog when
     it is time to implement the cog into the bot
 """
 import logging

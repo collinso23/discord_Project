@@ -1,24 +1,43 @@
-Discord.py api docs
+Discord.py docs:
+"""For interacting with discord api """
+> https://discordpy.readthedocs.io/en/latest/index.html
 
-  https://discordpy.readthedocs.io/en/latest/index.html
+LaTeX docs:
+"""Document preparation system"""
+> https://www.latex-project.org/help/documentation/
+
+Jinja2 docs:
+"""Designer friendly templating language for python """
+> http://jinja.pocoo.org/docs/2.10/
+
+fdfgen and pdfrw docs:
+"""For reading and writing pdfs """
+> https://github.com/ccnmtl/fdfgen
+> https://github.com/pmaupin/pdfrw
+
+BeatifulSoup, lxml, nltk docs:
+"""For scraping and parsing webpages"""
+> https://www.crummy.com/software/BeautifulSoup/
+> https://lxml.de/
+> https://www.nltk.org/
 
 Bots used in reference when constructing Inquisitor
-
-  https://github.com/AlexFlipnote/discord_bot.py
-  https://github.com/CyberDiscovery/cyberdisc-bot
-  https://gist.github.com/leovoel/46cd89ed6a8f41fd09c5
-  https://gist.github.com/Modelmat/b2f92ad6db3d89302649ceb6dcb19744
-  https://github.com/nhatzHK/randi/blob/master/python/lib/client_helpers.py
+"""For pulling together the information needed to build a Bot"""
+  > https://github.com/AlexFlipnote/discord_bot.py
+  > https://github.com/CyberDiscovery/cyberdisc-bot
+  > https://gist.github.com/leovoel/46cd89ed6a8f41fd09c5
+  > https://gist.github.com/Modelmat/b2f92ad6db3d89302649ceb6dcb19744
+  > https://github.com/nhatzHK/randi/blob/master/python/lib/client_helpers.py
 
   artificer class in js
-  https://gist.github.com/honiahaka91/3e41f215cdfbb3e896672f738d4aadba
+  > https://gist.github.com/honiahaka91/3e41f215cdfbb3e896672f738d4aadba
 
   dungeons and dragons python repo:
-  https://github.com/topics/dungeons-and-dragons?l=python
+  > https://github.com/topics/dungeons-and-dragons?l=python
 
   char creator python example:
-  https://github.com/canismarko/dungeon-sheets
+  > https://github.com/canismarko/dungeon-sheets
 
   online databases:
-  https://5thsrd.org/
-  http://thegmdb.com/
+  > https://5thsrd.org/
+  > http://thegmdb.com/
