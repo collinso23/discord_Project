@@ -11,11 +11,8 @@ import subprocess
 
 from .stats import Abilities, Skill, findattr, ArmorClass, Speed, Initiative
 from .dice import read_dice_str
-
-from .testingFiles import testingClasses, testingFeatures
-
 from . import (armor, background, exceptions, magic_items,
-                race, spells, stats, weapons)
+                race, spells, stats, weapons, features, classes)
 from .weapons import Weapon
 from .armor import Armor, NoArmor, Shield, NoShield
 
@@ -492,9 +489,9 @@ class Character():
         """Accepts a string or Armor class and replaces the current armor.
 
         If a string is given, then a subclass of
-        :py:class:`~dungeonsheets.armor.Armor` is retrived from the
+        :py:class:`~inqGen.armor.Armor` is retrived from the
         ``armor.py`` file. Otherwise, an subclass of
-        :py:class:`~dungeonsheets.armor.Armor` can be provided
+        :py:class:`~inqGen.armor.Armor` can be provided
         directly.
 
         """
@@ -510,9 +507,9 @@ class Character():
         """Accepts a string or Shield class and replaces the current armor.
 
         If a string is given, then a subclass of
-        :py:class:`~dungeonsheets.armor.Shield` is retrived from the
+        :py:class:`~inqGen.armor.Shield` is retrived from the
         ``armor.py`` file. Otherwise, an subclass of
-        :py:class:`~dungeonsheets.armor.Shield` can be provided
+        :py:class:`~inqGen.armor.Shield` can be provided
         directly.
 
         """

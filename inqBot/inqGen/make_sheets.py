@@ -15,14 +15,13 @@ from fdfgen import forge_fdf
 import pdfrw
 from jinja2 import Environment, PackageLoader
 
-import inqGen
-from inqGen import testingFiles
+
+from . import superplayer as _char
+from . import exceptions, stats, testingFiles
 from testingFiles import testingFeatures
-import superplayer as _char
-import exceptions, stats
 from stats import mod_str
 
-"""Program to take character definitions and build a PDF of the
+"""Program to take superplayer definitions and build a PDF of the
 character sheet."""
 
 bold_re = re.compile(r'\*\*([^*]+)\*\*')
@@ -73,11 +72,10 @@ def text_box(string):
     new_string = new_string.replace('\m \m', '\r').replace('\m\m', '\r').replace('\m', ' ')
     return new_string
 
-"""
+
 def create_druid_shapes_pdf(superplayer, basename):
     template = jinja_env.get_template('druid_shapes_template.tex')
     return create_latex_pdf(superplayer, basename, template)
-"""
 
 def create_spellbook_pdf(superplayer, basename):
     template = jinja_env.get_template('spellbook_template.tex')
@@ -90,7 +88,7 @@ def create_features_pdf(superplayer, basename):
 
 
 def create_latex_pdf(superplayer, basename, template):
-    tex = template.render(superplayer=character)
+    tex = template.render(superplayer=superplayer)
     # Create tex document
     tex_file = f'{basename}.tex'
     with open(tex_file, mode='w') as f:
@@ -121,15 +119,15 @@ def create_latex_pdf(superplayer, basename, template):
             raise exceptions.LatexError(f'Processing of {basename}.tex failed.')
 
 
-def create_spells_pdf(character, basename, flatten=False):
+def create_spells_pdf(superplayer, basename, flatten=False):
     classes_and_levels = ' / '.join([c.name + ' ' + str(c.level)
-                                     for c in character.spellcasting_classes])
+                                     for c in superplayer.spellcasting_classes])
     abilities = ' / '.join([c.spellcasting_ability.upper()[:3]
-                            for c in character.spellcasting_classes])
-    DCs = ' / '.join([str(character.spell_save_dc(c))
-                      for c in character.spellcasting_classes])
-    bonuses = ' / '.join([mod_str(character.spell_attack_bonus(c))
-                          for c in character.spellcasting_classes])
+                            for c in superplayer.spellcasting_classes])
+    DCs = ' / '.join([str(superplayer.spell_save_dc(c))
+                      for c in superplayer.spellcasting_classes])
+    bonuses = ' / '.join([mod_str(superplayer.spell_attack_bonus(c))
+                          for c in superplayer.spellcasting_classes])
     spell_level = lambda x : (x or 0)
     fields = {
         'Spellcasting Class 2': classes_and_levels,
@@ -137,19 +135,19 @@ def create_spells_pdf(character, basename, flatten=False):
         'SpellSaveDC  2': DCs,
         'SpellAtkBonus 2': bonuses,
         # Number of spell slots
-        'SlotsTotal 19': spell_level(character.spell_slots(1)),
-        'SlotsTotal 20': spell_level(character.spell_slots(2)),
-        'SlotsTotal 21': spell_level(character.spell_slots(3)),
-        'SlotsTotal 22': spell_level(character.spell_slots(4)),
-        'SlotsTotal 23': spell_level(character.spell_slots(5)),
-        'SlotsTotal 24': spell_level(character.spell_slots(6)),
-        'SlotsTotal 25': spell_level(character.spell_slots(7)),
-        'SlotsTotal 26': spell_level(character.spell_slots(8)),
-        'SlotsTotal 27': spell_level(character.spell_slots(9)),
+        'SlotsTotal 19': spell_level(superplayer.spell_slots(1)),
+        'SlotsTotal 20': spell_level(superplayer.spell_slots(2)),
+        'SlotsTotal 21': spell_level(superplayer.spell_slots(3)),
+        'SlotsTotal 22': spell_level(superplayer.spell_slots(4)),
+        'SlotsTotal 23': spell_level(superplayer.spell_slots(5)),
+        'SlotsTotal 24': spell_level(superplayer.spell_slots(6)),
+        'SlotsTotal 25': spell_level(superplayer.spell_slots(7)),
+        'SlotsTotal 26': spell_level(superplayer.spell_slots(8)),
+        'SlotsTotal 27': spell_level(superplayer.spell_slots(9)),
     }
     # Cantrips
     cantrip_fields = (f'Spells 10{i}' for i in (14, 16, 17, 18, 19, 20, 21, 22))
-    cantrips = (spl for spl in character.spells if spl.level == 0)
+    cantrips = (spl for spl in superplayer.spells if spl.level == 0)
     for spell, field_name in zip(cantrips, cantrip_fields):
         fields[field_name] = str(spell)
     # Spells for each level
@@ -176,13 +174,13 @@ def create_spells_pdf(character, basename, flatten=False):
         9: (327, 326, 3079, 3080, 3081, 3082, 3083, ),
     }
     for level in field_numbers.keys():
-        spells = tuple(spl for spl in character.spells if spl.level == level)
+        spells = tuple(spl for spl in superplayer.spells if spl.level == level)
         field_names = tuple(f'Spells {i}' for i in field_numbers[level])
         prep_names = tuple(f'Check Box {i}' for i in prep_numbers[level])
         for spell, field, chk_field in zip(spells, field_names, prep_names):
             fields[field] = str(spell)
             is_prepared = any([spell == Spl
-                               for Spl in character.spells_prepared])
+                               for Spl in superplayer.spells_prepared])
             fields[chk_field] = CHECKBOX_ON if is_prepared else CHECKBOX_OFF
         # # Uncomment to post field names instead:
         # for field in field_names:
@@ -193,78 +191,78 @@ def create_spells_pdf(character, basename, flatten=False):
     make_pdf(fields, src_pdf=src_pdf, basename=basename, flatten=flatten)
 
 
-def create_character_pdf(character, basename, flatten=False):
+def create_character_pdf(superplayer, basename, flatten=False):
     # Prepare the list of fields
     fields = {
-        # Character description
-        'CharacterName': character.name,
-        'ClassLevel': character.classes_and_levels,
-        'Background': str(character.background),
-        'PlayerName': character.player_name,
-        'Race ': str(character.race),
-        'Alignment': character.alignment,
-        'XP': str(character.xp),
-        'Inspiration': str(character.inspiration),
+        # superplayer description
+        'CharacterName': superplayer.name,
+        'ClassLevel': superplayer.classes_and_levels,
+        'Background': str(superplayer.background),
+        'PlayerName': superplayer.player_name,
+        'Race ': str(superplayer.race),
+        'Alignment': superplayer.alignment,
+        'XP': str(superplayer.xp),
+        'Inspiration': str(superplayer.inspiration),
         # Abilities
-        'ProfBonus': mod_str(character.proficiency_bonus),
-        'STRmod': str(character.strength.value),
-        'STR': mod_str(character.strength.modifier),
-        'DEXmod ': str(character.dexterity.value),
-        'DEX': mod_str(character.dexterity.modifier),
-        'CONmod': str(character.constitution.value),
-        'CON': mod_str(character.constitution.modifier),
-        'INTmod': str(character.intelligence.value),
-        'INT': mod_str(character.intelligence.modifier),
-        'WISmod': str(character.wisdom.value),
-        'WIS': mod_str(character.wisdom.modifier),
-        'CHamod': str(character.charisma.value),
-        'CHA': mod_str(character.charisma.modifier),
-        'AC': str(character.armor_class),
-        'Initiative': str(character.initiative),
-        'Speed': str(character.speed),
-        'Passive': 10 + character.perception,
+        'ProfBonus': mod_str(superplayer.proficiency_bonus),
+        'STRmod': str(superplayer.strength.value),
+        'STR': mod_str(superplayer.strength.modifier),
+        'DEXmod ': str(superplayer.dexterity.value),
+        'DEX': mod_str(superplayer.dexterity.modifier),
+        'CONmod': str(superplayer.constitution.value),
+        'CON': mod_str(superplayer.constitution.modifier),
+        'INTmod': str(superplayer.intelligence.value),
+        'INT': mod_str(superplayer.intelligence.modifier),
+        'WISmod': str(superplayer.wisdom.value),
+        'WIS': mod_str(superplayer.wisdom.modifier),
+        'CHamod': str(superplayer.charisma.value),
+        'CHA': mod_str(superplayer.charisma.modifier),
+        'AC': str(superplayer.armor_class),
+        'Initiative': str(superplayer.initiative),
+        'Speed': str(superplayer.speed),
+        'Passive': 10 + superplayer.perception,
         # Saving throws (proficiencies handled later)
-        'ST Strength': mod_str(character.strength.saving_throw),
-        'ST Dexterity': mod_str(character.dexterity.saving_throw),
-        'ST Constitution': mod_str(character.constitution.saving_throw),
-        'ST Intelligence': mod_str(character.intelligence.saving_throw),
-        'ST Wisdom': mod_str(character.wisdom.saving_throw),
-        'ST Charisma': mod_str(character.charisma.saving_throw),
+        'ST Strength': mod_str(superplayer.strength.saving_throw),
+        'ST Dexterity': mod_str(superplayer.dexterity.saving_throw),
+        'ST Constitution': mod_str(superplayer.constitution.saving_throw),
+        'ST Intelligence': mod_str(superplayer.intelligence.saving_throw),
+        'ST Wisdom': mod_str(superplayer.wisdom.saving_throw),
+        'ST Charisma': mod_str(superplayer.charisma.saving_throw),
         # Skills (proficiencies handled below)
-        'Acrobatics': mod_str(character.acrobatics),
-        'Animal': mod_str(character.animal_handling),
-        'Arcana': mod_str(character.arcana),
-        'Athletics': mod_str(character.athletics),
-        'Deception ': mod_str(character.deception),
-        'History ': mod_str(character.history),
-        'Insight': mod_str(character.insight),
-        'Intimidation': mod_str(character.intimidation),
-        'Investigation ': mod_str(character.investigation),
-        'Medicine': mod_str(character.medicine),
-        'Nature': mod_str(character.nature),
-        'Perception ': mod_str(character.perception),
-        'Performance': mod_str(character.performance),
-        'Persuasion': mod_str(character.persuasion),
-        'Religion': mod_str(character.religion),
-        'SleightofHand': mod_str(character.sleight_of_hand),
-        'Stealth ': mod_str(character.stealth),
-        'Survival': mod_str(character.survival),
+        'Acrobatics': mod_str(superplayer.acrobatics),
+        'Animal': mod_str(superplayer.animal_handling),
+        'Arcana': mod_str(superplayer.arcana),
+        'Athletics': mod_str(superplayer.athletics),
+        'Deception ': mod_str(superplayer.deception),
+        'History ': mod_str(superplayer.history),
+        'Insight': mod_str(superplayer.insight),
+        'Intimidation': mod_str(superplayer.intimidation),
+        'Investigation ': mod_str(superplayer.investigation),
+        'Medicine': mod_str(superplayer.medicine),
+        'Nature': mod_str(superplayer.nature),
+        'Perception ': mod_str(superplayer.perception),
+        'Performance': mod_str(superplayer.performance),
+        'Persuasion': mod_str(superplayer.persuasion),
+        'Religion': mod_str(superplayer.religion),
+        'SleightofHand': mod_str(superplayer.sleight_of_hand),
+        'Stealth ': mod_str(superplayer.stealth),
+        'Survival': mod_str(superplayer.survival),
         # Hit points
-        'HDTotal': character.hit_dice,
-        'HPMax': str(character.hp_max),
+        'HDTotal': superplayer.hit_dice,
+        'HPMax': str(superplayer.hp_max),
         # Personality traits and other features
-        'PersonalityTraits ': text_box(character.personality_traits),
-        'Ideals': text_box(character.ideals),
-        'Bonds': text_box(character.bonds),
-        'Flaws': text_box(character.flaws),
-        'Features and Traits': text_box(character.features_text + character.features_and_traits),
+        'PersonalityTraits ': text_box(superplayer.personality_traits),
+        'Ideals': text_box(superplayer.ideals),
+        'Bonds': text_box(superplayer.bonds),
+        'Flaws': text_box(superplayer.flaws),
+        'Features and Traits': text_box(superplayer.features_text + superplayer.features_and_traits),
         # Inventory
-        'CP': character.cp,
-        'SP': character.sp,
-        'EP': character.ep,
-        'GP': character.gp,
-        'PP': character.pp,
-        'Equipment': text_box(character.magic_items_text + character.equipment),
+        'CP': superplayer.cp,
+        'SP': superplayer.sp,
+        'EP': superplayer.ep,
+        'GP': superplayer.gp,
+        'PP': superplayer.pp,
+        'Equipment': text_box(superplayer.magic_items_text + superplayer.equipment),
     }
     # Check boxes for proficiencies
     ST_boxes = {
@@ -275,7 +273,7 @@ def create_character_pdf(character, basename, flatten=False):
         'wisdom': 'Check Box 21',
         'charisma': 'Check Box 22',
     }
-    for ability in character.saving_throw_proficiencies:
+    for ability in superplayer.saving_throw_proficiencies:
         fields[ST_boxes[ability]] = CHECKBOX_ON
     # Add skill proficiencies
     skill_boxes = {
@@ -298,7 +296,7 @@ def create_character_pdf(character, basename, flatten=False):
         'stealth': 'Check Box 39',
         'survival': 'Check Box 40',
     }
-    for skill in character.skill_proficiencies:
+    for skill in superplayer.skill_proficiencies:
         try:
             fields[skill_boxes[skill.replace(' ', '_').lower()]] = CHECKBOX_ON
         except KeyError:
@@ -307,23 +305,23 @@ def create_character_pdf(character, basename, flatten=False):
     weapon_fields = [('Wpn Name', 'Wpn1 AtkBonus', 'Wpn1 Damage'),
                      ('Wpn Name 2', 'Wpn2 AtkBonus ', 'Wpn2 Damage '),
                      ('Wpn Name 3', 'Wpn3 AtkBonus  ', 'Wpn3 Damage '),]
-    if len(character.weapons) == 0:
-        character.wield_weapon('unarmed')
-    for _fields, weapon in zip(weapon_fields, character.weapons):
+    if len(superplayer.weapons) == 0:
+        superplayer.wield_weapon('unarmed')
+    for _fields, weapon in zip(weapon_fields, superplayer.weapons):
         name_field, atk_field, dmg_field = _fields
         fields[name_field] = weapon.name
         fields[atk_field] = '{:+d}'.format(weapon.attack_modifier)
         fields[dmg_field] = f'{weapon.damage}/{weapon.damage_type}'
     # Other attack information
-    attack_str = f'Armor: {character.armor}'
+    attack_str = f'Armor: {superplayer.armor}'
     attack_str += '\n \n'
-    attack_str += f'Shield: {character.shield}'
+    attack_str += f'Shield: {superplayer.shield}'
     attack_str += '\n \n'
-    attack_str += character.attacks_and_spellcasting
+    attack_str += superplayer.attacks_and_spellcasting
     fields['AttacksSpellcasting'] = text_box(attack_str)
     # Other proficiencies and languages
-    prof_text = "Proficiencies:\n" + text_box(character.proficiencies_text)
-    prof_text += "\n\nLanguages:\n" + text_box(character.languages)
+    prof_text = "Proficiencies:\n" + text_box(superplayer.proficiencies_text)
+    prof_text += "\n\nLanguages:\n" + text_box(superplayer.languages)
     fields['ProficienciesLang'] = prof_text
     # Prepare the actual PDF
     dirname = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'forms/')
@@ -428,14 +426,14 @@ def _make_pdf_pdftk(fields, src_pdf, basename, flatten=False):
     os.remove(fdfname)
 
 
-def make_sheet(character_file, character=None, flatten=False):
+def make_sheet(character_file, superplayer=None, flatten=False):
     """Prepare a PDF character sheet from the given character file.
 
     Parameters
     ----------
     character_file : str
         File (.py) to load character from. Will save PDF using same name
-    character : Character, optional
+    superplayer : Character, optional
         If provided, will not load from the character file, just use file
         for PDF name
     flatten : bool, optional
@@ -447,44 +445,44 @@ def make_sheet(character_file, character=None, flatten=False):
     char_base = os.path.splitext(character_file)[0] + '_char'
     sheets = [char_base + '.pdf']
     pages = []
-    char_pdf = create_character_pdf(character=character, basename=char_base,
+    char_pdf = create_character_pdf(superplayer=superplayer, basename=char_base,
                                     flatten=flatten)
     pages.append(char_pdf)
-    if character.is_spellcaster:
+    if superplayer.is_spellcaster:
         # Create spell sheet
         spell_base = '{:s}_spells'.format(
             os.path.splitext(character_file)[0])
-        create_spells_pdf(character=character, basename=spell_base, flatten=flatten)
+        create_spells_pdf(superplayer=superplayer, basename=spell_base, flatten=flatten)
         sheets.append(spell_base + '.pdf')
-    if len(character.features) > 0:
+    if len(superplayer.features) > 0:
         feat_base = '{:s}_feats'.format(
             os.path.splitext(character_file)[0])
         try:
-            create_features_pdf(character=character, basename=feat_base)
+            create_features_pdf(superplayer=superplayer, basename=feat_base)
         except exceptions.LatexNotFoundError as e:
             log.warning('``pdflatex`` not available. Skipping features book '
-                        f'for {character.name}')
+                        f'for {superplayer.name}')
         else:
             sheets.append(feat_base + '.pdf')
-    if character.is_spellcaster:
+    if superplayer.is_spellcaster:
         # Create spell book
         spellbook_base = os.path.splitext(character_file)[0] + '_spellbook'
         try:
-            create_spellbook_pdf(character=character, basename=spellbook_base)
+            create_spellbook_pdf(superplayer=superplayer, basename=spellbook_base)
         except exceptions.LatexNotFoundError as e:
             log.warning('``pdflatex`` not available. Skipping spellbook '
-                        f'for {character.name}')
+                        f'for {superplayer.name}')
         else:
             sheets.append(spellbook_base + '.pdf')
     # Create a list of Druid wild_shapes
-    wild_shapes = getattr(character, 'wild_shapes', [])
+    wild_shapes = getattr(superplayer, 'wild_shapes', [])
     if len(wild_shapes) > 0:
         shapes_base = os.path.splitext(character_file)[0] + '_wild_shapes'
         try:
-            create_druid_shapes_pdf(character=character, basename=shapes_base)
+            create_druid_shapes_pdf(superplayer=superplayer, basename=shapes_base)
         except exceptions.LatexNotFoundError as e:
             log.warning('``pdflatex`` not available. Skipping wild shapes list '
-                        f'for {character.name}')
+                        f'for {superplayer.name}')
         else:
             sheets.append(shapes_base + '.pdf')
     # Combine sheets into final pdf

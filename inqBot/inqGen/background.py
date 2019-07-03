@@ -1,4 +1,4 @@
-from testingFiles import testingFeatures as feats
+from . import features as feats
 
 class Background():
     name = "Generic background"

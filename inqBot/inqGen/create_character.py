@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 """
     util for creating a character will be called by cog when
@@ -14,9 +14,8 @@ from random import randint
 import subprocess
 import jinja2
 
-import inqGen
-from inqGen import (superplayer, race, dice, background, testingFiles, weapons, armor)
-from testingFiles import testingClasses
+from . import (superplayer, race, dice, background, weapons, armor, classes)
+
 
 def read_version():
     version = open(os.path.join(os.path.dirname(__file__), '../VERSION')).read()

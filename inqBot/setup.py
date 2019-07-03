@@ -30,7 +30,7 @@ setup(name='inqBot',
       ],
       entry_points={
           'console_scripts': [
-              'makesheets = inqGen.make_sheets:main',
+              'makesheets = utils.make_sheets:main',
               'create-character = utils.create_character:main',
           ]
       },
