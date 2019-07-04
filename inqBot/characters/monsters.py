@@ -12,14 +12,22 @@ class Monster():
         skills = "Perception +3, Stealth +4"
         senses = ""
         languages = ""
-        strength =
-        dexterity =
-        constitution =
-        intelligence =
-        wisdom =
-        charisma =
+        strength = Abilities()
+        dexterity = Abilities()
+        constitution = Abilities()
+        intelligence = Abilities()
+        wisdom = Abilities()
+        charisma = Abilities()
         speed = 30
         swim_speed = 0
         fly_speed = 0
         hp_max = 10
         hit_dice = '1d6'
+
+    def setAttributes(self, attrList)
+        self.strength = attrList[0]
+        self.dexterity = attrList[1]
+        self.constitution = attrList[2]
+        self.intelligence = attrList[3]
+        self.wisdom = attrList[4]
+        self.charisma = attrList[5]

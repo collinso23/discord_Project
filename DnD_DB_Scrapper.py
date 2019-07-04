@@ -24,7 +24,7 @@ class DnD_DB_Scrapper(object):
         soup = BeautifulSoup(page,features ="lxml")
         return soup
 
-    def getMonsterInformation(self, name):
+    def getMonsterInformation(self, name, textOrSoup=0):
 
         """Go to proper page"""
         url = "https://www.5thsrd.org/gamemaster_rules/monsters/"
@@ -42,9 +42,37 @@ class DnD_DB_Scrapper(object):
         soup = BeautifulSoup(page.data, 'lxml')
         main_content = soup.find('div',{'role':'main'})
         if main_content is not None:
-            return self.breakTextByLength(main_content.text)
+            if textOrSoup == 0:
+                return self.breakTextByLength(main_content.text)
+            else:
+                return main_content
         else:
-            return "Monster Not Found"
+            return "Race Not Found"
+
+    def generate_monster_from_soup(self,soup):
+        #gets Table
+        table = soup.findAll('table')[0]
+
+        #Gets all headers including mainHeader seperately
+        all_headers = soup.find_all(re.compile('^h[1-6]$'))
+        className = re.sub('[^\w]',"-",name.lower())
+        main_header = main_content.find('h1',{'id':className})
+        #print(main_header)
+        """Gets all general information such as:
+            name
+            basic description,armor class,hit points,speed, Saving ThrowsSkills,Senses,Languages,Challenge,Features
+        """
+        general_information_p1 = self.getInformationUntilNextTable(main_header)
+        general_information_p2 = self.getInformationUntilNextH3(table)
+        general_information = general_information_p1 + general_information_p2
+
+        """Gets information from table, such as:
+            Str,Dex,Con,Int,Wis,Cha"""
+        attributes = []
+        monsterG = monsterGenerator(general_information,table)
+        if main_content is not None:
+            print(general_information)
+            print(table.prettify())
 
 
 
@@ -203,12 +231,29 @@ class DnD_DB_Scrapper(object):
     def getInformationUntilNextH3(self,nextNode):
         info = ""
         stopAt = ["div","h2","h3","h1"]
+        if nextNode is None:
+            return info
+        else:
+            while True:
+                nextNode = nextNode.nextSibling
+                if nextNode is None:
+                    break
+                if isinstance(nextNode, Tag):
+                    if nextNode.name in stopAt:
+                        break
+                    else:
+                        info = info + self.breakTextByLength(nextNode.text) + "\n"
+        return info
+
+    def getInformationUntilNextTable(self,nextNode):
+        info = ""
+        stopAt = "table"
         while True:
             nextNode = nextNode.nextSibling
             if nextNode is None:
                 break
             if isinstance(nextNode, Tag):
-                if nextNode.name in stopAt:
+                if nextNode.name == stopAt:
                     break
                 else:
                     info = info + self.breakTextByLength(nextNode.text) + "\n"
@@ -277,13 +322,14 @@ class DnD_DB_Scrapper(object):
 
 
 dd = DnD_DB_Scrapper()
-"""nameOfMonster = input("What is the name of the monster?")
+nameOfMonster = input("What is the name of the monster?")
 print(dd.getMonsterInformation(nameOfMonster))
-nameOfRace = input("what is the name of the race?")
+"""nameOfRace = input("what is the name of the race?")
 print(dd.getRaceInformation(nameOfRace))
 className = input("what is the name of the class?")
 sCI = input("what should i look up in the class page?")
 print(dd.getClassInformation(className,sCI))
-"""
+
 itemName = input("what is the name of the item?")
 print(dd.getItemInformation(itemName))
+"""
