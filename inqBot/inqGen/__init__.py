@@ -1,7 +1,7 @@
 __all__ = ('__version__', 'Character', 'weapons', 'features',
            'character', 'race', 'background', 'spells')
 
-from . import weapons, features, race, background, spells
+from . import weapons, race, background, spells
 from .superplayer import Character
 
 import os

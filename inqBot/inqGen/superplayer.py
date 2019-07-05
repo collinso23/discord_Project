@@ -157,7 +157,7 @@ class Character():
         # parse all other attributes
         self.set_attrs(**attrs)
 
-     def clear(self):
+    def clear(self):
         # reset class-definied items
         self.class_list = list()
         self.weapons = list()
@@ -579,30 +579,30 @@ class Character():
             prof = 6
         return prof
 
-""" No druid implemenation yet
+    """ No druid implemenation yet
 
-    def can_assume_shape(self, shape: monsters.Monster):
-        return hasattr(self, 'Druid') and self.Druid.can_assume_shape(shape)
+        def can_assume_shape(self, shape: monsters.Monster):
+            return hasattr(self, 'Druid') and self.Druid.can_assume_shape(shape)
 
-    @property
-    def all_wild_shapes(self):
-        if hasattr(self, 'Druid'):
-            return self.Druid.all_wild_shapes
-        else:
-            return ()
+        @property
+        def all_wild_shapes(self):
+            if hasattr(self, 'Druid'):
+                return self.Druid.all_wild_shapes
+            else:
+                return ()
 
-    @property
-    def wild_shapes(self):
-        if hasattr(self, 'Druid'):
-            return self.Druid.wild_shapes
-        else:
-            return ()
+        @property
+        def wild_shapes(self):
+            if hasattr(self, 'Druid'):
+                return self.Druid.wild_shapes
+            else:
+                return ()
 
-    @wild_shapes.setter
-    def wild_shapes(self, new_shapes):
-        if hasattr(self, 'Druid'):
-            self.Druid.wild_shapes = new_shapes
-"""
+        @wild_shapes.setter
+        def wild_shapes(self, new_shapes):
+            if hasattr(self, 'Druid'):
+                self.Druid.wild_shapes = new_shapes
+    """
     def set_attrs(self, **attrs):
         """Bulk setting of attributes. Useful for loading a character from a
         dictionary."""

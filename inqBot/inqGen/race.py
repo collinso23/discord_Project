@@ -57,6 +57,8 @@ class Human(Race):
     charisma_bonus = 1
     languages = ("Common", '[choose one]')
 
+"""
 available_races = [Human]
 
 __all__=tuple([r.name for r in available_races]+('available_races'))
+"""
