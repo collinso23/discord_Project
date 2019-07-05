@@ -4,7 +4,6 @@ __all__ = ('Character',)
 import re
 import os
 import warnings
-from . import exceptions
 import importlib.util
 import jinja2
 import subprocess
@@ -156,10 +155,6 @@ class Character( ):
         self.background = attrs.pop('background', None)
         # parse all other attributes
         self.set_attrs(**attrs)
-<<<<<<< HEAD
-
-=======
->>>>>>> quick_save
     def clear(self):
         # reset class-definied items
         self.class_list = list()
@@ -582,7 +577,6 @@ class Character( ):
             prof = 6
         return prof
 
-<<<<<<< HEAD
     """ No druid implemenation yet
 
         def can_assume_shape(self, shape: monsters.Monster):
@@ -607,9 +601,6 @@ class Character( ):
             if hasattr(self, 'Druid'):
                 self.Druid.wild_shapes = new_shapes
     """
-=======
-
->>>>>>> quick_save
     def set_attrs(self, **attrs):
         """Bulk setting of attributes. Useful for loading a character from a
         dictionary."""
