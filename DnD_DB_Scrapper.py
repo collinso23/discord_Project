@@ -47,32 +47,8 @@ class DnD_DB_Scrapper(object):
             else:
                 return main_content
         else:
-            return "Race Not Found"
+            return "Monster Not Found"
 
-    def generate_monster_from_soup(self,soup):
-        #gets Table
-        table = soup.findAll('table')[0]
-
-        #Gets all headers including mainHeader seperately
-        all_headers = soup.find_all(re.compile('^h[1-6]$'))
-        className = re.sub('[^\w]',"-",name.lower())
-        main_header = main_content.find('h1',{'id':className})
-        #print(main_header)
-        """Gets all general information such as:
-            name
-            basic description,armor class,hit points,speed, Saving ThrowsSkills,Senses,Languages,Challenge,Features
-        """
-        general_information_p1 = self.getInformationUntilNextTable(main_header)
-        general_information_p2 = self.getInformationUntilNextH3(table)
-        general_information = general_information_p1 + general_information_p2
-
-        """Gets information from table, such as:
-            Str,Dex,Con,Int,Wis,Cha"""
-        attributes = []
-        monsterG = monsterGenerator(general_information,table)
-        if main_content is not None:
-            print(general_information)
-            print(table.prettify())
 
 
 
@@ -166,7 +142,7 @@ class DnD_DB_Scrapper(object):
 
 
 
-    """
+        """
     These next couple of functions are very general. Basically, given a starting node, they
     will pull out all information found in p tags until reached a specified tag
     """
@@ -182,10 +158,10 @@ class DnD_DB_Scrapper(object):
                 if nextNode.name == "hr":
                     break
                 else:
-                    info = info + self.breakTextByLength(nextNode.text) + "\n"
+                    info = info + self.breakTextByLength(str(nextNode)) + "\n"
         return info
 
-    def getInformationUntilNextspan(self, nextNode):
+    def getInformationUntilNextSpan(self, nextNode):
         info = ""
         stopAt = ["div","h1","h2","h3","h4","span"]
         while True:
@@ -196,7 +172,7 @@ class DnD_DB_Scrapper(object):
                 if nextNode.name in stopAt:
                     break
                 else:
-                    info = info + self.breakTextByLength(nextNode.text) + "\n"
+                    info = info + self.breakTextByLength(str(nextNode)) + "\n"
         return info
 
     def getInformationUntilNextH1(self, nextNode):
@@ -210,10 +186,10 @@ class DnD_DB_Scrapper(object):
                 if nextNode.name in stopAt:
                     break
                 else:
-                    info = info + self.breakTextByLength(nextNode.text) + "\n"
+                    info = info + self.breakTextByLength(str(nextNode)) + "\n"
         return info
 
-    def getInformationUntilNextHeader2(self, nextNode):
+    def getInformationUntilNextH2(self, nextNode):
         info = ""
         stopAt = ["div","h2","h1"]
         while True:
@@ -224,7 +200,7 @@ class DnD_DB_Scrapper(object):
                 if nextNode.name in stopAt:
                     break
                 else:
-                    info = info + self.breakTextByLength(nextNode.text) + "\n"
+                    info = info + self.breakTextByLength(str(nextNode)) + "\n"
         return info
 
 
@@ -242,7 +218,7 @@ class DnD_DB_Scrapper(object):
                     if nextNode.name in stopAt:
                         break
                     else:
-                        info = info + self.breakTextByLength(nextNode.text) + "\n"
+                        info = info + self.breakTextByLength(str(nextNode)) + "\n"
         return info
 
     def getInformationUntilNextTable(self,nextNode):
@@ -256,7 +232,7 @@ class DnD_DB_Scrapper(object):
                 if nextNode.name == stopAt:
                     break
                 else:
-                    info = info + self.breakTextByLength(nextNode.text) + "\n"
+                    info = info + self.breakTextByLength(str(nextNode)) + "\n"
         return info
 
     def getInformationUntilNextH4(self,nextNode):
@@ -270,7 +246,7 @@ class DnD_DB_Scrapper(object):
                 if nextNode.name in stopAt:
                     break
                 else:
-                    info = info + self.breakTextByLength(nextNode.text) + "\n"
+                    info = info + self.breakTextByLength(str(nextNode)) + "\n"
         return info
 
     """
@@ -320,16 +296,8 @@ class DnD_DB_Scrapper(object):
                 returnString.append(w)
         return ' '.join(map(str, returnString))
 
-
+"""
 dd = DnD_DB_Scrapper()
 nameOfMonster = input("What is the name of the monster?")
-print(dd.getMonsterInformation(nameOfMonster))
-"""nameOfRace = input("what is the name of the race?")
-print(dd.getRaceInformation(nameOfRace))
-className = input("what is the name of the class?")
-sCI = input("what should i look up in the class page?")
-print(dd.getClassInformation(className,sCI))
-
-itemName = input("what is the name of the item?")
-print(dd.getItemInformation(itemName))
-"""
+soup = dd.getMonsterInformation(nameOfMonster,1)"""
+#print(dd.getMonsterInformation(nameOfMonster))
