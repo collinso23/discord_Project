@@ -439,8 +439,8 @@ def make_sheet(character_file, superplayer=None, flatten=False):
     flatten : bool, optional
         If true, the resulting PDF will look better and won't be fillable form.
     """
-    if character is None:
-        character = _char.Character.load(character_file)
+    if superplayer is None:
+        superplayer = _char.Character.load(character_file)
     # Set the fields in the FDF
     char_base = os.path.splitext(character_file)[0] + '_char'
     sheets = [char_base + '.pdf']
@@ -459,7 +459,7 @@ def make_sheet(character_file, superplayer=None, flatten=False):
             os.path.splitext(character_file)[0])
         try:
             create_features_pdf(superplayer=superplayer, basename=feat_base)
-        except exceptions.LatexNotFoundError as e:
+        except exceptions.LatexNotFoundError:
             log.warning('``pdflatex`` not available. Skipping features book '
                         f'for {superplayer.name}')
         else:
@@ -469,7 +469,7 @@ def make_sheet(character_file, superplayer=None, flatten=False):
         spellbook_base = os.path.splitext(character_file)[0] + '_spellbook'
         try:
             create_spellbook_pdf(superplayer=superplayer, basename=spellbook_base)
-        except exceptions.LatexNotFoundError as e:
+        except exceptions.LatexNotFoundError:
             log.warning('``pdflatex`` not available. Skipping spellbook '
                         f'for {superplayer.name}')
         else:
