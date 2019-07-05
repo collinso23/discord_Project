@@ -18,15 +18,14 @@ setup(name='inqBot',
       author_email='collinso@wit.edu',
       license='GPLv3',
       url='https://github.com/collinso23/discord_Project',
-      download_url = 'https://github.com/collinso23/discord_Project',
+      download_url='https://github.com/collinso23/discord_Project',
       packages=find_packages(),
       package_data={
-          'inqGen': ['forms/*pdf', 'forms/*.tex', 'forms/*.txt',
-                            '../VERSION']
+          'inqGen': ['forms/*pdf', 'forms/*.tex', 'forms/*.txt', '../VERSION']
       },
       install_requires=[
           'fdfgen', 'npyscreen', 'jinja2', 'pdfrw', 'BeatifulSoup', 'lxml', 'textwrap',
-          'nltk', 'discord', 'numpy'
+         'nltk', 'discord', 'numpy'
       ],
       entry_points={
           'console_scripts': [

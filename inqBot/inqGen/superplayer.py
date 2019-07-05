@@ -50,7 +50,7 @@ multiclass_spellslots_by_level = {
     20: (0, 4, 3, 3, 3, 3, 2, 2, 1, 1),
 }
 
-class Character():
+class Character( ):
     """for defining what a character is to the bot"""
     inqGen_version = __version__
     name = ""
@@ -133,7 +133,7 @@ class Character():
     feature_choices = list()
 
     def __init__(self,**attrs):
-        """Take a variable number of attriubutes and pass them to set_attrs function """
+        """Take a variable number of attriubutes and pass them to set_attrs function"""
         self.clear()
         my_classes = attrs.pop('classes',[])
         my_levels = attrs.pop('levels',[])
@@ -147,16 +147,19 @@ class Character():
                 my_classes = ['Wizard']
                 my_levels = [1]
                 my_subclasses = [None]
-        #generate list of class objects
+        # gen/home/flassh/discord_Project/inqBot/inqGen/make_sheets.pyerate list of class objects
         self.add_classes(
             my_classes, my_levels, my_subclasses,
             feature_choices=attrs.get('feature_choices', []))
-        #parse race and background
+        # parse race and background
         self.race = attrs.pop('race', None)
         self.background = attrs.pop('background', None)
         # parse all other attributes
         self.set_attrs(**attrs)
+<<<<<<< HEAD
 
+=======
+>>>>>>> quick_save
     def clear(self):
         # reset class-definied items
         self.class_list = list()
@@ -579,6 +582,7 @@ class Character():
             prof = 6
         return prof
 
+<<<<<<< HEAD
     """ No druid implemenation yet
 
         def can_assume_shape(self, shape: monsters.Monster):
@@ -603,6 +607,9 @@ class Character():
             if hasattr(self, 'Druid'):
                 self.Druid.wild_shapes = new_shapes
     """
+=======
+
+>>>>>>> quick_save
     def set_attrs(self, **attrs):
         """Bulk setting of attributes. Useful for loading a character from a
         dictionary."""

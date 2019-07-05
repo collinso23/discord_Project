@@ -22,7 +22,7 @@ def read_version():
     version = version.replace('\n','')
     return version
 
-char_classes = {c.name: c for c in testingClasses.available_classes}
+char_classes = {c.name: c for c in classes.available_classes}
 
 races = {r.name: r for r in race.available_races}
 
@@ -46,6 +46,5 @@ class CreateCharacter(object):
         return
 
     def save(self):
-    """ will save character information and creator to file<?pdf,xml,json,txt?>"""
-        return
-    pass
+        """ will save character information and creator to file<?pdf,xml,json,txt?>"""
+        return None
