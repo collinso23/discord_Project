@@ -1,5 +1,5 @@
 """Tools for describing a player character."""
-__all__ = ('Character',)
+__all__ = ('Character')
 
 import re
 import os
@@ -8,11 +8,13 @@ import importlib.util
 import jinja2
 import subprocess
 
-from .stats import Abilities, Skill, findattr, ArmorClass, Speed, Initiative
-from .dice import read_dice_str
+
+
 from . import (armor, background, exceptions, magic_items,
                 race, spells, stats, weapons, features, classes)
+from dice import read_dice_str
 from .weapons import Weapon
+from .stats import Abilities, Skill, findattr, ArmorClass, Speed, Initiative
 from .armor import Armor, NoArmor, Shield, NoShield
 
 

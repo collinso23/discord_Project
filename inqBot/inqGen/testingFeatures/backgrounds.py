@@ -1,4 +1,4 @@
-from .features import Feature
+from features import Feature
 
 class ShelterOfTheFaithful(Feature):
     """As an acolyte, you command the respect of those who share your faith, and
