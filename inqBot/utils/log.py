@@ -11,6 +11,7 @@ LEVEL_COLORS = {
     logging.WARNING: Color.gold(),
     logging.INFO: Color.blurple()
 }
+
 class DiscordHandler(logging.Handler):
     """
     Implement logging.Handler methods to send logs to discord channel

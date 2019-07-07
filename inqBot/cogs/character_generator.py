@@ -20,7 +20,7 @@ class CharGenerator(commands.Cog):
             return
 
         if level == 0:
-            rolls = [make_roll('1d20','2') for _ in range(6)]
+            rolls = [make_roll('1d20') for _ in range(6)]
             stats = '\n'.join(r for r in rolls)
             total = sum([r.total for r in rolls])
             await ctx.send(f"{ctx.message.author.mention}\n Generated random stats\n {stats}\n Total = '{total}'")

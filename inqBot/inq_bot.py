@@ -2,6 +2,7 @@ import os
 import discord
 import logging
 
+
 from discord import Game
 from discord.ext import commands
 from discord.ext.commands import Cog, Bot, when_mentioned_or
@@ -14,6 +15,7 @@ A bot to help with the running of DND campaigns
 Along with general administrative functions
 """
 
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 bot = Bot(
