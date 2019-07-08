@@ -6,3 +6,4 @@ inqBot/__pycache__/
 inqBot/config.json
 inqBot/deprecated/
 inqBot/constants.py
+.idea

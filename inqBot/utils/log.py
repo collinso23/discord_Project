@@ -1,9 +1,12 @@
+import constants
 import datetime
 import logging
-import constants
+import sys
+
 from discord import Color, Embed
 from discord.ext import commands
 
+sys.path.append('../../inqBot')
 
 LEVEL_COLORS = {
     logging.CRITICAL: Color.red(),
@@ -12,16 +15,18 @@ LEVEL_COLORS = {
     logging.INFO: Color.blurple()
 }
 
+
 class DiscordHandler(logging.Handler):
     """
     Implement logging.Handler methods to send logs to discord channel
     """
-    def __init__(self,bot: commands.Bot, *args, **kwargs):
-        super().__init__(*args,**kwargs)
+
+    def __init__(self, bot: commands.Bot, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self.client = bot
         self.log_channel = self.client.get_channel(constants.LOG_CHANNEL)
 
-    def _level_to_color(self,level_number:int):
+    def _level_to_color(self, level_number: int):
         return LEVEL_COLORS.get(level_number)
 
     def emit(self, record):
@@ -31,13 +36,16 @@ class DiscordHandler(logging.Handler):
 
         # Create an embed with a title like "Info" or "Error" and a color
         # relating to the level of the log message
-        embed = Embed(title=record.levelname.title(), color=self._level_to_color(record.levelno))
+        embed = Embed(title=record.levelname.title(),
+                      color=self._level_to_color(record.levelno))
 
         embed.timestamp = datetime.datetime.utcnow()
 
         embed.add_field(name="Message", value=record.msg, inline=False)
-        embed.add_field(name="Function", value=f"`{record.funcName}`", inline=True)
-        embed.add_field(name="File name", value=f"`{record.filename}`", inline=True)
+        embed.add_field(name="Function",
+                        value=f"`{record.funcName}`", inline=True)
+        embed.add_field(name="File name",
+                        value=f"`{record.filename}`", inline=True)
         embed.add_field(name="Line number", value=record.lineno, inline=True)
 
         if "discord_info" in record.__dict__:

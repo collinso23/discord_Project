@@ -1,16 +1,15 @@
-import os
-import discord
-import logging
-
-
 from discord import Game
-from discord.ext import commands
-from discord.ext.commands import Cog, Bot, when_mentioned_or
+import pdb
+import logging
+import discord
+import os
+from discord.ext.commands import Bot, when_mentioned_or
 import constants
-import cogs
-from utils import permissions, log
+from utils import log
+pdb.set_trace()
 
-desc="""
+
+desc = """
 A bot to help with the running of DND campaigns
 Along with general administrative functions
 """
@@ -37,12 +36,12 @@ async def on_ready():
     print('-----')
 
 if __name__ == "__main__":
-  try:
-    for file in os.listdir("cogs"):
-      if file.endswith(".py"):
-        name = file[:-3]
-        bot.load_extension(f"cogs.{name}")
-  except Exception as err:
-    exc= '{}: {}'.format(type(err).__name__,err)
-    print('Failed to load extension\n{}'.format(exc))
+    try:
+        for file in os.listdir("cogs"):
+            if file.endswith(".py"):
+                name = file[:-3]
+                bot.load_extension(f"cogs.{name}")
+    except Exception as err:
+        exc = '{}: {}'.format(type(err).__name__, err)
+        print('Failed to load extension\n{}'.format(exc))
 bot.run(constants.BOT_TOKEN)
