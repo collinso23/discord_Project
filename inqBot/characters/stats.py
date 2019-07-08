@@ -50,7 +50,7 @@ def mod_str(modifier):
     if modifier == 0:
         return str(modifier)
     else:
-return '{:+}'.format(modifier)
+        return '{:+}'.format(modifier)
 
 AbilityScore = namedtuple('AbilityScore',
                           ('value', 'modifier', 'saving_throw'))
@@ -62,7 +62,7 @@ class Abilities():
     def __init__(self,default_stat=10):
         self.default_stat = default_stat
 
-    def __set_name__(self,,name):
+    def __set_name__(self,name):
         self.ability_name = name
 
     def _check_dict(self, obj):

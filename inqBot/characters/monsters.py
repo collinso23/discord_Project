@@ -1,33 +1,25 @@
-from utils import dnd_scraper
-from dnd_scraper import DnDScraper
-
+#from inqBot.inqGen.stats import Abilities
 class Monster():
     """A template for a monster to be filled in with the user request from dndDB and stored"""
 
     def __init__(self):
-        name = "Generic Monster"
-        description = ""
-        challenge_rating = 0
-        armor_class = 0
-        skills = "Perception +3, Stealth +4"
-        senses = ""
-        languages = ""
+        self.name = "Generic Monster"
+        self.description = ""
+        self.challenge_rating = 0
+        self.armor_class = 0
+        self.skills = "Perception +3, Stealth +4"
+        self.senses = ""
+        self.languages = ""
+        """
         strength = Abilities()
         dexterity = Abilities()
         constitution = Abilities()
         intelligence = Abilities()
         wisdom = Abilities()
         charisma = Abilities()
-        speed = 30
-        swim_speed = 0
-        fly_speed = 0
-        hp_max = 10
-        hit_dice = '1d6'
-
-    def setAttributes(self, attrList)
-        self.strength = attrList[0]
-        self.dexterity = attrList[1]
-        self.constitution = attrList[2]
-        self.intelligence = attrList[3]
-        self.wisdom = attrList[4]
-        self.charisma = attrList[5]
+        """
+        self.speed = 30
+        self.swim_speed = 0
+        self.fly_speed = 0
+        self.hp_max = 10
+        self.hit_dice = '1d6'
