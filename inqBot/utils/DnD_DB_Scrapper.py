@@ -5,65 +5,84 @@ import re
 import urllib3
 import textwrap
 from nltk import tokenize
-import constants
+import logging
 
-class DnD_DB_Scrapper(object):
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
+#import constants
+handler = logging.FileHandler('util_logs/DnD_DB_Scrapper_debug.log')
+handler.setLevel(logging.DEBUG)
+
+# create a logging format
+formatter = logging.Formatter(
+    '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+
+# add the handlers to the logger
+logger.addHandler(handler)
+
+
+class DnD_DB_Scrapper():
 
     """
     Constructor
     """
+
     def __init__(self):
-        self.HEADERS = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36'}
+        self.HEADERS = {
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36'}
 
     """
     param: url
     return the Entire HTML code fo the website
     """
-    def getEntireHTMLPage(self,url):
-        page = requests.get(url,headers=self.HEADERS).text
-        soup = BeautifulSoup(page,features ="lxml")
+
+    def getEntireHTMLPage(self, url):
+        page = requests.get(url, headers=self.HEADERS).text
+        soup = BeautifulSoup(page, features="lxml")
         return soup
 
-    def getMonsterInformation(self, name):
-
+    def getMonsterInformation(self, name, textOrSoup=0):
         """Go to proper page"""
         url = "https://www.5thsrd.org/gamemaster_rules/monsters/"
-        name = re.sub('[^\w]', "_",name.lower())
+        name = re.sub('[^\w]', "_", name.lower())
         info_page = url + name + "/"
 
-        http =  urllib3.PoolManager()
+        http = urllib3.PoolManager()
 
         """Check to see if its an ACTUAL PAGE"""
         try:
-            page = http.request('GET',info_page)
-        except urllib3.exceptions.HTTPError as e:
+            page = http.request('GET', info_page)
+        except urllib3.exceptions.HTTPError as httpserr:
+            logger.debug(f"HTTPError: {httpserr}")
             return "Monster Not Found"
 
         soup = BeautifulSoup(page.data, 'lxml')
-        main_content = soup.find('div',{'role':'main'})
+        main_content = soup.find('div', {'role': 'main'})
         if main_content is not None:
-            return self.breakTextByLength(main_content.text)
+            if textOrSoup == 0:
+                return self.breakTextByLength(main_content.text)
+            else:
+                return main_content
         else:
             return "Monster Not Found"
 
-
-
-    def getItemInformation(self,name):
+    def getItemInformation(self, name):
         """Go to proper page"""
         url = "https://www.5thsrd.org/gamemaster_rules/magic_items/"
-        name = re.sub('[^\w]', "_",name.lower())
+        name = re.sub('[^\w]', "_", name.lower())
         info_page = url + name + "/"
 
-        http =  urllib3.PoolManager()
+        http = urllib3.PoolManager()
 
         """Check to see if its an ACTUAL PAGE"""
         try:
-            page = http.request('GET',info_page)
+            page = http.request('GET', info_page)
         except urllib3.exceptions.HTTPError as e:
             return "Monster Not Found"
 
         soup = BeautifulSoup(page.data, 'lxml')
-        main_content = soup.find('div',{'role':'main'})
+        main_content = soup.find('div', {'role': 'main'})
         if main_content is not None:
             return self.breakTextByLength(main_content.text)
         else:
@@ -72,48 +91,49 @@ class DnD_DB_Scrapper(object):
     def getRaceInformation(self, name):
         """Go to proper page"""
         url = "https://www.5thsrd.org/character/races/"
-        name = re.sub('[^\w]', "_",name.lower())
+        name = re.sub('[^\w]', "_", name.lower())
         info_page = url + name + "/"
 
-        http =  urllib3.PoolManager()
+        http = urllib3.PoolManager()
 
         """Check to see if its an ACTUAL PAGE"""
         try:
-            page = http.request('GET',info_page)
+            page = http.request('GET', info_page)
         except urllib3.exceptions.HTTPError as e:
             return "Monster Not Found"
 
         soup = BeautifulSoup(page.data, 'lxml')
-        main_content = soup.find('div',{'role':'main'})
+        main_content = soup.find('div', {'role': 'main'})
         if main_content is not None:
             return self.breakTextByLength(main_content.text)
         else:
             return "Race Not Found"
 
-    def getClassInformation(self,name,specifier):
+    def getClassInformation(self, name, specifier):
         """Go to proper page"""
         url = "https://www.5thsrd.org/character/classes/"
-        name = re.sub('[^\w]', "_",name.lower())
+        name = re.sub('[^\w]', "_", name.lower())
         info_page = url + name + "/"
         specifier = self.titlize(specifier)
         info = ""
-        http =  urllib3.PoolManager()
+        http = urllib3.PoolManager()
 
         """Check to see if its an ACTUAL PAGE"""
         try:
-            page = http.request('GET',info_page)
+            page = http.request('GET', info_page)
         except urllib3.exceptions.HTTPError as e:
             return "Class Not Found"
 
         soup = BeautifulSoup(page.data, 'lxml')
-        main_content = soup.find('div',{'role':'main'})
+        main_content = soup.find('div', {'role': 'main'})
         if main_content is not None:
             headers = main_content.find_all(re.compile('^h[1-6]$'))
             if specifier == "":
                 return self.breakTextByLength(main_content.text)
             elif specifier == "basic feats":
-                basic_feat_start_point = headers.find("h2",{'id':'class-features'})
-                return self.getInformationUntilNextHR(self,nextNode)
+                basic_feat_start_point = headers.find(
+                    "h2", {'id': 'class-features'})
+                return self.getInformationUntilNextHR(self, nextNode)
             else:
                 for header in headers:
                     if header is not None:
@@ -121,29 +141,31 @@ class DnD_DB_Scrapper(object):
                             nextNode = header
                             original_header_tag = nextNode.name
                             if original_header_tag == "span":
-                                info = self.getInformationUntilNextSpan(nextNode) + "\n"
+                                info = self.getInformationUntilNextSpan(
+                                    nextNode) + "\n"
                             elif original_header_tag == "h1":
-                                info = self.getInformationUntilNextH1(nextNode) + "\n"
+                                info = self.getInformationUntilNextH1(
+                                    nextNode) + "\n"
                             elif original_header_tag == "h2":
-                                info = self.getInformationUntilNextHeader2(nextNode) + "\n"
+                                info = self.getInformationUntilNextH2(
+                                    nextNode) + "\n"
                             elif original_header_tag == "h3":
-                                info = self.getInformationUntilNextH3(nextNode) + "\n"
+                                info = self.getInformationUntilNextH3(
+                                    nextNode) + "\n"
                             elif original_header_tag == "h4":
-                                info = self.getInformationUntilNextH4(nextNode) + "\n"
+                                info = self.getInformationUntilNextH4(
+                                    nextNode) + "\n"
                             break
                 return info
         else:
             return "Class not found"
-
-
-
 
     """
     These next couple of functions are very general. Basically, given a starting node, they
     will pull out all information found in p tags until reached a specified tag
     """
 
-    def getInformationUntilNextHR(self,nextNode):
+    def getInformationUntilNextHR(self, nextNode):
         info = ""
         info = nextNode.text + "\n\n"
         while True:
@@ -154,12 +176,12 @@ class DnD_DB_Scrapper(object):
                 if nextNode.name == "hr":
                     break
                 else:
-                    info = info + self.breakTextByLength(nextNode.text) + "\n"
+                    info = info + self.breakTextByLength(str(nextNode)) + "\n"
         return info
 
-    def getInformationUntilNextspan(self, nextNode):
+    def getInformationUntilNextSpan(self, nextNode):
         info = ""
-        stopAt = ["div","h1","h2","h3","h4","span"]
+        stopAt = ["div", "h1", "h2", "h3", "h4", "span"]
         while True:
             nextNode = nextNode.nextSibling
             if nextNode is None:
@@ -168,12 +190,12 @@ class DnD_DB_Scrapper(object):
                 if nextNode.name in stopAt:
                     break
                 else:
-                    info = info + self.breakTextByLength(nextNode.text) + "\n"
+                    info = info + self.breakTextByLength(str(nextNode)) + "\n"
         return info
 
     def getInformationUntilNextH1(self, nextNode):
         info = ""
-        stopAt = ["div","h1"]
+        stopAt = ["div", "h1"]
         while True:
             nextNode = nextNode.nextSibling
             if nextNode is None:
@@ -182,12 +204,12 @@ class DnD_DB_Scrapper(object):
                 if nextNode.name in stopAt:
                     break
                 else:
-                    info = info + self.breakTextByLength(nextNode.text) + "\n"
+                    info = info + self.breakTextByLength(str(nextNode)) + "\n"
         return info
 
-    def getInformationUntilNextHeader2(self, nextNode):
+    def getInformationUntilNextH2(self, nextNode):
         info = ""
-        stopAt = ["div","h2","h1"]
+        stopAt = ["div", "h2", "h1"]
         while True:
             nextNode = nextNode.nextSibling
             if nextNode is None:
@@ -196,27 +218,44 @@ class DnD_DB_Scrapper(object):
                 if nextNode.name in stopAt:
                     break
                 else:
-                    info = info + self.breakTextByLength(nextNode.text) + "\n"
+                    info = info + self.breakTextByLength(str(nextNode)) + "\n"
         return info
 
-
-    def getInformationUntilNextH3(self,nextNode):
+    def getInformationUntilNextH3(self, nextNode):
         info = ""
-        stopAt = ["div","h2","h3","h1"]
-        while True:
-            nextNode = nextNode.nextSibling
-            if nextNode is None:
-                break
-            if isinstance(nextNode, Tag):
-                if nextNode.name in stopAt:
+        stopAt = ["div", "h2", "h3", "h1"]
+        if nextNode is None:
+            return info
+        else:
+            while True:
+                nextNode = nextNode.nextSibling
+                if nextNode is None:
                     break
-                else:
-                    info = info + self.breakTextByLength(nextNode.text) + "\n"
+                if isinstance(nextNode, Tag):
+                    if nextNode.name in stopAt:
+                        break
+                    else:
+                        info = info + \
+                            self.breakTextByLength(str(nextNode)) + "\n"
         return info
 
-    def getInformationUntilNextH4(self,nextNode):
+    def getInformationUntilNextTable(self, nextNode):
         info = ""
-        stopAt = ["div","h2","h3","h1","h4"]
+        stopAt = "table"
+        while True:
+            nextNode = nextNode.nextSibling
+            if nextNode is None:
+                break
+            if isinstance(nextNode, Tag):
+                if nextNode.name == stopAt:
+                    break
+                else:
+                    info = info + self.breakTextByLength(str(nextNode)) + "\n"
+        return info
+
+    def getInformationUntilNextH4(self, nextNode):
+        info = ""
+        stopAt = ["div", "h2", "h3", "h1", "h4"]
         while True:
             nextNode = nextNode.nextSibling
             if nextNode is None:
@@ -225,7 +264,7 @@ class DnD_DB_Scrapper(object):
                 if nextNode.name in stopAt:
                     break
                 else:
-                    info = info + self.breakTextByLength(nextNode.text) + "\n"
+                    info = info + self.breakTextByLength(str(nextNode)) + "\n"
         return info
 
     """
@@ -233,40 +272,40 @@ class DnD_DB_Scrapper(object):
     breaks text up by length we would like on each line
     If word exceeds length, then new line is processed before
     """
-    def breakTextByLength(self,text,length = 150):
+
+    def breakTextByLength(self, text, length=150):
         if text is not None:
-            text_by_line = re.split('[\r\n]',text)
+            text_by_line = re.split('[\r\n]', text)
             rstring = ""
             for t in text_by_line:
                 if t is not None:
                     if len(t) > 149:
-                        dividedText = textwrap.wrap(t,length)
+                        dividedText = textwrap.wrap(t, length)
                         dividedText = '\n'.join(dividedText)
                         rstring = rstring + dividedText + '\n'
                     else:
                         rstring = rstring + t + '\n'
             return rstring
 
-
-    def fixSpacingOnText(self,text):
+    def fixSpacingOnText(self, text):
         text_by_line = text.split('\n')
         finaltext = ""
         for line in text_by_line:
             if len(line) > 2:
-                line = re.sub(r'^\s+','',line)
-                finaltext = finaltext + line+ "\n"
+                line = re.sub(r'^\s+', '', line)
+                finaltext = finaltext + line + "\n"
         return finaltext
-
-
 
     """
     titlize method
     Gives a text title format
     most words are capitalized, simply words like -> is,of,in,a,an,the, etc are not
     """
+
     def titlize(self, text):
         splitText = text.split()
-        specialCaseWords = ["from","so","is","of","in","a","an","the","but","for"]
+        specialCaseWords = ["from", "so", "is", "of",
+                            "in", "a", "an", "the", "but", "for"]
         returnString = []
         for w in splitText:
             if w not in specialCaseWords:
@@ -276,14 +315,8 @@ class DnD_DB_Scrapper(object):
         return ' '.join(map(str, returnString))
 
 
-dd = DnD_DB_Scrapper()
-"""nameOfMonster = input("What is the name of the monster?")
-print(dd.getMonsterInformation(nameOfMonster))
-nameOfRace = input("what is the name of the race?")
-print(dd.getRaceInformation(nameOfRace))
-className = input("what is the name of the class?")
-sCI = input("what should i look up in the class page?")
-print(dd.getClassInformation(className,sCI))
 """
-itemName = input("what is the name of the item?")
-print(dd.getItemInformation(itemName))
+dd = DnD_DB_Scrapper()
+nameOfMonster = input("What is the name of the monster?")
+soup = dd.getMonsterInformation(nameOfMonster,1)"""
+#print(dd.getMonsterInformation(nameOfMonster))
