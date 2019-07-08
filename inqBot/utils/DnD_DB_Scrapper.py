@@ -9,8 +9,8 @@ import logging
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
-#import constants
-handler = logging.FileHandler('util_logs/DnD_DB_Scrapper_debug.log')
+
+handler = logging.FileHandler('DnD_DB_Scrapper_debug.log')
 handler.setLevel(logging.DEBUG)
 
 # create a logging format
@@ -29,8 +29,7 @@ class DnD_DB_Scrapper():
     """
 
     def __init__(self):
-        self.HEADERS = {
-            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36'}
+        self.HEADERS = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36'}
 
     """
     param: url

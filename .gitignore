@@ -7,4 +7,7 @@ inqBot/config.json
 inqBot/deprecated/
 inqBot/constants.py
 inqBot/utils/util_logs/
+Scripts/
+Lib/
+pyvenv.cfg
 .idea

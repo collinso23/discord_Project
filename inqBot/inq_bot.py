@@ -7,6 +7,7 @@ from discord import Game
 from discord.ext.commands import Bot, when_mentioned_or
 from utils import permissions, log
 
+
 desc = """
 A bot to help with the running of DND campaigns
 Along with general administrative functions

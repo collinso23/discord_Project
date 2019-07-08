@@ -1,6 +1,7 @@
 from characters import player_class
 from . import dice_class, dnd_scraper
 
+
 class CreateCharacter(object):
     def create(self):
         """
@@ -16,10 +17,5 @@ class CreateCharacter(object):
         return
 
     def save(self):
-    """ will save character information and creator to file<?pdf,xml,json,txt?>"""
+        """will save character information and creator to file<?pdf,xml,json,txt?>"""
         return
-    pass
-
-
-class Character(object):
-        pass
