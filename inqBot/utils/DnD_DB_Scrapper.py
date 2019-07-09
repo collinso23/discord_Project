@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup, SoupStrainer, Tag
+import sys
 import requests
 import lxml
 import re
@@ -24,6 +25,31 @@ class DnD_DB_Scrapper(object):
         soup = BeautifulSoup(page,features ="lxml")
         return soup
 
+
+    """
+    param: section, nameOfSearch
+        section: specifies if user is looking for imformation about items, race, class, etc.
+        nameOfSearch: what to be searched for on the search bar
+    If user calls the search function on the bot, then the bot will perofrm a search on
+    the search bar on dndbeyond according to the requested section
+    """
+    def searchDNDWebsite(self, section, nameOfSearch,specifier=""):
+        rstring = "fool"
+        if section == "item":
+            rstring = self.getItemInformation(nameOfSearch)
+        elif section == "class":
+            rstring = self.getClassInformation(nameOfSearch,specifier)
+        elif section == "race":
+            rstring = self.getRaceInformation(nameOfSearch)
+        elif section == "spell":
+            rstring = self.getSpellInformation(nameOfSearch)
+        elif section == "monster":
+            rstring = self.getMonsterInformation(nameOfSearch)
+        return rstring
+
+    def searchDnDWebsite(self,input_list):
+        return self.searchDNDWebsite(input_list[0],input_list[1],input_list[2])
+
     def getMonsterInformation(self, name, textOrSoup=0):
 
         """Go to proper page"""
@@ -48,9 +74,6 @@ class DnD_DB_Scrapper(object):
                 return main_content
         else:
             return "Monster Not Found"
-
-
-
 
     def getItemInformation(self,name):
         """Go to proper page"""
@@ -85,7 +108,7 @@ class DnD_DB_Scrapper(object):
         try:
             page = http.request('GET',info_page)
         except urllib3.exceptions.HTTPError as e:
-            return "Monster Not Found"
+            return "Race Not Found"
 
         soup = BeautifulSoup(page.data, 'lxml')
         main_content = soup.find('div',{'role':'main'})
@@ -93,6 +116,27 @@ class DnD_DB_Scrapper(object):
             return self.breakTextByLength(main_content.text)
         else:
             return "Race Not Found"
+
+    def getSpellInformation(self, name):
+        """Go to proper page"""
+        url = "http://5thsrd.org/spellcasting/spells/"
+        name = re.sub('[^\w]', "_",name.lower())
+        info_page = url + name + "/"
+
+        http =  urllib3.PoolManager()
+
+        """Check to see if its an ACTUAL PAGE"""
+        try:
+            page = http.request('GET',info_page)
+        except urllib3.exceptions.HTTPError as e:
+            return "Spell Not Found"
+
+        soup = BeautifulSoup(page.data, 'lxml')
+        main_content = soup.find('div',{'role':'main'})
+        if main_content is not None:
+            return self.breakTextByLength(main_content.text)
+        else:
+            return "Spell Not Found"
 
     def getClassInformation(self,name,specifier):
         """Go to proper page"""
@@ -141,17 +185,53 @@ class DnD_DB_Scrapper(object):
 
 
 
+    def getInformationBetweenTwoTags(self,first_tag,second_tag):
+        info = ""
+        nextNode = first_tag.next_sibling
+        while str(nextNode) != str(second_tag):
+            info = info + str(nextNode)
+            nextNode = nextNode.next_sibling
+        return self.breakTextByLength(info)
 
+    def getAllInformationFromTag(self,nextNode):
+        info = ""
+        while True:
+            nextNode = nextNode.nextSibling
+            #print(nextNode)
+            #print("Boo")
+            if nextNode is None:
+                break
+            else:
+                info = info + self.breakTextByLength(str(nextNode))
+        return info
     """
     These next couple of functions are very general. Basically, given a starting node, they
     will pull out all information found in p tags until reached a specified tag
     """
 
+    def getInformationUntilNextStrong(self,nextNode):
+        info = ""
+        while True:
+            nextNode = nextNode.nextSibling
+            #print(nextNode)
+            #print("Boo")
+            if nextNode is None:
+                break
+            if isinstance(nextNode, Tag):
+                if nextNode.name == "strong":
+                    #print("SRRRRR")
+                    break
+                else: info = info + self.breakTextByLength(str(nextNode))
+        print(info)
+        print("Skr")
+        bs = BeautifulSoup(info,features="lxml")
+
+
     def getInformationUntilNextHR(self,nextNode):
         info = ""
         info = nextNode.text + "\n\n"
         while True:
-            nextNode = nextNode.nextSiblin
+            nextNode = nextNode.nextSibling
             if nextNode is None:
                 break
             if isinstance(nextNode, Tag):
@@ -296,8 +376,12 @@ class DnD_DB_Scrapper(object):
                 returnString.append(w)
         return ' '.join(map(str, returnString))
 
-"""
+
 dd = DnD_DB_Scrapper()
-nameOfMonster = input("What is the name of the monster?")
-soup = dd.getMonsterInformation(nameOfMonster,1)"""
-#print(dd.getMonsterInformation(nameOfMonster))
+inp = []
+inp.append(input("Item,Monster,Spell,Class,Or Race?"))
+inp.append(input("what are you searching for?"))
+inp.append(input("other?"))
+
+soup = dd.searchDnDWebsite(inp)
+print(soup)
