@@ -1,23 +1,10 @@
 import os
 import sys
 import logging
-#'/home/user/example/parent/child'
-CURRENT_PATH = os.path.abspath('.')
+import pdb
 
-#'/home/user/example/parent'
-PARENT_PATH = os.path.dirname(CURRENT_PATH)
-
-sys.path.append(PARENT_PATH)
-
-logging.basicConfig(level=logging.DEBUG)
-logger = logging.getLogger(__name__)
-#import constants
-handler = logging.FileHandler('util_logs/monster_Generation_debug.log')
-handler.setLevel(logging.DEBUG)
-
-import DnD_DB_Scrapper as dnds
-from characters import monsters as m
-logger.debug('Importing...')
+from inqBot.characters import monsters as m
+from inqBot.utils import DnD_DB_Scrapper as dnds
 from nltk import tokenize
 import textwrap
 import urllib3
@@ -25,8 +12,15 @@ import re
 import lxml
 import requests
 from bs4 import BeautifulSoup, SoupStrainer, Tag
-#import constants
+pdb.set_trace()
 
+
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
+
+"""
+handler = logging.FileHandler('monster_Generation_debug.log')
+handler.setLevel(logging.DEBUG)
 
 # create a logging format
 formatter = logging.Formatter(
@@ -35,6 +29,10 @@ handler.setFormatter(formatter)
 
 # add the handlers to the logger
 logger.addHandler(handler)
+"""
+
+
+logger.debug('Importing...\n')
 
 
 class MonsterGenerator(object):
@@ -141,7 +139,7 @@ class MonsterGenerator(object):
 
 
 dd = dnds.DnD_DB_Scrapper()
-nameOfMonster = input("What is the name of the monster?")
+nameOfMonster = input("What is the name of the monster?\n")
 soup = dd.getMonsterInformation(nameOfMonster, 1)
 mg = MonsterGenerator()
 mg.generate_from_soup(soup)
