@@ -1,19 +1,20 @@
-from bs4 import BeautifulSoup, Tag
-import requests
 import re
-import urllib3
 import textwrap
+import requests
+import urllib3
+from bs4 import BeautifulSoup, Tag
+
+import inqBot.constants as _constants
 
 
-class DnD_DB_Scrapper():
+class DB_Scraper():
 
     """
     Constructor
     """
 
     def __init__(self):
-        self.HEADERS = {
-            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36'}
+        self.HEADERS = _constants.HEADERS
 
     """
     param: url
@@ -50,7 +51,7 @@ class DnD_DB_Scrapper():
     def searchDnDWebsite(self, input_list):
         return self.searchDNDWebsite(input_list[0], input_list[1], input_list[2])
 
-    def getMonsterInformation(self, name, textOrSoup=0):
+    def getMonsterInformation(self, name, textOrSoup=False):
         """Go to proper page"""
         url = "https://www.5thsrd.org/gamemaster_rules/monsters/"
         name = re.sub('[^\w]', "_", name.lower())
@@ -61,13 +62,13 @@ class DnD_DB_Scrapper():
         """Check to see if its an ACTUAL PAGE"""
         try:
             page = http.request('GET', info_page)
-        except urllib3.exceptions.HTTPError as e:
+        except urllib3.exceptions.HTTPError:
             return "Monster Not Found"
 
         soup = BeautifulSoup(page.data, 'lxml')
         main_content = soup.find('div', {'role': 'main'})
         if main_content is not None:
-            if textOrSoup == 0:
+            if textOrSoup is not False:
                 return self.breakTextByLength(main_content.text)
             else:
                 return main_content
@@ -85,7 +86,7 @@ class DnD_DB_Scrapper():
         """Check to see if its an ACTUAL PAGE"""
         try:
             page = http.request('GET', info_page)
-        except urllib3.exceptions.HTTPError as e:
+        except urllib3.exceptions.HTTPError:
             return "Monster Not Found"
 
         soup = BeautifulSoup(page.data, 'lxml')
@@ -106,7 +107,7 @@ class DnD_DB_Scrapper():
         """Check to see if its an ACTUAL PAGE"""
         try:
             page = http.request('GET', info_page)
-        except urllib3.exceptions.HTTPError as e:
+        except urllib3.exceptions.HTTPError:
             return "Race Not Found"
 
         soup = BeautifulSoup(page.data, 'lxml')
@@ -127,7 +128,7 @@ class DnD_DB_Scrapper():
         """Check to see if its an ACTUAL PAGE"""
         try:
             page = http.request('GET', info_page)
-        except urllib3.exceptions.HTTPError as e:
+        except urllib3.exceptions.HTTPError:
             return "Spell Not Found"
 
         soup = BeautifulSoup(page.data, 'lxml')
@@ -149,7 +150,7 @@ class DnD_DB_Scrapper():
         """Check to see if its an ACTUAL PAGE"""
         try:
             page = http.request('GET', info_page)
-        except urllib3.exceptions.HTTPError as e:
+        except urllib3.exceptions.HTTPError:
             return "Class Not Found"
 
         soup = BeautifulSoup(page.data, 'lxml')
@@ -159,8 +160,8 @@ class DnD_DB_Scrapper():
             if specifier == "":
                 return self.breakTextByLength(main_content.text)
             elif specifier == "basic feats":
-                basic_feat_start_point = headers.find("h2", {'id': 'class-features'})
-                return self.getInformationUntilNextHR(self, nextNode)
+                # basic_feat_start_point = headers.find("h2", {'id': 'class-features'})
+                return self.getInformationUntilNextHR(self, headers)  # nextNode)
             else:
                 for header in headers:
                     if header is not None:
@@ -222,7 +223,7 @@ class DnD_DB_Scrapper():
                     info = info + self.breakTextByLength(str(nextNode))
         print(info)
         print("Skr")
-        bs = BeautifulSoup(info, features="lxml")
+        # bs = BeautifulSoup(info, features="lxml")
 
     def getInformationUntilNextHR(self, nextNode):
         info = ""
@@ -357,7 +358,7 @@ class DnD_DB_Scrapper():
     """
     titlize method
     Gives a text title format
-    most words are capitalized, simply words like -> is,of,in,a,an,the, etc are not
+    most words are capitalized, simple words like -> is,of,in,a,an,the, etc are not
     """
 
     def titlize(self, text):
@@ -372,11 +373,14 @@ class DnD_DB_Scrapper():
         return ' '.join(map(str, returnString))
 
 
-dd = DnD_DB_Scrapper()
+"""
+dd = DB_Scraper()
 inp = []
-inp.append(input("Item,Monster,Spell,Class,Or Race?"))
-inp.append(input("what are you searching for?"))
-inp.append(input("other?"))
+inp.append(input("Item,Monster,Spell,Class,Or Race? "))
+inp.append(input("Name of your search: "))
+inp.append(input("specifier (leave blank for none): "))
 
 soup = dd.searchDnDWebsite(inp)
+
 print(soup)
+"""

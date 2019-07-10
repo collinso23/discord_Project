@@ -1,20 +1,10 @@
-import os
-import sys
-
-current_path = os.path.abspath('.')
-
-parent_path = os.path.dirname(current_path)
-
-sys.path.append(parent_path)
-
 from bs4 import BeautifulSoup
 import re
 from inqBot.characters import monsters as mon
 from inqBot.utils import srdDB_Scraper as dnds
-import json
 
 
-class MonsterGenerator(object):
+class MonsterGenerator():
 
     def __init__(self, soup=None):
         self.soup = soup
@@ -24,8 +14,8 @@ class MonsterGenerator(object):
     """
 
     def generate_from_soup(self, soup=None):
-        scrapper = dnds.DnD_DB_Scrapper()
-        main_header = soup.find_all("h1")[0]
+        scrapper = dnds.DB_Scraper()
+        main_header = soup.find_all('h1')[0]
         table = soup.find_all('table')[0]
 
         """Gets information such as ac, hp, speed,senses,languages, and features"""
@@ -51,8 +41,8 @@ class MonsterGenerator(object):
         monster_reactions_soup = BeautifulSoup(monster_reactions, features="lxml")
         monster_description_soup = BeautifulSoup(monster_description, features="lxml")
 
-        monster = self.createMonster(main_header, general_information_soup, table,
-                                     monster_actions_soup, monster_reactions_soup, monster_description_soup)
+        monster = self.createMonster(main_header, general_information_soup, table, monster_description_soup,
+                                     monster_actions_soup, monster_reactions_soup)
         monster.printInformation()
 
     """
@@ -60,9 +50,9 @@ class MonsterGenerator(object):
     creates a monster class containing the information extracted from page
     """
 
-    def createMonster(self, name, general_information, table_information, actions, reactions, description):
+    def createMonster(self, name, general_information, table_information, description, actions, reactions):
         monster = mon.Monster()
-        scrapper = dnds.DnD_DB_Scrapper()
+        scrapper = dnds.DB_Scraper()
         monster.name = name.text
 
         """Extracts proper information from hp info scrapped from database"""
@@ -168,8 +158,8 @@ class MonsterGenerator(object):
         return monster
 
 
-dd = dnds.DnD_DB_Scrapper()
+dd = dnds.DB_Scraper()
 nameOfMonster = input("What is the name of the monster?")
-soup = dd.getMonsterInformation(nameOfMonster, 1)
+soup = dd.getMonsterInformation(nameOfMonster, True)
 mg = MonsterGenerator()
 mg.generate_from_soup(soup)

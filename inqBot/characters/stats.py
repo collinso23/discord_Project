@@ -70,7 +70,7 @@ class Abilities():
     def __get__(self, superplayer, Character):
         self._check_dict(superplayer)
         score = superplayer._ability_scores[self.ability_name]
-        modifier = math.floor((score - 10)/2)
+        modifier = math.floor((score - 10) / 2)
         saving_throw = modifier
         if self.ability_name is not None and hasattr(superplayer, 'saving_throw_proficiencies'):
             is_proficient = (
