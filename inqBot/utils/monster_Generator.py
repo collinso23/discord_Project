@@ -30,7 +30,13 @@ handler.setFormatter(formatter)
 # add the handlers to the logger
 logger.addHandler(handler)
 """
+<<<<<<< HEAD
 __doc__ = "A module for generating monsters scraped from 5esdf"
+=======
+
+
+logger.debug('Importing...\n')
+>>>>>>> c69fd0891233d5ccbe01dce4f5ba812b4f05ee22
 
 
 class MonsterGenerator(object):
