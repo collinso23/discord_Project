@@ -11,16 +11,19 @@ LEVEL_COLORS = {
     logging.WARNING: Color.gold(),
     logging.INFO: Color.blurple()
 }
+
+
 class DiscordHandler(logging.Handler):
     """
     Implement logging.Handler methods to send logs to discord channel
     """
-    def __init__(self,bot: commands.Bot, *args, **kwargs):
-        super().__init__(*args,**kwargs)
+
+    def __init__(self, bot: commands.Bot, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self.client = bot
         self.log_channel = self.client.get_channel(constants.LOG_CHANNEL)
 
-    def _level_to_color(self,level_number:int):
+    def _level_to_color(self, level_number: int):
         return LEVEL_COLORS.get(level_number)
 
     def emit(self, record):
