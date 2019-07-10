@@ -10,13 +10,14 @@ import constants
 """
 Scrapes from the offical Dnd Page
 """
+
+
 class DnDScraper():
 
     """Constructor
     """
     def __init__(self):
         self.HEADERS = constants.HEADERS #{'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36'}
-
 
     """
     param: url
