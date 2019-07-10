@@ -41,5 +41,5 @@ if __name__ == "__main__":
                   bot.load_extension(f"cogs.{name}")
       except Exception as err:
           exc = '{}: {}'.format(type(err).__name__, err)
-          print('Failed to load extension {}\n{}'.format(extension, exc))
+          print('Failed to load extension {}\n{}'.format(exc)
 bot.run(constants.BOT_TOKEN)

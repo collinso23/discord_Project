@@ -1,6 +1,19 @@
+
+
+import re
+import textwrap
+from bs4 import BeautifulSoup, SoupStrainer, Tag
+import requests
+import lxml
+import urllib3
+from nltk import tokenize
+from characters import monsters
+import DnD_DB_Scrapper as dnds
 import os
 import sys
 import logging
+
+"""
 #'/home/user/example/parent/child'
 CURRENT_PATH = os.path.abspath('.')
 
@@ -8,23 +21,14 @@ CURRENT_PATH = os.path.abspath('.')
 PARENT_PATH = os.path.dirname(CURRENT_PATH)
 
 sys.path.append(PARENT_PATH)
-
+"""
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 #import constants
-handler = logging.FileHandler('util_logs/monster_Generation_debug.log')
+handler = logging.FileHandler('./monster_Generation_debug.log')
 handler.setLevel(logging.DEBUG)
 
-import DnD_DB_Scrapper as dnds
-from characters import monsters as m
 logger.debug('Importing...')
-from nltk import tokenize
-import textwrap
-import urllib3
-import re
-import lxml
-import requests
-from bs4 import BeautifulSoup, SoupStrainer, Tag
 #import constants
 
 
@@ -35,6 +39,7 @@ handler.setFormatter(formatter)
 
 # add the handlers to the logger
 logger.addHandler(handler)
+__doc__ = "A module for generating monsters scraped from 5esdf"
 
 
 class MonsterGenerator(object):

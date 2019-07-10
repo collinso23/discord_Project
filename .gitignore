@@ -11,3 +11,7 @@ Scripts/
 Lib/
 pyvenv.cfg
 .idea
+bin/
+lib/
+lib64/
+include/
