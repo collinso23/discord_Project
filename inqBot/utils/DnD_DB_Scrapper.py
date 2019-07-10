@@ -54,7 +54,13 @@ class DnD_DB_Scrapper(object):
 
         """Go to proper page"""
         url = "https://www.5thsrd.org/gamemaster_rules/monsters/"
+        name = re.sub(',','',name)
+        name = re.sub('\'','',name)
+        name = re.sub('/','',name)
+        name = re.sub(r'(?<!:)[()]','',name)
         name = re.sub('[^\w]', "_",name.lower())
+
+
         info_page = url + name + "/"
 
         http =  urllib3.PoolManager()
@@ -376,7 +382,7 @@ class DnD_DB_Scrapper(object):
                 returnString.append(w)
         return ' '.join(map(str, returnString))
 
-
+"""
 dd = DnD_DB_Scrapper()
 inp = []
 inp.append(input("Item,Monster,Spell,Class,Or Race?"))
@@ -385,3 +391,4 @@ inp.append(input("other?"))
 
 soup = dd.searchDnDWebsite(inp)
 print(soup)
+"""

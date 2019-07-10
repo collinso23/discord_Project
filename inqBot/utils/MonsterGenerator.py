@@ -21,15 +21,31 @@ import DnD_DB_Scrapper as dnds
 from characters import stats as s
 import json
 
+def convert_to_float(frac_str):
+    try:
+        return float(frac_str)
+    except ValueError:
+        num, denom = frac_str.split('/')
+        try:
+            leading, num = num.split(' ')
+            whole = float(leading)
+        except ValueError:
+            whole = 0
+        frac = float(num) / float(denom)
+        return whole - frac if whole < 0 else whole + frac
 class MonsterGenerator(object):
 
     def __init__(self,soup=None):
         self.soup = soup
 
+
+
+
     """Given the main information of a monster page in the
     DnD database, this will generate that specific monster
     """
     def generate_from_soup(self,soup=None):
+
         scrapper = dnds.DnD_DB_Scrapper()
         main_header = soup.find_all("h1")[0]
         table = soup.find_all('table')[0]
@@ -60,10 +76,10 @@ class MonsterGenerator(object):
 
         monster = self.createMonster(main_header,general_information_soup,table,monster_actions_soup
         ,monster_reactions_soup,monster_description_soup)
-        monster.printInformation()
-
-
-
+        monster_json = monster.toJSON()
+        """monster_file_name = monster.name + ".txt"
+        with open(monster_file_name,'w') as f:
+            f.write(monster_json)"""
 
     """
     createMonster function
@@ -136,7 +152,7 @@ class MonsterGenerator(object):
                     elif strong.text == "Languages":
                         monster.languages = strong.nextSibling
                     elif strong.text == "Challenge":
-                        monster.challenge_rating = int(strong.nextSibling.split()[0])
+                        monster.challenge_rating = convert_to_float(strong.nextSibling.split()[0])
                     elif strong.text == "Saving Throws":
                         monster.saving_throws = strong.nextSibling.lstrip()
             elif counter == 3:
@@ -158,11 +174,11 @@ class MonsterGenerator(object):
             monster.actions.update({all_actions[action].text:action_description_soup.text.strip()})
 
         """Adds the last actions"""
-        last_action = all_actions[-1]
-        last_action_description_soup = BeautifulSoup(scrapper.getAllInformationFromTag(last_action),features="lxml")
-        last_action_description = last_action_description_soup.text
-
-        monster.actions.update({last_action.text:last_action_description.strip()})
+        if all_actions:
+            last_action = all_actions[-1]
+            last_action_description_soup = BeautifulSoup(scrapper.getAllInformationFromTag(last_action),features="lxml")
+            last_action_description = last_action_description_soup.text
+            monster.actions.update({last_action.text:last_action_description.strip()})
         """Sets Reactions of Monster"""
         if reactions is not None:
             for strong in reactions.find_all("strong"):
@@ -170,10 +186,30 @@ class MonsterGenerator(object):
 
         """Adds to description if there is description header"""
         monster.description = monster.description + "\n" + description.text.strip()
+        print(monster.name)
         return monster
+
+    """using the monster by CR page on the 5thsrd.org website,
+    this function generates json files for all monsters based by CR.
+    if user just wants all the monsters generated, then they input "all"
+    """
+    def automateMonsterCreation(self,which_cr = "all"):
+        scrapper = dnds.DnD_DB_Scrapper()
+        soup = scrapper.getEntireHTMLPage("https://www.5thsrd.org/gamemaster_rules/monster_indexes/monsters_by_cr/#monsters-by-cr")
+        main_content = soup.find("div",{"class":"col-md-9"})
+        if which_cr == "all":
+            all_monsters = main_content.find_all("a")
+        else:
+            all_monsters = main_content.find("h2",{"id":which_cr}).next_sibling.next_sibling.find_all("a")
+            #print(all_monsters)
+        #print(all_monsters.prettify())
+        for monster in all_monsters:
+            monster_soup = scrapper.getMonsterInformation(monster.text,1)
+            self.generate_from_soup(monster_soup)
 
 dd = dnds.DnD_DB_Scrapper()
 nameOfMonster = input("What is the name of the monster?")
 soup = dd.getMonsterInformation(nameOfMonster,1)
 mg = MonsterGenerator()
-mg.generate_from_soup(soup)
+mg.automateMonsterCreation("all")
+#mg.generate_from_soup(soup)

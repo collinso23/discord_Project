@@ -110,3 +110,12 @@ class Monster(object):
         print("Reactions:\n")
         print(json.dumps(self.reactions,indent = 4))
         print("-----------------------------------------\n")
+
+    """https://stackoverflow.com/questions/3768895/how-to-make-a-class-json-serializable"""
+    def toJSON(self):
+        monster_file_name = os.path.join(current_path,"monsters",self.name + ".json")
+        try:
+            with open(monster_file_name,'w') as f:
+                f.write(json.dumps(self, default=lambda o: o.__dict__, sort_keys=True,indent=4))
+        except:
+            print("failed to create file for: " + self.name)
