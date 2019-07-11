@@ -1,43 +1,41 @@
 """Tools for describing a player character."""
 __all__ = ('Character',)
 
-import importlib.util
-import os
 import re
-import subprocess
+import os
 import warnings
-
+import importlib.util
 import jinja2
+import subprocess
 
-from . import (armor, background, classes, exceptions, features, magic_items,
-               race, spells, stats, weapons)
-from .armor import Armor, NoArmor, NoShield, Shield
+from .stats import Abilities, Skill, findattr, ArmorClass, Speed, Initiative
 from .dice import read_dice_str
-from .stats import Abilities, ArmorClass, Initiative, Skill, Speed, findattr
+from . import (armor, background, exceptions, magic_items,
+                race, spells, stats, weapons, features, classes)
 from .weapons import Weapon
+from .armor import Armor, NoArmor, Shield, NoShield
 
 
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
-
 __version__ = read('../VERSION').strip()
 
 dice_re = re.compile('(\d+)d(\d+)')
 
-__all__ = ('Wizard',)
+__all__=('Wizard',)
 
 multiclass_spellslots_by_level = {
     # char_lvl: (cantrips, 1st, 2nd, 3rd, ...)
-    1: (0, 2, 0, 0, 0, 0, 0, 0, 0, 0),
-    2: (0, 3, 0, 0, 0, 0, 0, 0, 0, 0),
-    3: (0, 4, 2, 0, 0, 0, 0, 0, 0, 0),
-    4: (0, 4, 3, 0, 0, 0, 0, 0, 0, 0),
-    5: (0, 4, 3, 2, 0, 0, 0, 0, 0, 0),
-    6: (0, 4, 3, 3, 0, 0, 0, 0, 0, 0),
-    7: (0, 4, 3, 3, 1, 0, 0, 0, 0, 0),
-    8: (0, 4, 3, 3, 2, 0, 0, 0, 0, 0),
-    9: (0, 4, 3, 3, 3, 1, 0, 0, 0, 0),
+    1:  (0, 2, 0, 0, 0, 0, 0, 0, 0, 0),
+    2:  (0, 3, 0, 0, 0, 0, 0, 0, 0, 0),
+    3:  (0, 4, 2, 0, 0, 0, 0, 0, 0, 0),
+    4:  (0, 4, 3, 0, 0, 0, 0, 0, 0, 0),
+    5:  (0, 4, 3, 2, 0, 0, 0, 0, 0, 0),
+    6:  (0, 4, 3, 3, 0, 0, 0, 0, 0, 0),
+    7:  (0, 4, 3, 3, 1, 0, 0, 0, 0, 0),
+    8:  (0, 4, 3, 3, 2, 0, 0, 0, 0, 0),
+    9:  (0, 4, 3, 3, 3, 1, 0, 0, 0, 0),
     10: (0, 4, 3, 3, 3, 2, 0, 0, 0, 0),
     11: (0, 4, 3, 3, 3, 2, 1, 0, 0, 0),
     12: (0, 4, 3, 3, 3, 2, 1, 0, 0, 0),
@@ -51,8 +49,7 @@ multiclass_spellslots_by_level = {
     20: (0, 4, 3, 3, 3, 3, 2, 2, 1, 1),
 }
 
-
-class Character():
+class Character( ):
     """for defining what a character is to the bot"""
     inqGen_version = __version__
     name = ""
@@ -134,12 +131,12 @@ class Character():
     custom_features = list()
     feature_choices = list()
 
-    def __init__(self, **attrs):
+    def __init__(self,**attrs):
         """Take a variable number of attriubutes and pass them to set_attrs function"""
         self.clear()
-        my_classes = attrs.pop('classes', [])
-        my_levels = attrs.pop('levels', [])
-        my_subclasses = attrs.pop('subclasses', [])
+        my_classes = attrs.pop('classes',[])
+        my_levels = attrs.pop('levels',[])
+        my_subclasses = attrs.pop('subclasses',[])
         if (len(my_classes) == 0):
             if ('class' in attrs):
                 my_classes = [attrs.pop('class')]
@@ -158,7 +155,6 @@ class Character():
         self.background = attrs.pop('background', None)
         # parse all other attributes
         self.set_attrs(**attrs)
-
     def clear(self):
         # reset class-definied items
         self.class_list = list()
@@ -179,7 +175,6 @@ class Character():
             ## TODO: Decipher how to call information from dnd scraper
             ## Might create one class, race, class and store for testing purpose of the classes.
     """
-
     def add_class(self, cls: (classes.CharClass, type, str), level: (int, str),
                   subclass=None, feature_choices=[]):
         if isinstance(cls, str):
@@ -202,11 +197,11 @@ class Character():
         if isinstance(levels, int) or isinstance(levels, float) or isinstance(levels, str):
             levels = [levels]
         if len(levels) == 0:
-            levels = [1] * len(classes_list)
+            levels = [1]*len(classes_list)
         if isinstance(subclasses, str):
             subclasses = [subclasses]
         if len(subclasses) == 0:
-            subclasses = [None] * len(classes_list)
+            subclasses = [None]*len(classes_list)
         assert len(classes_list) == len(levels), (
             'the length of classes {:d} does not match length of '
             'levels {:d}'.format(len(classes), len(levels)))
@@ -338,7 +333,7 @@ class Character():
             fts |= set(getattr(self.race, 'features', ()))
             # some races have level-based features (Ex: Aasimar)
             if hasattr(self.race, 'features_by_level'):
-                for lvl in range(1, self.level + 1):
+                for lvl in range(1, self.level+1):
                     fts |= set(self.race.features_by_level[lvl])
         if self.background is not None:
             fts |= set(getattr(self.background, 'features', ()))
@@ -370,6 +365,7 @@ class Character():
     @property
     def is_spellcaster(self):
         return (len(self.spellcasting_classes) > 0)
+
 
     def spell_slots(self, spell_level):
         if len(self.spellcasting_classes) == 1:
@@ -415,6 +411,7 @@ class Character():
         if self.race is not None:
             spells |= set(self.race.spells_prepared)
         return sorted(tuple(spells), key=(lambda x: (x.name)))
+
 
     def spell_save_dc(self, class_type):
         ability_mod = getattr(self, class_type.spellcasting_ability).modifier
@@ -481,7 +478,7 @@ class Character():
     @property
     def magic_items_text(self):
         s = ', '.join([f.name + ("**" if f.needs_implementation else "")
-                       for f in sorted(self.magic_items, key=(lambda x: x.name))])
+                        for f in sorted(self.magic_items, key=(lambda x: x.name))])
         if s:
             s += ', '
         return s
@@ -604,13 +601,12 @@ class Character():
             if hasattr(self, 'Druid'):
                 self.Druid.wild_shapes = new_shapes
     """
-
     def set_attrs(self, **attrs):
         """Bulk setting of attributes. Useful for loading a character from a
         dictionary."""
         for attr, val in attrs.items():
             if attr == 'inqGen_version':
-                pass  # Maybe we'll verify this later?
+                pass # Maybe we'll verify this later?
             elif attr == 'weapons':
                 if isinstance(val, str):
                     val = [val]
@@ -636,7 +632,7 @@ class Character():
                 self.wear_armor(val)
             elif attr == 'shield':
                 self.wield_shield(val)
-            # elif attr == 'circle':
+            #elif attr == 'circle':
             #    if hasattr(self, 'Druid'):
             #        self.Druid.circle = val
             elif attr == 'features':
@@ -685,10 +681,10 @@ class Character():
                 setattr(self, attr, val)
 
     @classmethod
-    def load(cls, character_file):
-        # creates a character from the chracter definition
+    def load(cls,character_file):
+        #creates a character from the chracter definition
         char_props = read_character_file(character_file)
-        classes - char_props.get('classes', [])
+        classes - char_props.get('classes',[])
         # backwards compatability
         if (len(classes) == 0) and ('character_class' in char_props):
             char_props['classes'] = [char_props.pop('character_class').lower().capitalize()]
@@ -717,7 +713,6 @@ class Character():
             filename = filename.replace('pdf', 'py')
         make_sheet(filename, character=self,
                    flatten=kwargs.get('flatten', True))
-
 
 def read_character_file(filename):
     """Create a character object from the given definition file.
@@ -760,11 +755,8 @@ def read_character_file(filename):
             char_props[prop_name] = getattr(module, prop_name)
     return char_props
 
-
-"""
 class Wizard(Character):
     def __init__(self, level=1, **attrs):
         attrs['classes'] = ['Wizard']
         attrs['levels'] = [level]
         super().__init__(**attrs)
-"""
