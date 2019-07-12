@@ -1,5 +1,6 @@
 import re
 import textwrap
+
 import requests
 import urllib3
 from bs4 import BeautifulSoup, Tag
@@ -8,7 +9,6 @@ import inqBot.constants as _constants
 
 
 class DB_Scraper():
-
     """
     Constructor
     """
@@ -49,7 +49,8 @@ class DB_Scraper():
         return rstring
 
     def searchDnDWebsite(self, input_list):
-        return self.searchDNDWebsite(input_list[0], input_list[1], input_list[2])
+        return self.searchDNDWebsite(input_list[0], input_list[1],
+                                     input_list[2])
 
     def getMonsterInformation(self, name, textOrSoup=False):
         """Go to proper page"""
@@ -58,7 +59,6 @@ class DB_Scraper():
         info_page = url + name + "/"
 
         http = urllib3.PoolManager()
-
         """Check to see if its an ACTUAL PAGE"""
         try:
             page = http.request('GET', info_page)
@@ -82,7 +82,6 @@ class DB_Scraper():
         info_page = url + name + "/"
 
         http = urllib3.PoolManager()
-
         """Check to see if its an ACTUAL PAGE"""
         try:
             page = http.request('GET', info_page)
@@ -103,7 +102,6 @@ class DB_Scraper():
         info_page = url + name + "/"
 
         http = urllib3.PoolManager()
-
         """Check to see if its an ACTUAL PAGE"""
         try:
             page = http.request('GET', info_page)
@@ -124,7 +122,6 @@ class DB_Scraper():
         info_page = url + name + "/"
 
         http = urllib3.PoolManager()
-
         """Check to see if its an ACTUAL PAGE"""
         try:
             page = http.request('GET', info_page)
@@ -146,7 +143,6 @@ class DB_Scraper():
         specifier = self.titlize(specifier)
         info = ""
         http = urllib3.PoolManager()
-
         """Check to see if its an ACTUAL PAGE"""
         try:
             page = http.request('GET', info_page)
@@ -161,7 +157,8 @@ class DB_Scraper():
                 return self.breakTextByLength(main_content.text)
             elif specifier == "basic feats":
                 # basic_feat_start_point = headers.find("h2", {'id': 'class-features'})
-                return self.getInformationUntilNextHR(self, headers)  # nextNode)
+                return self.getInformationUntilNextHR(self,
+                                                      headers)  # nextNode)
             else:
                 for header in headers:
                     if header is not None:
@@ -169,15 +166,20 @@ class DB_Scraper():
                             nextNode = header
                             original_header_tag = nextNode.name
                             if original_header_tag == "span":
-                                info = self.getInformationUntilNextSpan(nextNode) + "\n"
+                                info = self.getInformationUntilNextSpan(
+                                    nextNode) + "\n"
                             elif original_header_tag == "h1":
-                                info = self.getInformationUntilNextH1(nextNode) + "\n"
+                                info = self.getInformationUntilNextH1(
+                                    nextNode) + "\n"
                             elif original_header_tag == "h2":
-                                info = self.getInformationUntilNextH2(nextNode) + "\n"
+                                info = self.getInformationUntilNextH2(
+                                    nextNode) + "\n"
                             elif original_header_tag == "h3":
-                                info = self.getInformationUntilNextH3(nextNode) + "\n"
+                                info = self.getInformationUntilNextH3(
+                                    nextNode) + "\n"
                             elif original_header_tag == "h4":
-                                info = self.getInformationUntilNextH4(nextNode) + "\n"
+                                info = self.getInformationUntilNextH4(
+                                    nextNode) + "\n"
                             break
                 return info
         else:
@@ -202,6 +204,7 @@ class DB_Scraper():
             else:
                 info = info + self.breakTextByLength(str(nextNode))
         return info
+
     """
     These next couple of functions are very general. Basically, given a starting node, they
     will pull out all information found in p tags until reached a specified tag
@@ -295,7 +298,8 @@ class DB_Scraper():
                     if nextNode.name in stopAt:
                         break
                     else:
-                        info = info + self.breakTextByLength(str(nextNode)) + "\n"
+                        info = info + self.breakTextByLength(
+                            str(nextNode)) + "\n"
         return info
 
     def getInformationUntilNextTable(self, nextNode):
@@ -363,7 +367,9 @@ class DB_Scraper():
 
     def titlize(self, text):
         splitText = text.split()
-        specialCaseWords = ["from", "so", "is", "of", "in", "a", "an", "the", "but", "for"]
+        specialCaseWords = [
+            "from", "so", "is", "of", "in", "a", "an", "the", "but", "for"
+        ]
         returnString = []
         for w in splitText:
             if w not in specialCaseWords:
@@ -381,6 +387,5 @@ inp.append(input("Name of your search: "))
 inp.append(input("specifier (leave blank for none): "))
 
 soup = dd.searchDnDWebsite(inp)
-
-print(soup)
 """
+# print(soup)

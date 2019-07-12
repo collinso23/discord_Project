@@ -1,11 +1,27 @@
-from bs4 import BeautifulSoup
 import re
+
+from bs4 import BeautifulSoup
+
 from inqBot.characters import monsters as mon
 from inqBot.utils import srdDB_Scraper as dnds
 
 
-class MonsterGenerator():
+def convert_to_float(frac_str):
+    try:
+        return float(frac_str)
+    except ValueError:
+        num, denom = frac_str.split('/')
+        try:
+            leading, num = num.split(' ')
+            whole = float(leading)
+        except ValueError:
+            whole = 0
+        frac = float(num) / float(denom)
 
+        return whole - frac if whole < 0 else whole + frac
+
+
+class MonsterGenerator():
     def __init__(self, soup=None):
         self.soup = soup
 
@@ -13,48 +29,59 @@ class MonsterGenerator():
     DnD database, this will generate that specific monster
     """
 
-    def generate_from_soup(self, soup=None):
+    def generate_from_soup(self, soup):
         scrapper = dnds.DB_Scraper()
         main_header = soup.find_all('h1')[0]
         table = soup.find_all('table')[0]
-
         """Gets information such as ac, hp, speed,senses,languages, and features"""
-        general_information_p1 = scrapper.getInformationUntilNextTable(main_header)
+        general_information_p1 = scrapper.getInformationUntilNextTable(
+            main_header)
         general_information_p2 = scrapper.getInformationUntilNextH3(table)
         general_information = general_information_p1 + general_information_p2
 
         # print(general_information)
-
         """Gets actions of monster"""
         actions_header = soup.find('h3', {'id': 'actions'})
         monster_actions = scrapper.getInformationUntilNextH3(actions_header)
         """Gets Reactions of monster"""
         reactions_header = soup.find('h3', {'id': 'reactions'})
-        monster_reactions = scrapper.getInformationUntilNextH3(reactions_header)
+        monster_reactions = scrapper.getInformationUntilNextH3(
+            reactions_header)
         """Gets Description of monster"""
         description_header = soup.find('h3', {'id': 'description'})
-        monster_description = scrapper.getInformationUntilNextH3(description_header)
-
+        monster_description = scrapper.getInformationUntilNextH3(
+            description_header)
         """creates soups of the general information, monster actions, reactions, and description"""
-        general_information_soup = BeautifulSoup(general_information, features="lxml")
+        general_information_soup = BeautifulSoup(general_information,
+                                                 features="lxml")
         monster_actions_soup = BeautifulSoup(monster_actions, features="lxml")
-        monster_reactions_soup = BeautifulSoup(monster_reactions, features="lxml")
-        monster_description_soup = BeautifulSoup(monster_description, features="lxml")
+        monster_reactions_soup = BeautifulSoup(monster_reactions,
+                                               features="lxml")
+        monster_description_soup = BeautifulSoup(monster_description,
+                                                 features="lxml")
 
-        monster = self.createMonster(main_header, general_information_soup, table, monster_description_soup,
-                                     monster_actions_soup, monster_reactions_soup)
+        monster = self.createMonster(main_header, general_information_soup,
+                                     table, monster_description_soup,
+                                     monster_actions_soup,
+                                     monster_reactions_soup)
         monster.printInformation()
+        monster_json = monster.toJSON()
+        """
+
+        monster_file_name = monster.name + ".txt"
+        with open(monster_file_name,'w') as f:
+            f.write(monster_json)"""
 
     """
     createMonster function
     creates a monster class containing the information extracted from page
     """
 
-    def createMonster(self, name, general_information, table_information, description, actions, reactions):
+    def createMonster(self, name, general_information, table_information,
+                      description, actions, reactions):
         monster = mon.Monster()
         scrapper = dnds.DB_Scraper()
         monster.name = name.text
-
         """Extracts proper information from hp info scrapped from database"""
 
         def extractHPInformation(hp_info):
@@ -100,13 +127,16 @@ class MonsterGenerator():
             elif counter == 1:
                 for strong in p.find_all("strong"):
                     if strong.text == "Armor Class":
-                        monster.armor_class = int(strong.nextSibling.split()[0])
+                        monster.armor_class = int(
+                            strong.nextSibling.split()[0])
                     elif strong.text == "Hit Points":
-                        hp_information = extractHPInformation(strong.nextSibling)
+                        hp_information = extractHPInformation(
+                            strong.nextSibling)
                         monster.hp_max = int(hp_information[0])
                         monster.hit_dice = hp_information[1]
                     elif strong.text == "Speed":
-                        speed_information = extractSpeedInformation(strong.nextSibling)
+                        speed_information = extractSpeedInformation(
+                            strong.nextSibling)
                         monster.speed = speed_information["speed"]
                         monster.swim_speed = speed_information["swim"]
                         monster.fly_speed = speed_information["fly"]
@@ -119,7 +149,8 @@ class MonsterGenerator():
                     elif strong.text == "Languages":
                         monster.languages = strong.nextSibling
                     elif strong.text == "Challenge":
-                        monster.challenge_rating = int(strong.nextSibling.split()[0])
+                        monster.challenge_rating = convert_to_float(
+                            strong.nextSibling.split()[0])
                     elif strong.text == "Saving Throws":
                         monster.saving_throws = strong.nextSibling.lstrip()
             elif counter == 3:
@@ -127,7 +158,6 @@ class MonsterGenerator():
                     monster.features.update({strong.text: strong.nextSibling})
 
             counter += 1
-
         """This section extracts the information from the table and puts the
         ability information to the monster"""
         ability_scores = extractAbilityInformation(table_information)
@@ -138,28 +168,61 @@ class MonsterGenerator():
         for action in range(len(all_actions) - 1):
             action_description = scrapper.getInformationBetweenTwoTags(
                 all_actions[action], all_actions[action + 1])
-            action_description_soup = BeautifulSoup(action_description, features="lxml")
-            monster.actions.update({all_actions[action].text: action_description_soup.text.strip()})
-
+            action_description_soup = BeautifulSoup(action_description,
+                                                    features="lxml")
+            monster.actions.update({
+                all_actions[action].text:
+                action_description_soup.text.strip()
+            })
         """Adds the last actions"""
-        last_action = all_actions[-1]
-        last_action_description_soup = BeautifulSoup(
-            scrapper.getAllInformationFromTag(last_action), features="lxml")
+        if all_actions:
+            last_action = all_actions[-1]
+            last_action_description_soup = BeautifulSoup(
+                scrapper.getAllInformationFromTag(last_action),
+                features="lxml")
         last_action_description = last_action_description_soup.text
 
-        monster.actions.update({last_action.text: last_action_description.strip()})
+        monster.actions.update(
+            {last_action.text: last_action_description.strip()})
         """Sets Reactions of Monster"""
         if reactions is not None:
             for strong in reactions.find_all("strong"):
-                monster.reactions.update({strong.text: strong.nextSibling.strip()})
-
+                monster.reactions.update(
+                    {strong.text: strong.nextSibling.strip()})
         """Adds to description if there is description header"""
-        monster.description = monster.description + "\n" + description.text.strip()
+        monster.description = monster.description + "\n" + description.text.strip(
+        )
+        print(monster.name)
         return monster
+
+    """using the monster by CR page on the 5thsrd.org website,
+    this function generates json files for all monsters based by CR.
+    if user just wants all the monsters generated, then they input "all"
+    """
+
+    def automateMonsterCreation(self, which_cr="all"):
+        scrapper = dnds.DB_Scraper()
+        soup = scrapper.getEntireHTMLPage(
+            "https://www.5thsrd.org/gamemaster_rules/monster_indexes/monsters_by_cr/#monsters-by-cr"
+        )
+        main_content = soup.find("div", {"class": "col-md-9"})
+        if which_cr == "all":
+            all_monsters = main_content.find_all("a")
+        else:
+            all_monsters = main_content.find("h2", {
+                "id": which_cr
+            }).next_sibling.next_sibling.find_all("a")
+            # print(all_monsters)
+        # print(all_monsters.prettify())
+        for monster in all_monsters:
+            monster_soup = scrapper.getMonsterInformation(monster.text, 1)
+            self.generate_from_soup(monster_soup)
 
 
 dd = dnds.DB_Scraper()
 nameOfMonster = input("What is the name of the monster?")
 soup = dd.getMonsterInformation(nameOfMonster, True)
 mg = MonsterGenerator()
-mg.generate_from_soup(soup)
+mg_soup = soup
+#mg.automateMonsterCreation("2")
+mg.generate_from_soup(mg_soup)
