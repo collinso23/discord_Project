@@ -15,13 +15,13 @@ class RaceGenerator():
     information and fill race object"""
 
     def generate_from_page(self, _race_name):
-        scrapper = dnds.DB_Scraper()
+        scraper = dnds.DB_Scraper()
         soup = self.get_race_page(_race_name)
         sub_header = soup.find_all('h1')[0]
         sub_table = soup.find_all('table')[0]
-        general_information_p1 = scrapper.getInformationUntilNextTable(
+        general_information_p1 = scraper.getInformationUntilNextTable(
             sub_header)
-        general_information_p2 = scrapper.getInformationUntilNextH3(sub_table)
+        general_information_p2 = scraper.getInformationUntilNextH3(sub_table)
         general_information = general_information_p1 + general_information_p2
 
         return f"{general_information}"

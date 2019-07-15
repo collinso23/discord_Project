@@ -379,7 +379,6 @@ class DB_Scraper():
         return ' '.join(map(str, returnString))
 
 
-"""
 dd = DB_Scraper()
 inp = []
 inp.append(input("Item,Monster,Spell,Class,Or Race? "))
@@ -387,5 +386,5 @@ inp.append(input("Name of your search: "))
 inp.append(input("specifier (leave blank for none): "))
 
 soup = dd.searchDnDWebsite(inp)
-"""
-# print(soup)
+
+print(soup)
