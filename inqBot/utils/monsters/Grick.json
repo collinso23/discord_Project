@@ -1,0 +1,48 @@
+{
+    "actions": {
+        "Beak.": "Melee Weapon Attack:\n +4 to hit, reach 5 ft., one target. \nHit:\n 5 (1d6 + 2) piercing damage.",
+        "Multiattack.": "The grick makes one attack with its tentacles. If that attack hits, the grick can make one beak attack against the\nsame target.",
+        "Tentacles.": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 9 (2d6 + 2) slashing damage."
+    },
+    "armor_class": 14,
+    "challenge_rating": 2.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Medium monstrosity, neutral\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Stone Camouflage.": " The grick has advantage on Dexterity (Stealth) checks made to hide in rocky terrain. "
+    },
+    "fly_speed": 0,
+    "hit_dice": "6d8",
+    "hp_max": 27,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " --  ",
+    "name": "Grick",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " darkvision 60 ft., passive Perception 12  ",
+    "skills": "Perception +3, Stealth +4",
+    "speed": 30,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

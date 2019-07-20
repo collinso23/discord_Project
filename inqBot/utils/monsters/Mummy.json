@@ -1,0 +1,46 @@
+{
+    "actions": {
+        "Dreadful Glare.": "The mummy targets one creature it can see within 60 feet of it. If the target can see the mummy, it must succeed on a\nDC 11 Wisdom saving throw against this magic or become frightened until the end of the mummy's next turn. If the target fails the saving throw by 5 or\nmore, it is also paralyzed for the same duration. A target that succeeds on the saving throw is immune to the Dreadful Glare of all mummies (but not\nmummy lords) for the next 24 hours.",
+        "Multiattack.": "The mummy can use its Dreadful Glare and makes one attack with its rotting fist.",
+        "Rotting Fist.": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 10 (2d6 + 3) bludgeoning damage plus 10\n(3d6) necrotic damage. If the target is a creature, it must succeed on a DC 12 Constitution saving throw or be cursed with mummy rot. The cursed\ntarget can't regain hit points, and its hit point maximum decreases by 10 (3d6) for every 24 hours that elapse. If the curse reduces the target's hit\npoint maximum to 0, the target dies, and its body turns to dust. The curse lasts until removed by the remove curse spell or other magic."
+    },
+    "armor_class": 11,
+    "challenge_rating": 3.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Medium undead, lawful evil\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {},
+    "fly_speed": 0,
+    "hit_dice": "9d8+18",
+    "hp_max": 58,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " the languages it knew in life  ",
+    "name": "Mummy",
+    "reactions": {},
+    "saving_throws": "Wis +2  ",
+    "senses": " darkvision 60 ft., passive Perception 10  ",
+    "skills": "Perception +3, Stealth +4",
+    "speed": 20,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

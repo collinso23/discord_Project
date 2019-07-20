@@ -1,0 +1,45 @@
+{
+    "actions": {
+        "Bite.": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 9 (1d10 + 4) piercing damage plus 3 (1d6)\nfire damage.",
+        "Fire Breath (Recharge 5\u20136).": "The dragon exhales fire in a 15-foot cone. Each creature in that area must make a DC 13 Dexterity saving\nthrow, taking 24 (7d6) fire damage on a failed save, or half as much damage on a successful one."
+    },
+    "armor_class": 17,
+    "challenge_rating": 4.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Medium dragon, chaotic evil\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {},
+    "fly_speed": 60,
+    "hit_dice": "10d8+30",
+    "hp_max": 75,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " Draconic  ",
+    "name": "Red Dragon Wyrmling",
+    "reactions": {},
+    "saving_throws": "Dex +2, Con +5, Wis +2, Cha +4  ",
+    "senses": " blindsight 10 ft., darkvision 60 ft., passive Perception 14  ",
+    "skills": " Perception +4, Stealth +2  ",
+    "speed": 30,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

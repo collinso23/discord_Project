@@ -1,0 +1,45 @@
+{
+    "actions": {
+        "Bite.": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 8 (1d10 + 3) piercing damage plus 3 (1d6)\nlightning damage.",
+        "Lightning Breath (Recharge 5\u20136).": "The dragon exhales lightning in a 30-\u00adfoot line that is 5 feet wide. Each creature in that line must\nmake a DC 12 Dexterity saving throw, taking 22 (4d10) lightning damage on a failed save, or half as much damage on a successful one."
+    },
+    "armor_class": 17,
+    "challenge_rating": 3.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Medium dragon, lawful evil\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {},
+    "fly_speed": 60,
+    "hit_dice": "8d8+16",
+    "hp_max": 52,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " Draconic  ",
+    "name": "Blue Dragon Wyrmling",
+    "reactions": {},
+    "saving_throws": "Dex +2, Con +4, Wis +2, Cha +4  ",
+    "senses": " blindsight 10 ft., darkvision 60 ft., passive Perception 14  ",
+    "skills": " Perception +4, Stealth +2  ",
+    "speed": 30,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

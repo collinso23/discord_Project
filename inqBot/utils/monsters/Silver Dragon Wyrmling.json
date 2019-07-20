@@ -1,0 +1,47 @@
+{
+    "actions": {
+        "Bite.": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 9 (1d10 + 4) piercing damage.",
+        "Breath Weapons (Recharge 5\u20136).": "The dragon uses one of the following breath weapons.",
+        "Cold Breath.": "The dragon exhales an icy blast in a 15-foot cone. Each creature in that area must make a DC 13 Constitution saving\nthrow, taking 18 (4d8) cold damage on a failed save, or half as much damage on a successful one.",
+        "Paralyzing Breath.": "The dragon exhales paralyzing gas in a 15-foot cone. Each creature in that area must succeed on a DC 13\nConstitution saving throw or be paralyzed for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on\nitself on a success."
+    },
+    "armor_class": 17,
+    "challenge_rating": 2.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Medium dragon, lawful good\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {},
+    "fly_speed": 60,
+    "hit_dice": "6d8+18",
+    "hp_max": 45,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " Draconic  ",
+    "name": "Silver Dragon Wyrmling",
+    "reactions": {},
+    "saving_throws": "Dex +2, Con +5, Wis +2, Cha +4  ",
+    "senses": " blindsight 10 ft., darkvision 60 ft., passive Perception 14  ",
+    "skills": " Perception +4, Stealth +2  ",
+    "speed": 30,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

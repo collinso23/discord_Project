@@ -1,0 +1,45 @@
+{
+    "actions": {
+        "Bite.": "Melee Weapon Attack: +6 to hit, reach 10 ft., one creature. Hit: 11 (2d6 + 4) piercing damage.",
+        "Constrict.": "Melee Weapon Attack:\n +6 to hit, reach 5 ft., one creature. \nHit:\n 13 (2d8 + 4) bludgeoning damage, and the\ntarget is grappled (escape DC 16). Until this grapple ends, the creature is restrained, and the snake can't constrict another target."
+    },
+    "armor_class": 12,
+    "challenge_rating": 2.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Huge beast, unaligned\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {},
+    "fly_speed": 0,
+    "hit_dice": "8d12+8",
+    "hp_max": 60,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " --  ",
+    "name": "Giant Constrictor Snake",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " blindsight 10 ft., passive Perception 12  ",
+    "skills": " Perception +2  ",
+    "speed": 30,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 30,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

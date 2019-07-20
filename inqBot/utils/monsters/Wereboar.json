@@ -1,0 +1,50 @@
+{
+    "actions": {
+        "Maul (Humanoid or Hybrid Form Only).": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 10 (2d6 + 3)\nbludgeoning damage.",
+        "Multiattack (Humanoid or Hybrid Form Only).": "The wereboar makes two attacks, only one of which can be with its tusks.",
+        "Tusks (Boar or Hybrid Form Only).": "Melee Weapon Attack:\n +5 to hit, reach 5 ft., one target. \nHit:\n 10 (2d6 + 3)\nslashing damage. If the target is a humanoid, it must succeed on a DC 12 Constitution saving throw or be cursed with wereboar lycanthropy."
+    },
+    "armor_class": 10,
+    "challenge_rating": 4.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Medium humanoid (human, shapechanger), neutral evil\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Charge (Boar or Hybrid Form Only).": " If the wereboar moves at least 15 feet straight toward a target and then hits it with its tusks on\nthe same turn, the target takes an extra 7 (2d6) slashing damage. If the target is a creature, it must succeed on a DC 13 Strength saving throw or be\nknocked prone.  ",
+        "Relentless (Recharges after a Short or Long Rest).": " If the wereboar takes 14 damage or less that would reduce it to 0 hit points, it\nis reduced to 1 hit point instead. ",
+        "Shapechanger.": " The wereboar can use its action to polymorph into a boar-humanoid hybrid or into a boar, or back into its true form,\nwhich is humanoid. Its statistics, other than its AC, are the same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts\nto its true form if it dies.  "
+    },
+    "fly_speed": 0,
+    "hit_dice": "12d8+24",
+    "hp_max": 78,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " Common (can't speak in boar form)  ",
+    "name": "Wereboar",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " passive Perception 12  ",
+    "skills": " Perception +2  ",
+    "speed": 30,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

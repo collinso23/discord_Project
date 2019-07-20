@@ -1,0 +1,46 @@
+{
+    "actions": {
+        "Rake.": "Melee Weapon Attack:\n +1 to hit, reach 5 ft., one target. \nHit:\n 1 (1d4 \u2212 1) slashing damage."
+    },
+    "armor_class": 9,
+    "challenge_rating": 0.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Small plant, unaligned\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "False Appearance.": " While the shrub remains motionless, it is indistinguishable from a normal shrub. "
+    },
+    "fly_speed": 0,
+    "hit_dice": "3d6",
+    "hp_max": 10,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " one language known by its creator  ",
+    "name": "Awakened Shrub",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " passive Perception 10  ",
+    "skills": "Perception +3, Stealth +4",
+    "speed": 20,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

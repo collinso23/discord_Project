@@ -1,0 +1,48 @@
+{
+    "actions": {
+        "Beak.": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 8 (1d10 + 3) piercing damage.",
+        "Claws.": "Melee Weapon Attack:\n +5 to hit, reach 5 ft., one target. \nHit:\n 10 (2d6 + 3) slashing damage.",
+        "Multiattack.": "The hippogriff makes two attacks: one with its beak and one with its claws."
+    },
+    "armor_class": 11,
+    "challenge_rating": 1.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Large monstrosity, unaligned\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Keen Sight.": " The hippogriff has advantage on Wisdom (Perception) checks that rely on sight. "
+    },
+    "fly_speed": 60,
+    "hit_dice": "3d10+3",
+    "hp_max": 19,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " --  ",
+    "name": "Hippogriff",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " passive Perception 15  ",
+    "skills": " Perception +5  ",
+    "speed": 40,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

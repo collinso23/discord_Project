@@ -1,0 +1,47 @@
+{
+    "actions": {
+        "Acid Breath (Recharge 5\u20136).": "The dragon exhales acid in a 15-\u00ad\u2010foot line that is 5 feet wide. Each creature in that line must make a\nDC 11 Dexterity saving throw, taking 22 (5d8) acid damage on a failed save, or half as much damage on a successful one.",
+        "Bite.": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (1d10 + 2) piercing damage plus 2 (1d4)\nacid damage."
+    },
+    "armor_class": 17,
+    "challenge_rating": 2.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Medium dragon, chaotic evil\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Amphibious.": " The dragon can breathe air and water. "
+    },
+    "fly_speed": 60,
+    "hit_dice": "6d8+6",
+    "hp_max": 33,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " Draconic  ",
+    "name": "Black Dragon Wyrmling",
+    "reactions": {},
+    "saving_throws": "Dex +4, Con +3, Wis +2, Cha +3  ",
+    "senses": " blindsight 10 ft., darkvision 60 ft., passive Perception 14  ",
+    "skills": " Perception +4, Stealth +4  ",
+    "speed": 30,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 30,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

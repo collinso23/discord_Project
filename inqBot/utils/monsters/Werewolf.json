@@ -1,0 +1,50 @@
+{
+    "actions": {
+        "Bite (Wolf or Hybrid Form Only).": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8 + 2) piercing\ndamage. If the target is a humanoid, it must succeed on a DC 12 Constitution saving throw or be cursed with werewolf lycanthropy.",
+        "Claws. (Hybrid Form Only).": "Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 7 (2d4 + 2) slashing\ndamage.",
+        "Multiattack. (Humanoid or Hybrid Form Only).": "The werewolf makes two attacks: one with its bite and one with its claws or spear.",
+        "Spear (Humanoid Form Only).": "Melee or _Ranged Weapon Attack:__ +4 to hit, reach 5 ft. or range 20/60 ft., one creature. _Hit:\n\n5 (1d6 + 2) piercing damage, or 6 (1d8 + 2) piercing damage if used with two hands to make a melee attack."
+    },
+    "armor_class": 11,
+    "challenge_rating": 3.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Medium humanoid (human, shapechanger), chaotic evil\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Keen Hearing and Smell.": " The werewolf has advantage on Wisdom (Perception) checks that rely on hearing or smell. ",
+        "Shapechanger.": " The werewolf can use its action to polymorph into a wolf-humanoid hybrid or into a wolf, or back into its true form,\nwhich is humanoid. Its statistics, other than its AC, are the same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts\nto its true form if it dies.  "
+    },
+    "fly_speed": 0,
+    "hit_dice": "9d8+18",
+    "hp_max": 58,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " Common (can't speak in wolf form)  ",
+    "name": "Werewolf",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " passive Perception 14  ",
+    "skills": " Perception +4, Stealth +3  ",
+    "speed": 30,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

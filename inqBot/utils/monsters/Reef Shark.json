@@ -1,0 +1,47 @@
+{
+    "actions": {
+        "Bite.": "Melee Weapon Attack:\n +4 to hit, reach 5 ft., one target. \nHit:\n 6 (1d8 + 2) piercing damage."
+    },
+    "armor_class": 12,
+    "challenge_rating": 0.5,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Medium beast, unaligned\nSmaller than giant sharks and hunter sharks, reef sharks inhabit shallow waters and coral reefs, gathering in small packs to hunt. A full-grown\nspecimen measures 6 to 10 feet long.",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Pack Tactics.": " The shark has advantage on an attack roll against a creature if at least one of the shark's allies is within 5 feet\nof the creature and the ally isn't incapacitated.  ",
+        "Water Breathing.": " The shark can breathe only underwater. "
+    },
+    "fly_speed": 0,
+    "hit_dice": "4d8+4",
+    "hp_max": 22,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " --  ",
+    "name": "Reef Shark",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " blindsight 30 ft., passive Perception 12  ",
+    "skills": " Perception +2  ",
+    "speed": 0,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 40,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

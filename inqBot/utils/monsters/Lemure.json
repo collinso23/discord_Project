@@ -1,0 +1,47 @@
+{
+    "actions": {
+        "Fist.": "Melee Weapon Attack:\n +3 to hit, reach 5 ft., one target. \nHit:\n 2 (1d4) bludgeoning damage."
+    },
+    "armor_class": 7,
+    "challenge_rating": 0.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Medium fiend (devil), lawful evil\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Devil's Sight.": " Magical darkness doesn't impede the lemure's darkvision.  ",
+        "Hellish Rejuvenation.": " A lemure that dies in the Nine Hells comes back to life with all its hit points in 1d10 days unless it is\nkilled by a good\u2010aligned creature with a bless spell cast on that creature or its remains are sprinkled with holy water.  "
+    },
+    "fly_speed": 0,
+    "hit_dice": "3d8",
+    "hp_max": 13,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " understands Infernal but can't speak  ",
+    "name": "Lemure",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " darkvision 120 ft., passive Perception 10  ",
+    "skills": "Perception +3, Stealth +4",
+    "speed": 15,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

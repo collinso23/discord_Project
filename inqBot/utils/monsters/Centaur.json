@@ -1,0 +1,49 @@
+{
+    "actions": {
+        "Hooves.": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 11 (2d6 + 4) bludgeoning damage.",
+        "Longbow.": "Ranged Weapon Attack:\n +4 to hit, range 150/600 ft., one target. \nHit:\n 6 (1d8 + 2) piercing damage.",
+        "Multiattack.": "The centaur makes two attacks: one with its pike and one with its hooves or two with its longbow.",
+        "Pike.": "Melee Weapon Attack: +6 to hit, reach 10 ft., one target. Hit: 9 (1d10 + 4) piercing damage."
+    },
+    "armor_class": 12,
+    "challenge_rating": 2.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Large monstrosity, neutral good\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Charge.": " If the centaur moves at least 30 feet straight toward a target and then hits it with a pike attack on the same turn, the\ntarget takes an extra 10 (3d6) piercing damage. "
+    },
+    "fly_speed": 0,
+    "hit_dice": "6d10+12",
+    "hp_max": 45,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " Elvish, Sylvan  ",
+    "name": "Centaur",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " passive Perception 13  ",
+    "skills": " Athletics +6, Perception +3, Survival +3  ",
+    "speed": 50,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

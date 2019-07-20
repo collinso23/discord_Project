@@ -1,0 +1,48 @@
+{
+    "actions": {
+        "Warhammer.": "Melee Weapon Attack:\n +5 to hit, reach 5 ft., one target. \nHit:\n 7 (1d8 + 3) bludgeoning damage, or 8\n(1d10 + 3) bludgeoning damage if used with two hands to make a melee attack, plus 3 (1d6) fire damage."
+    },
+    "armor_class": 17,
+    "challenge_rating": 2.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Medium elemental, lawful neutral\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Heated Body.": " A creature that touches the azer or hits it with a melee attack while within 5 feet of it takes 5 (1d10) fire damage.\n",
+        "Heated Weapons.": " When the azer hits with a metal melee weapon, it deals an extra 3 (1d6) fire damage (included in the attack).  ",
+        "Illumination.": " The azer sheds bright light in a 10-\u00adfoot radius and dim light for an additional 10 feet. "
+    },
+    "fly_speed": 0,
+    "hit_dice": "6d8+12",
+    "hp_max": 39,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " Ignan  ",
+    "name": "Azer",
+    "reactions": {},
+    "saving_throws": "Con +4  ",
+    "senses": " passive Perception 11  ",
+    "skills": "Perception +3, Stealth +4",
+    "speed": 30,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

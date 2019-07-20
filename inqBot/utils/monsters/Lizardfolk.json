@@ -1,0 +1,50 @@
+{
+    "actions": {
+        "Bite.": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6 + 2) piercing damage.",
+        "Heavy Club.": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6 + 2) bludgeoning damage.",
+        "Javelin.": "Melee or _Ranged Weapon Attack:__ +4 to hit, reach 5 ft. or range 30/120 ft., one target. _Hit: 5 (1d6 + 2)\npiercing damage.",
+        "Multiattack.": "The lizardfolk makes two melee attacks, each one with a different weapon.",
+        "Spiked Shield.": "Melee Weapon Attack:\n +4 to hit, reach 5 ft., one target. \nHit:\n 5 (1d6 + 2) piercing damage."
+    },
+    "armor_class": 15,
+    "challenge_rating": 0.5,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Medium humanoid (lizardfolk), neutral\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Hold Breath.": " The lizardfolk can hold its breath for 15 minutes. "
+    },
+    "fly_speed": 0,
+    "hit_dice": "4d8+4",
+    "hp_max": 22,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " Draconic  ",
+    "name": "Lizardfolk",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " passive Perception 13  ",
+    "skills": " Perception +3, Stealth +4, Survival +5  ",
+    "speed": 30,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 30,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

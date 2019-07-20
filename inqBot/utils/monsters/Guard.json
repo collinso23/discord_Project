@@ -1,0 +1,44 @@
+{
+    "actions": {
+        "Spear.": "Melee\n or \nRanged Weapon Attack:\n +3 to hit, reach 5 ft. or range 20/60 ft., one target. \nHit:\n 4\n(1d6 + 1) piercing damage, or 5 (1d8 + 1) piercing damage if used with two hands to make a melee attack."
+    },
+    "armor_class": 16,
+    "challenge_rating": 0.125,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Medium humanoid (any race), any alignment\nGuards include members of a city watch, sentries in a citadel or fortified town, and the bodyguards of merchants and nobles.",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {},
+    "fly_speed": 0,
+    "hit_dice": "2d8+2",
+    "hp_max": 11,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " any one language (usually Common)  ",
+    "name": "Guard",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " passive Perception 12  ",
+    "skills": " Perception +2  ",
+    "speed": 30,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

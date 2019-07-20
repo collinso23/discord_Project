@@ -1,0 +1,46 @@
+{
+    "actions": {
+        "Spear.": "Melee or _Ranged Weapon Attack:__ +2 to hit, reach 5 ft. or range 20/60 ft., one target. _Hit:\n 3 (1d6) piercing\ndamage, or 4 (1d8) piercing damage if used with two hands to make a melee attack."
+    },
+    "armor_class": 11,
+    "challenge_rating": 0.125,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Medium humanoid (merfolk), neutral\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Amphibious.": " The merfolk can breathe air and water. "
+    },
+    "fly_speed": 0,
+    "hit_dice": "2d8+2",
+    "hp_max": 11,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " Aquan, Common  ",
+    "name": "Merfolk",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " passive Perception 12  ",
+    "skills": " Perception +2  ",
+    "speed": 10,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 40,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

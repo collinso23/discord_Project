@@ -1,0 +1,48 @@
+{
+    "actions": {
+        "Fire Breath (Recharge 5\u20136).": "The veteran exhales fire in a 15-foot cone. Each creature in that area must make a DC 15 Dexterity saving\nthrow, taking 24 (7d6) fire damage on a failed save, or half as much damage on a successful one.",
+        "Heavy Crossbow.": "Ranged Weapon Attack: +3 to hit, range 100/400 ft., one target. Hit: 6 (1d10 + 1) piercing damage.",
+        "Longsword.": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8 + 3) slashing damage, or 8 (1d10 +\n3) slashing damage if used with two hands.",
+        "Multiattack.": "The veteran makes two longsword attacks. If it has a shortsword drawn, it can also make a shortsword attack.",
+        "Shortsword.": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) piercing damage."
+    },
+    "armor_class": 18,
+    "challenge_rating": 5.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Medium humanoid (human), any alignment\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {},
+    "fly_speed": 0,
+    "hit_dice": "10d8+20",
+    "hp_max": 65,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " Common, Draconic  ",
+    "name": "Half-Red Dragon Veteran",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " blindsight 10 ft., darkvision 60 ft., passive Perception 12  ",
+    "skills": " Athletics +5, Perception +2  ",
+    "speed": 30,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

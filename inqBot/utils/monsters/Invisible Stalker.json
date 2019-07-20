@@ -1,0 +1,48 @@
+{
+    "actions": {
+        "Multiattack.": "The stalker makes two slam attacks.",
+        "Slam.": "Melee Weapon Attack:\n +6 to hit, reach 5 ft., one target. \nHit:\n 10 (2d6 + 3) bludgeoning damage."
+    },
+    "armor_class": 14,
+    "challenge_rating": 6.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Medium elemental, neutral\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Faultless Tracker.": " The stalker is given a quarry by its summoner. The stalker knows the direction and distance to its quarry as long\nas the two of them are on the same plane of existence. The stalker also knows the location of its summoner. ",
+        "Invisibility.": " The stalker is invisible.  "
+    },
+    "fly_speed": 50,
+    "hit_dice": "16d8+32",
+    "hp_max": 104,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " Auran, understands Common but doesn't speak it  ",
+    "name": "Invisible Stalker",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " darkvision 60 ft., passive Perception 18  ",
+    "skills": " Perception +8, Stealth +10  ",
+    "speed": 50,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

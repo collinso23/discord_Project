@@ -1,0 +1,49 @@
+{
+    "actions": {
+        "Claws.": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 10 (2d6 + 3) slashing damage.",
+        "Death Glare.": "The hag targets one frightened creature she can see within 30 feet of her. If the target can see the hag, it must\nsucceed on a DC 11 Wisdom saving throw against this magic or drop to 0 hit points.",
+        "Illusory Appearance.": "The hag covers herself and anything she is wearing or carrying with a magical illusion that makes her look like\nan ugly creature of her general size and humanoid shape. The effect ends if the hag takes a bonus action to end it or if she dies.  \n\n\nThe changes wrought by this effect fail to hold up to physical inspection. For example, the hag could appear to have no claws, but someone touching\nher hand might feel the claws. Otherwise, a creature must take an action to visually inspect the illusion and succeed on a DC 16 Intelligence\n(Investigation) check to discern that the hag is disguised."
+    },
+    "armor_class": 14,
+    "challenge_rating": 2.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Medium fey, chaotic evil\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Amphibious.": " The hag can breathe air and water.  ",
+        "Horrific Appearance.": " Any humanoid that starts its turn within 30 feet of the hag and can see the hag's true form must make a DC 11\nWisdom saving throw. On a failed save, the creature is frightened for 1 minute. A creature can repeat the saving throw at the end of each of its\nturns, with disadvantage if the hag is within line of sight, ending the effect on itself on a success. If a creature's saving throw is successful or\nthe effect ends for it, the creature is immune to the hag's Horrific Appearance for the next 24 hours.  "
+    },
+    "fly_speed": 0,
+    "hit_dice": "7d8+21",
+    "hp_max": 52,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " Aquan, Common, Giant  ",
+    "name": "Sea Hag",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " darkvision 60 ft., passive Perception 11  ",
+    "skills": "Perception +3, Stealth +4",
+    "speed": 30,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 40,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

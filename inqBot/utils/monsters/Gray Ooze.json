@@ -1,0 +1,48 @@
+{
+    "actions": {
+        "Pseudopod.": "Melee Weapon Attack:\n +3 to hit, reach 5 ft., one target. \nHit:\n 4 (1d6 + 1) bludgeoning damage plus 7\n(2d6) acid damage, and if the target is wearing nonmagical metal armor, its armor is partly corroded and takes a permanent and cumulative \u22121 penalty\nto the AC it offers. The armor is destroyed if the penalty reduces its AC to 10."
+    },
+    "armor_class": 8,
+    "challenge_rating": 0.5,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Medium ooze, unaligned\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Amorphous.": " The ooze can move through a space as narrow as 1 inch wide without squeezing.  ",
+        "Corrode Metal.": " Any nonmagical weapon made of metal that hits the ooze corrodes. After dealing damage, the weapon takes a permanent\nand cumulative \u22121 penalty to damage rolls. If its penalty drops to \u22125, the weapon is destroyed. Nonmagical ammunition made of metal that hits the ooze\nis destroyed after dealing damage.  ",
+        "False Appearance.": " While the ooze remains motionless, it is indistinguishable from an oily pool or wet rock. "
+    },
+    "fly_speed": 0,
+    "hit_dice": "3d8+9",
+    "hp_max": 22,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " --  ",
+    "name": "Gray Ooze",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " blindsight 60 ft. (blind beyond this radius), passive Perception 8  ",
+    "skills": " Stealth +2  ",
+    "speed": 10,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

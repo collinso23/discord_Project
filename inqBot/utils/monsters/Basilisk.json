@@ -1,0 +1,44 @@
+{
+    "actions": {
+        "Bite.": "Melee Weapon Attack:\n +5 to hit, reach 5 ft., one target. \nHit:\n 10 (2d6 + 3) piercing damage plus 7 (2d6)\npoison damage."
+    },
+    "armor_class": 0,
+    "challenge_rating": 0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Medium monstrosity, unaligned \nArmor Class 15 (natural armor)  \nHit Points 52 (8d8 + 16)  \nSpeed 20 ft. \n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {},
+    "fly_speed": 0,
+    "hit_dice": "1d6",
+    "hp_max": 10,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": "",
+    "name": "Basilisk",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": "",
+    "skills": "Perception +3, Stealth +4",
+    "speed": 30,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

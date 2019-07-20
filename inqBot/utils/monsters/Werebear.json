@@ -1,0 +1,50 @@
+{
+    "actions": {
+        "Bite (Bear or Hybrid Form Only).": "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 15 (2d10 + 4)\npiercing damage. If the target is a humanoid, it must succeed on a DC 14 Constitution saving throw or be cursed with werebear lycanthropy.",
+        "Claw (Bear or Hybrid Form Only).": "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 13 (2d8 + 4)\nslashing damage.",
+        "Greataxe (Humanoid or Hybrid Form Only).": "Melee Weapon Attack:\n +7 to hit, reach 5 ft., one target. \nHit:\n 10 (1d12 +\n4) slashing damage.",
+        "Multiattack.": "In bear form, the werebear makes two claw attacks. In humanoid form, it makes two greataxe attacks. In hybrid form,\nit can attack like a bear or a humanoid."
+    },
+    "armor_class": 10,
+    "challenge_rating": 5.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Medium humanoid (human, shapechanger), neutral good\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Keen Smell.": " The werebear has advantage on Wisdom (Perception) checks that rely on smell. ",
+        "Shapechanger.": " The werebear can use its action to polymorph into a Large bear-humanoid hybrid or into a Large bear, or back into\nits true form, which is humanoid. Its statistics, other than its size and AC, are the same in each form. Any equipment it is wearing or carrying isn't\ntransformed. It reverts to its true form if it dies.  "
+    },
+    "fly_speed": 0,
+    "hit_dice": "18d8+54",
+    "hp_max": 135,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " Common (can't speak in bear form)  ",
+    "name": "Werebear",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " passive Perception 17  ",
+    "skills": " Perception +7  ",
+    "speed": 30,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

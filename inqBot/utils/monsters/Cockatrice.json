@@ -1,0 +1,44 @@
+{
+    "actions": {
+        "Bite.": "Melee Weapon Attack:\n +3 to hit, reach 5 ft., one creature. \nHit:\n 3 (1d4 + 1) piercing damage, and the\ntarget must succeed on a DC 11 Constitution saving throw against being magically petrified. On a failed save, the creature begins to turn to stone and\nis restrained. It must repeat the saving throw at the end of its next turn. On a success, the effect ends. On a failure, the creature is petrified for\n24 hours."
+    },
+    "armor_class": 11,
+    "challenge_rating": 0.5,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Small monstrosity, unaligned\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {},
+    "fly_speed": 40,
+    "hit_dice": "6d6+6",
+    "hp_max": 27,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " --  ",
+    "name": "Cockatrice",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " darkvision 60 ft., passive Perception 11  ",
+    "skills": "Perception +3, Stealth +4",
+    "speed": 20,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

@@ -1,0 +1,48 @@
+{
+    "actions": {
+        "Engulf.": "The shambling mound engulfs a Medium or smaller creature grappled by it. The engulfed target is blinded, restrained, and\nunable to breathe, and it must succeed on a DC 14 Constitution saving throw at the start of each of the mound's turns or take 13 (2d8 + 4) bludgeoning\ndamage. If the mound moves, the engulfed target moves with it. The mound can have only one creature engulfed at a time.",
+        "Multiattack.": "The shambling mound makes two slam attacks. If both attacks hit a Medium or smaller target, the target is grappled\n(escape DC 14), and the shambling mound uses its Engulf on it.",
+        "Slam.": "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 13 (2d8 + 4) bludgeoning damage."
+    },
+    "armor_class": 15,
+    "challenge_rating": 5.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Large plant, unaligned\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Lightning Absorption.": " Whenever the shambling mound is subjected to lightning damage, it takes no damage and regains a number of\nhit points equal to the lightning damage dealt. "
+    },
+    "fly_speed": 0,
+    "hit_dice": "16d10+48",
+    "hp_max": 136,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " --  ",
+    "name": "Shambling Mound",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " blindsight 60 ft. (blind beyond this radius), passive Perception 10  ",
+    "skills": " Stealth +2  ",
+    "speed": 20,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 20,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

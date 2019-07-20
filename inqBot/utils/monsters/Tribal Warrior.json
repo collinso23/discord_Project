@@ -1,0 +1,46 @@
+{
+    "actions": {
+        "Spear.": "Melee or _Ranged Weapon Attack:__ +3 to hit, reach 5 ft. or range 20/60 ft., one target. _Hit:\n 4 (1d6 + 1)\npiercing damage, or 5 (1d8 + 1) piercing damage if used with two hands to make a melee attack."
+    },
+    "armor_class": 12,
+    "challenge_rating": 0.125,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Medium humanoid (any race), any alignment\nTribal warriors live beyond civilization, most often subsisting on fishing and hunting. Each tribe acts in accordance with the wishes of its chief,\nwho is the greatest or oldest warrior of the tribe or a tribe member blessed by the gods.",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Pack Tactics.": " The warrior has advantage on an attack roll against a creature if at least one of the warrior's allies is within 5\nfeet of the creature and the ally isn't incapacitated. "
+    },
+    "fly_speed": 0,
+    "hit_dice": "2d8+2",
+    "hp_max": 11,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " any one language  ",
+    "name": "Tribal Warrior",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " passive Perception 10  ",
+    "skills": "Perception +3, Stealth +4",
+    "speed": 30,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

@@ -1,0 +1,46 @@
+{
+    "actions": {
+        "Scimitar.": "Melee Weapon Attack:\n +3 to hit, reach 5 ft., one creature. \nHit:\n 4 (1d6 + 1) slashing damage."
+    },
+    "armor_class": 12,
+    "challenge_rating": 0.125,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Medium humanoid (any race), any non-good alignment\nCultists swear allegiance to dark powers such as elemental princes, demon lords, or archdevils. Most conceal their loyalties to avoid being\nostracized, imprisoned, or executed for their beliefs. Unlike evil acolytes, cultists often show signs of insanity in their beliefs and practices.",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Dark Devotion.": " The cultist has advantage on saving throws against being charmed or frightened. "
+    },
+    "fly_speed": 0,
+    "hit_dice": "2d8",
+    "hp_max": 9,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " any one language (usually Common)  ",
+    "name": "Cultist",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " passive Perception 10  ",
+    "skills": " Deception +2, Religion +2  ",
+    "speed": 30,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

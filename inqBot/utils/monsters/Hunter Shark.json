@@ -1,0 +1,47 @@
+{
+    "actions": {
+        "Bite.": "Melee Weapon Attack:\n +6 to hit, reach 5 ft., one target. \nHit:\n 13 (2d8 + 4) piercing damage."
+    },
+    "armor_class": 12,
+    "challenge_rating": 2.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Large beast, unaligned\nSmaller than a giant shark but larger and fiercer than a reef shark, a hunter shark haunts deep waters. It usually hunts alone, but multiple hunter\nsharks might feed in the same area. A fully grown hunter shark is 15 to 20 feet long.",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Blood Frenzy.": " The shark has advantage on melee attack rolls against any creature that doesn't have all its hit points.  ",
+        "Water Breathing.": " The shark can breathe only underwater. "
+    },
+    "fly_speed": 0,
+    "hit_dice": "6d10+12",
+    "hp_max": 45,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " --  ",
+    "name": "Hunter Shark",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " blindsight 30 ft., passive Perception 12  ",
+    "skills": " Perception +2  ",
+    "speed": 0,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 40,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

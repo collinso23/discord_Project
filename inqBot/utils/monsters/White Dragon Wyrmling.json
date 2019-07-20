@@ -1,0 +1,45 @@
+{
+    "actions": {
+        "Bite.": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (1d10 + 2) piercing damage plus 2 (1d4)\ncold damage.",
+        "Cold Breath (Recharge 5\u20136).": "The dragon exhales an icy blast of hail in a 15-foot cone. Each creature in that area must make a DC 12\nConstitution saving throw, taking 22 (5d8) cold damage on a failed save, or half as much damage on a successful one."
+    },
+    "armor_class": 16,
+    "challenge_rating": 2.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Medium dragon, chaotic evil\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {},
+    "fly_speed": 60,
+    "hit_dice": "5d8+10",
+    "hp_max": 32,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " Draconic  ",
+    "name": "White Dragon Wyrmling",
+    "reactions": {},
+    "saving_throws": "Dex +2, Con +4, Wis +2, Cha +2  ",
+    "senses": " blindsight 10 ft., darkvision 60 ft., passive Perception 14  ",
+    "skills": " Perception +4, Stealth +2  ",
+    "speed": 30,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 30,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

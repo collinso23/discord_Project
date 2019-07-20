@@ -1,0 +1,49 @@
+{
+    "actions": {
+        "Quarterstaff.": "Melee Weapon Attack:\n +2 to hit (+4 to hit with shillelagh), reach 5 ft., one target. \nHit:\n 3 (1d6)\nbludgeoning damage, 4 (1d8) bludgeoning damage if wielded with two hands, or 6 (1d8 + 2) bludgeoning damage with shillelagh."
+    },
+    "armor_class": 11,
+    "challenge_rating": 2.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Medium humanoid (any race), any alignment\nDruids dwell in forests and other secluded wilderness locations, where they protect the natural world from monsters and the encroachment of\ncivilization. Some are tribal shamans who heal the sick, pray to animal spirits, and provide spiritual guidance.",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Spellcasting.": " The druid is a 4th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, +4 to hit with\nspell attacks). It has the following druid spells prepared:  ",
+        "animal messenger, barkskin": " ",
+        "druidcraft, produce flame, shillelagh": " ",
+        "entangle, longstrider, speak with animals, thunderwave": " "
+    },
+    "fly_speed": 0,
+    "hit_dice": "5d8+5",
+    "hp_max": 27,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " Druidic plus any two languages  ",
+    "name": "Druid",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " passive Perception 14  ",
+    "skills": " Medicine +4, Nature +3, Perception +4  ",
+    "speed": 30,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

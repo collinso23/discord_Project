@@ -1,0 +1,51 @@
+{
+    "actions": {
+        "Claw.": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) piercing damage.",
+        "Hurl Flame.": "Ranged Spell Attack: +5 to hit, range 150 ft., one target. \nHit:\n 10 (3d6) fire damage. If the target is a\nflammable object that isn't being worn or carried, it also catches fire.",
+        "Multiattack.": "The devil makes three melee attacks: one with its tail and two with its claws. Alternatively, it can use Hurl Flame\ntwice.",
+        "Tail.": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 10 (2d6 + 3) piercing damage."
+    },
+    "armor_class": 15,
+    "challenge_rating": 5.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Medium fiend (devil), lawful evil\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Barbed Hide.": " At the start of each of its turns, the barbed devil deals 5 (1d10) piercing damage to any creature grappling it.\n",
+        "Devil's Sight.": " Magical darkness doesn't impede the devil's darkvision.  ",
+        "Magic Resistance.": " The devil has advantage on saving throws against spells and other magical effects. "
+    },
+    "fly_speed": 0,
+    "hit_dice": "13d8+52",
+    "hp_max": 110,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " Infernal, telepathy 120 ft.  ",
+    "name": "Barbed Devil",
+    "reactions": {},
+    "saving_throws": "Str +6, Con +7, Wis +5, Cha +5  ",
+    "senses": " darkvision 120 ft., passive Perception 18  ",
+    "skills": " Deception +5, Insight +5, Perception +8  ",
+    "speed": 30,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

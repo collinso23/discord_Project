@@ -1,0 +1,47 @@
+{
+    "actions": {
+        "Bite.": "Melee Weapon Attack: +7 to hit, reach 10 ft., one creature. Hit: 11 (2d6 + 4) piercing damage.",
+        "Claws.": "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 13 (2d8 + 4) slashing damage.",
+        "Multiattack.": "The wyvern makes two attacks: one with its bite and one with its stinger. While flying, it can use its claws in place\nof one other attack.",
+        "Stinger.": "Melee Weapon Attack:\n +7 to hit, reach 10 ft., one creature. \nHit:\n 11 (2d6 + 4) piercing damage. The target\nmust make a DC 15 Constitution saving throw, taking 24 (7d6) poison damage on a failed save, or half as much damage on a successful one."
+    },
+    "armor_class": 13,
+    "challenge_rating": 6.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Large dragon, unaligned\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {},
+    "fly_speed": 80,
+    "hit_dice": "13d10+39",
+    "hp_max": 110,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " --  ",
+    "name": "Wyvern",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " darkvision 60 ft., passive Perception 14  ",
+    "skills": " Perception +4  ",
+    "speed": 20,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

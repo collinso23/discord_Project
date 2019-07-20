@@ -1,0 +1,47 @@
+{
+    "actions": {
+        "Bite.": "Melee Weapon Attack:\n +4 to hit, reach 5 ft., one target. \nHit:\n 5 (1d6 + 2) piercing damage. If the target is a\ncreature, it must succeed on a DC 12 Constitution saving throw against disease or become poisoned until the disease is cured. Every 24 hours that\nelapse, the creature must repeat the saving throw, reducing its hit point maximum by 5 (1d10) on a failure. This reduction lasts until the disease is\ncured. The creature dies if the disease reduces its hit point maximum to 0.",
+        "Multiattack.": "The dog makes two bite attacks."
+    },
+    "armor_class": 12,
+    "challenge_rating": 1.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Medium monstrosity, neutral evil\nA death dog is an ugly two-headed hound that roams plains, and deserts. Hate burns in a death dog's heart, and a taste for humanoid flesh drives it\nto attack travelers and explorers. Death dog saliva carries a foul disease that causes a victim's flesh to slowly rot off the bone.",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Two-Headed.": " The dog has advantage on Wisdom (Perception) checks and on saving throws against being blinded, charmed, deafened,\nfrightened, stunned, or knocked unconscious. "
+    },
+    "fly_speed": 0,
+    "hit_dice": "6d8+12",
+    "hp_max": 39,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " --  ",
+    "name": "Death Dog",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " darkvision 120 ft., passive Perception 15  ",
+    "skills": " Perception +5, Stealth +4  ",
+    "speed": 40,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

@@ -1,0 +1,50 @@
+{
+    "actions": {
+        "Beak.": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 10 (2d6 + 3) piercing damage.",
+        "Multiattack.": "The vrock makes two attacks: one with its beak and one with its talons.",
+        "Spores (Recharge 6).": "A 15\u00ad\u2010foot\u00ad\u2010radius cloud of toxic spores extends out from the vrock. The spores spread around corners. Each\ncreature in that area must succeed on a DC 14 Constitution saving throw or become poisoned. While poisoned in this way, a target takes 5 (1d10) poison\ndamage at the start of each of its turns. A target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a\nsuccess. Emptying a vial of holy water on the target also ends the effect on it.",
+        "Stunning Screech (1/Day).": "The vrock emits a horrific screech. Each creature within 20 feet of it that can hear it and that isn't a\ndemon must succeed on a DC 14 Constitution saving throw or be stunned until the end of the vrock's next turn.",
+        "Talons.": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 14 (2d10 + 3) slashing damage."
+    },
+    "armor_class": 15,
+    "challenge_rating": 6.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Large fiend (demon), chaotic evil\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Magic Resistance.": " The vrock has advantage on saving throws against spells and other magical effects. "
+    },
+    "fly_speed": 60,
+    "hit_dice": "11d10+44",
+    "hp_max": 104,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " Abyssal, telepathy 120 ft.  ",
+    "name": "Vrock",
+    "reactions": {},
+    "saving_throws": "Dex +5, Wis +4, Cha +2  ",
+    "senses": " darkvision 120 ft., passive Perception 11  ",
+    "skills": "Perception +3, Stealth +4",
+    "speed": 40,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

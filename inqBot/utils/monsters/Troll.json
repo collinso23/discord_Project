@@ -1,0 +1,49 @@
+{
+    "actions": {
+        "Bite.": "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 7 (1d6 + 4) piercing damage.",
+        "Claw.": "Melee Weapon Attack:\n +7 to hit, reach 5 ft., one target. \nHit:\n 11 (2d6 + 4) slashing damage.",
+        "Multiattack.": "The troll makes three attacks: one with its bite and two with its claws."
+    },
+    "armor_class": 15,
+    "challenge_rating": 5.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Large giant, chaotic evil\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Keen Smell.": " The troll has advantage on Wisdom (Perception) checks that rely on smell.  ",
+        "Regeneration.": " The troll regains 10 hit points at the start of its turn. If the troll takes acid or fire damage, this trait doesn't\nfunction at the start of the troll's next turn. The troll dies only if it starts its turn with 0 hit points and doesn't regenerate. "
+    },
+    "fly_speed": 0,
+    "hit_dice": "8d10+40",
+    "hp_max": 84,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " Giant  ",
+    "name": "Troll",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " darkvision 60 ft., passive Perception 12  ",
+    "skills": " Perception +2 ",
+    "speed": 30,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

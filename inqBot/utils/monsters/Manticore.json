@@ -1,0 +1,49 @@
+{
+    "actions": {
+        "Bite.": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8 + 3) piercing damage.",
+        "Claw.": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) slashing damage.",
+        "Multiattack.": "The manticore makes three attacks: one with its bite and two with its claws or three with its tail spikes.",
+        "Tail Spike.": "Ranged Weapon Attack:\n +5 to hit, range 100/200 ft., one target. \nHit:\n 7 (1d8 + 3) piercing damage."
+    },
+    "armor_class": 14,
+    "challenge_rating": 3.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Large monstrosity, lawful evil\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Tail Spike Regrowth.": " The manticore has twenty-four tail spikes. Used spikes regrow when the manticore finishes a long rest. "
+    },
+    "fly_speed": 50,
+    "hit_dice": "8d10+24",
+    "hp_max": 68,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " Common  ",
+    "name": "Manticore",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " darkvision 60 ft., passive Perception 11  ",
+    "skills": "Perception +3, Stealth +4",
+    "speed": 30,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

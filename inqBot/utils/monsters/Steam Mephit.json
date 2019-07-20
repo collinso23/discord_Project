@@ -1,0 +1,49 @@
+{
+    "actions": {
+        "Claws.": "Melee Weapon Attack: +2 to hit, reach 5 ft., one creature. Hit: 2 (1d4) slashing damage plus 2 (1d4) fire\ndamage.",
+        "Steam Breath (Recharge 6).": "The mephit exhales a 15- foot cone of scalding steam. Each creature in that area must succeed on a DC 10\nDexterity saving throw, taking 4 (1d8) fire damage on a failed save, or half as much damage on a successful one."
+    },
+    "armor_class": 10,
+    "challenge_rating": 0.25,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Small elemental, neutral evil\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Death Burst.": " When the mephit dies, it explodes in a cloud of steam. Each creature within 5 feet of the mephit must succeed on a DC\n10 Dexterity saving throw or take 4 (1d8) fire damage.  ",
+        "Innate Spellcasting (1/Day)": " The mephit can innately cast ",
+        "blur": ", requiring no material components. Its innate\nspellcasting ability is Charisma. "
+    },
+    "fly_speed": 30,
+    "hit_dice": "6d6",
+    "hp_max": 21,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " Aquan, Ignan  ",
+    "name": "Steam Mephit",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " darkvision 60 ft., passive Perception 10  ",
+    "skills": "Perception +3, Stealth +4",
+    "speed": 30,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

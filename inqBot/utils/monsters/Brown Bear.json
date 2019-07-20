@@ -1,0 +1,48 @@
+{
+    "actions": {
+        "Bite.": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 8 (1d8 + 4) piercing damage.",
+        "Claws.": "Melee Weapon Attack:\n +5 to hit, reach 5 ft., one target. \nHit:\n 11 (2d6 + 4) slashing damage.",
+        "Multiattack.": "The bear makes two attacks: one with its bite and one with its claws."
+    },
+    "armor_class": 11,
+    "challenge_rating": 1.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Large beast, unaligned\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Keen Smell.": " The bear has advantage on Wisdom (Perception) checks that rely on smell. "
+    },
+    "fly_speed": 0,
+    "hit_dice": "4d10+12",
+    "hp_max": 34,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " --  ",
+    "name": "Brown Bear",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " passive Perception 13  ",
+    "skills": " Perception +3  ",
+    "speed": 40,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

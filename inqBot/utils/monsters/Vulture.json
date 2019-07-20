@@ -1,0 +1,47 @@
+{
+    "actions": {
+        "Beak.": "Melee Weapon Attack:\n +2 to hit, reach 5 ft., one target. \nHit:\n 2 (1d4) piercing damage."
+    },
+    "armor_class": 10,
+    "challenge_rating": 0.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Medium beast, unaligned\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Keen Sight and Smell.": " The vulture has advantage on Wisdom (Perception) checks that rely on sight or smell.  ",
+        "Pack Tactics.": " The vulture has advantage on an attack roll against a creature if at least one of the vulture's allies is within 5 feet\nof the creature and the ally isn't incapacitated. "
+    },
+    "fly_speed": 50,
+    "hit_dice": "1d8+1",
+    "hp_max": 5,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " --  ",
+    "name": "Vulture",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " passive Perception 13  ",
+    "skills": " Perception +3  ",
+    "speed": 10,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

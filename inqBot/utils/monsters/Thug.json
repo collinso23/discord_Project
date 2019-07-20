@@ -1,0 +1,48 @@
+{
+    "actions": {
+        "Heavy Crossbow.": "Ranged Weapon Attack:\n +2 to hit, range 100/400 ft., one target. \nHit:\n 5 (1d10) piercing damage.",
+        "Mace.": "Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 5 (1d6 + 2) bludgeoning damage.",
+        "Multiattack.": "The thug makes two melee attacks."
+    },
+    "armor_class": 11,
+    "challenge_rating": 0.5,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Medium humanoid (any race), any non-good alignment\nThugs are ruthless enforcers skilled at intimidation and violence. They work for money and have few scruples.",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Pack Tactics.": " The thug has advantage on an attack roll against a creature if at least one of the thug's allies is within 5 feet of\nthe creature and the ally isn't incapacitated. "
+    },
+    "fly_speed": 0,
+    "hit_dice": "5d8+10",
+    "hp_max": 32,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " any one language (usually Common)  ",
+    "name": "Thug",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " passive Perception 10  ",
+    "skills": " Intimidation +2  ",
+    "speed": 30,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

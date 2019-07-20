@@ -1,0 +1,49 @@
+{
+    "actions": {
+        "Smother.": "Melee Weapon Attack:\n +5 to hit, reach 5 ft., one Medium or smaller creature. \nHit:\n The creature is\ngrappled (escape DC 13). Until this grapple ends, the target is restrained, blinded, and at risk of suffocating, and the rug can't smother another\ntarget. In addition, at the start of each of the target's turns, the target takes 10 (2d6 + 3) bludgeoning damage."
+    },
+    "armor_class": 12,
+    "challenge_rating": 2.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Large construct, unaligned\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Antimagic Susceptibility.": " The rug is incapacitated while in the area of an antimagic field. If targeted by ",
+        "Damage Transfer.": " While it is grappling a creature, the rug takes only half the damage dealt to it, and the creature grappled by the\nrug takes the other half.  ",
+        "False Appearance.": " While the rug remains motionless, it is indistinguishable from a normal rug. ",
+        "dispel\nmagic": ", the rug must succeed on a Constitution saving throw against the caster's spell save DC or fall unconscious for 1 minute.  "
+    },
+    "fly_speed": 0,
+    "hit_dice": "6d10",
+    "hp_max": 33,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " --  ",
+    "name": "Rug of Smothering",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " blindsight 60 ft. (blind beyond this radius), passive Perception 6  ",
+    "skills": "Perception +3, Stealth +4",
+    "speed": 10,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

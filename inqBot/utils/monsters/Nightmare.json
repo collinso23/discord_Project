@@ -1,0 +1,48 @@
+{
+    "actions": {
+        "Ethereal Stride.": "The nightmare and up to three willing creatures within 5 feet of it magically enter the Ethereal Plane from the\nMaterial Plane, or vice versa.",
+        "Hooves.": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 13 (2d8 + 4) bludgeoning damage plus 7\n(2d6) fire damage."
+    },
+    "armor_class": 13,
+    "challenge_rating": 3.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Large fiend, neutral evil\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Confer Fire Resistance.": " The nightmare can grant resistance to fire damage to anyone riding it.  ",
+        "Illumination.": " The nightmare sheds bright light in a 10-foot radius and dim light for an additional 10 feet. "
+    },
+    "fly_speed": 90,
+    "hit_dice": "8d10+24",
+    "hp_max": 68,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " understands Abyssal, Common, and Infernal but can't speak  ",
+    "name": "Nightmare",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " passive Perception 11  ",
+    "skills": "Perception +3, Stealth +4",
+    "speed": 60,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

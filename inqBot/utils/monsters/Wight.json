@@ -1,0 +1,49 @@
+{
+    "actions": {
+        "Life Drain.": "Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 5 (1d6 + 2) necrotic damage. The target\nmust succeed on a DC 13 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. This reduction lasts\nuntil the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0.  \nA humanoid slain by this attack rises 24 hours later as a zombie under the wight's control, unless the humanoid is restored to life or its body is\ndestroyed. The wight can have no more than twelve zombies under its control at one time.",
+        "Longbow.": "Ranged Weapon Attack:\n +4 to hit, range 150/600 ft., one target. \nHit:\n 6 (1d8 + 2) piercing damage.",
+        "Longsword.": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8 + 2) slashing damage, or 7 (1d10 +\n2) slashing damage if used with two hands.",
+        "Multiattack.": "The wight makes two longsword attacks or two longbow attacks. It can use its Life Drain in place of one longsword\nattack."
+    },
+    "armor_class": 14,
+    "challenge_rating": 3.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Medium undead, neutral evil\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Sunlight Sensitivity.": " While in sunlight, the wight has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that\nrely on sight. "
+    },
+    "fly_speed": 0,
+    "hit_dice": "6d8+18",
+    "hp_max": 45,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " the languages it knew in life  ",
+    "name": "Wight",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " darkvision 60 ft., passive Perception 13  ",
+    "skills": " Perception +3, Stealth +4  ",
+    "speed": 30,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

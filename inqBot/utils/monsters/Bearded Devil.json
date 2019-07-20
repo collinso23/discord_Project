@@ -1,0 +1,50 @@
+{
+    "actions": {
+        "Beard.": "Melee Weapon Attack: +5 to hit, reach 5 ft., one creature. Hit: 6 (1d8 + 2) piercing damage, and the target\nmust succeed on a DC 12 Constitution saving throw or be poisoned for 1 minute. While poisoned in this way, the target can't regain hit points. The\ntarget can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
+        "Glaive.": "Melee Weapon Attack:\n +5 to hit, reach 10 ft., one target. \nHit:\n 8 (1d10 + 3) slashing damage. If the target\nis a creature other than an undead or a construct, it must succeed on a DC 12 Constitution saving throw or lose 5 (1d10) hit points at the start of\neach of its turns due to an infernal wound. Each time the devil hits the wounded target with this attack, the damage dealt by the wound increases by 5\n(1d10). Any creature can take an action to stanch the wound with a successful DC 12 Wisdom (Medicine) check. The wound also closes if the target\nreceives magical healing.",
+        "Multiattack.": "The devil makes two attacks: one with its beard and one with its glaive."
+    },
+    "armor_class": 13,
+    "challenge_rating": 3.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Medium fiend (devil), lawful evil\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Devil's Sight.": " Magical darkness doesn't impede the devil's darkvision.  ",
+        "Magic Resistance.": " The devil has advantage on saving throws against spells and other magical effects.  ",
+        "Steadfast.": " The devil can't be frightened while it can see an allied creature within 30 feet of it. "
+    },
+    "fly_speed": 0,
+    "hit_dice": "8d8+16",
+    "hp_max": 52,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " Infernal, telepathy 120 ft.  ",
+    "name": "Bearded Devil",
+    "reactions": {},
+    "saving_throws": "Str +5, Con +4, Wis +2  ",
+    "senses": " darkvision 120 ft., passive Perception 10  ",
+    "skills": "Perception +3, Stealth +4",
+    "speed": 30,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

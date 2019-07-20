@@ -1,0 +1,50 @@
+{
+    "actions": {
+        "Bite.": "Melee Weapon Attack:\n +5 to hit, reach 5 ft., one target. \nHit:\n 7 (1d8 + 3) piercing damage plus 4 (1d8) acid\ndamage.",
+        "Pseudopod.": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8 + 3) bludgeoning damage. If the\nmimic is in object form, the target is subjected to its Adhesive trait."
+    },
+    "armor_class": 12,
+    "challenge_rating": 2.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Medium monstrosity (shapechanger), neutral\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Adhesive (Object Form Only).": " The mimic adheres to anything that touches it. A Huge or smaller creature adhered to the mimic is also\ngrappled by it (escape DC 13). Ability checks made to escape this grapple have disadvantage.  ",
+        "False Appearance (Object Form Only).": " While the mimic remains motionless, it is indistinguishable from an ordinary object.  ",
+        "Grappler.": " The mimic has advantage on attack rolls against any creature grappled by it. ",
+        "Shapechanger.": " The mimic can use its action to polymorph into an object or back into its true, amorphous form. Its statistics are\nthe same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts to its true form if it dies.  "
+    },
+    "fly_speed": 0,
+    "hit_dice": "9d8+18",
+    "hp_max": 58,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " --  ",
+    "name": "Mimic",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " darkvision 60 ft., passive Perception 11  ",
+    "skills": " Stealth +5  ",
+    "speed": 15,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

@@ -1,0 +1,48 @@
+{
+    "actions": {
+        "Multiattack.": "The elemental makes two slam attacks.",
+        "Slam.": "Melee Weapon Attack:\n +8 to hit, reach 10 ft., one target. \nHit:\n 14 (2d8 + 5) bludgeoning damage."
+    },
+    "armor_class": 17,
+    "challenge_rating": 5.0,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Large elemental, neutral\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Earth Glide.": " The elemental can burrow through nonmagical, unworked earth and stone. While doing so, the elemental doesn't disturb\nthe material it moves through.  ",
+        "Siege Monster.": " The elemental deals double damage to objects and structures. "
+    },
+    "fly_speed": 0,
+    "hit_dice": "12d10+60",
+    "hp_max": 126,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " Terran  ",
+    "name": "Earth Elemental",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " darkvision 60 ft., tremorsense 60 ft., passive Perception 10  ",
+    "skills": "Perception +3, Stealth +4",
+    "speed": 30,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}

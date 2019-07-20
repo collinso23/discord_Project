@@ -1,0 +1,47 @@
+{
+    "actions": {
+        "Scimitar.": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6 + 2) slashing damage.",
+        "Shortbow.": "Ranged Weapon Attack:\n +4 to hit, range 80/320 ft., one target. \nHit:\n 5 (1d6 + 2) piercing damage."
+    },
+    "armor_class": 15,
+    "challenge_rating": 0.25,
+    "charisma": {
+        "modifier": 0,
+        "score": 10
+    },
+    "constitution": {
+        "modifier": 0,
+        "score": 10
+    },
+    "description": "Small humanoid (goblinoid), neutral evil\n",
+    "dexterity": {
+        "modifier": 0,
+        "score": 10
+    },
+    "features": {
+        "Nimble Escape.": " The goblin can take the Disengage or Hide action as a bonus action on each of its turns. "
+    },
+    "fly_speed": 0,
+    "hit_dice": "2d6",
+    "hp_max": 7,
+    "intelligence": {
+        "modifier": 0,
+        "score": 10
+    },
+    "languages": " Common, Goblin  ",
+    "name": "Goblin",
+    "reactions": {},
+    "saving_throws": "Dex +0",
+    "senses": " darkvision 60 ft., passive Perception 9  ",
+    "skills": " Stealth +6  ",
+    "speed": 30,
+    "strength": {
+        "modifier": 0,
+        "score": 10
+    },
+    "swim_speed": 0,
+    "wisdom": {
+        "modifier": 0,
+        "score": 10
+    }
+}
