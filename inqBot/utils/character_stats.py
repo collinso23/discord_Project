@@ -40,4 +40,75 @@ class Ability(object):
 
 
 class Skill(object):
+    """The Skill class is to be used in conjunction with the Ability class.
+    As in, will only be created in conjunction with int,cha,wis,don,str,or con
     """
+    def __init__(self, name):
+        self.name = name
+        self.proficiencies = 0
+
+    def __get__(self):
+        return self.proficiencies*2
+
+class Race(object):
+    """Here is the base race class. Here is where the
+    general information about races, such as speed,size,age,etc
+    will be stored"""
+    def __init__(self,name = "Human"):
+        self.name = name
+
+        self.age_range = ""
+        self.age = 30
+
+        self.ability_score_increase = {}
+        self.allignment = ""
+        self.size = ""
+        self.speed = 30
+        self.languages = []
+
+        self.has_darkvision = False
+        self.darkvision_text = ""
+        self.darkvision_length = 60
+
+        self.class_features = {}
+
+class Class(object):
+
+    class Class_Feature(object):
+        """Because each feature has a name, description,
+        as well as level it is unlocked (can be multiple levels)
+        this class was created to contian all the information in one"""
+        def __init__(self,name = "blank stare",levels = [1,2],feature_text = "does nothing"):
+            self.name = name
+            self.levels = []
+            self.levels.extend(levels)
+            self.feature_text = feature_text
+    """The class object. Because most of the information
+    used in this bot will be scrapped from the internet
+    at time of request, not too much information is needed
+    for the class object. However, what should be loaded into
+    the class object instantly is information such as
+    at what level you get certain features, as well as the
+    the names of the class features"""
+    def __init__(self, name):
+        self.name = name
+        self.class_features = []
+        self.hit_points = {}
+        self.proficiencies = {}
+        self.equipment = {}
+
+class Character_Details(object):
+
+    def __init__(self,allignment = "",faith = "", lifestyle = "",
+    hair = "blue",skin = "green",eyes = "blue",height = "10 feet"
+    weight = "211", age = "20yo",gender = ""):
+        self.allignment = allignment
+        self.faith = faith
+        self.lifestyle = lifestyle
+        self.hair = hair
+        self.skin = skin
+        self.eyes =  eyes
+        self.height = height
+        self.weight = weight
+        self.age = age
+        self.gender = gender
