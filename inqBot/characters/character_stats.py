@@ -1,5 +1,3 @@
-
-
 class Ability(object):
     """A simple Ability class which calculates the modifier and actual score as well as supplies appropriate skills
     for stats"""
@@ -37,7 +35,6 @@ class Ability(object):
     def __str__(self):
         return_string = str(self.score) + "({:+})".format(self.modifier)
         return return_string
-
 
 class Skill(object):
     """The Skill class is to be used in conjunction with the Ability class.
@@ -112,3 +109,10 @@ class Character_Details(object):
         self.weight = weight
         self.age = age
         self.gender = gender
+
+class Die(object):
+
+    def __init__(self,sides):
+        self.sides = sides
+
+    def roll():
